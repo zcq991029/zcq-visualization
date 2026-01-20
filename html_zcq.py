@@ -1364,6 +1364,15 @@ def _generate_enhanced_cm_html(matrices_data, class_names, title_bg_base64='titl
                         <input type="number" id="yNameGap_${key}" value="${(chartStyles[key]||{}).yNameGap||35}" onchange="setChartStyle('${key}','yNameGap',+this.value)" style="width:40px" min="-50" max="80">px
                         <button onclick="adjustAxisOffset('${key}','yNameGap',5)" style="padding:2px 4px">▶</button>
                     </div>
+                    <div class="style-row"><strong>X刻度标签偏移</strong> 
+                        <button onclick="adjustAxisOffset('${key}','xTickMargin',-1)" style="padding:2px 4px">▲</button>
+                        <input type="number" id="xTickMargin_${key}" value="${(chartStyles[key]||{}).xTickMargin||8}" onchange="setChartStyle('${key}','xTickMargin',+this.value)" style="width:40px" min="-20" max="30">px
+                        <button onclick="adjustAxisOffset('${key}','xTickMargin',1)" style="padding:2px 4px">▼</button>
+                        <strong style="margin-left:10px">Y刻度标签偏移</strong>
+                        <button onclick="adjustAxisOffset('${key}','yTickMargin',-1)" style="padding:2px 4px">◀</button>
+                        <input type="number" id="yTickMargin_${key}" value="${(chartStyles[key]||{}).yTickMargin||8}" onchange="setChartStyle('${key}','yTickMargin',+this.value)" style="width:40px" min="-20" max="30">px
+                        <button onclick="adjustAxisOffset('${key}','yTickMargin',1)" style="padding:2px 4px">▶</button>
+                    </div>
                     <div class="style-row"><strong>图例</strong> 字体:<select onchange="setChartStyle('${key}','legendFont',this.value)" style="width:70px">
                         <option value="Times New Roman" ${(chartStyles[key]||{}).legendFont==='Times New Roman'?'selected':''}>Times</option>
                         <option value="Arial" ${(chartStyles[key]||{}).legendFont==='Arial'?'selected':''}>Arial</option>
@@ -2084,6 +2093,15 @@ def _generate_enhanced_cm_html(matrices_data, class_names, title_bg_base64='titl
                         <input type="number" id="yNameGap_${key}" value="${(chartStyles[key]||{}).yNameGap||35}" onchange="setChartStyle('${key}','yNameGap',+this.value)" style="width:40px" min="-50" max="80">px
                         <button onclick="adjustAxisOffset('${key}','yNameGap',5)" style="padding:2px 4px">▶</button>
                     </div>
+                    <div class="style-row"><strong>X刻度标签偏移</strong> 
+                        <button onclick="adjustAxisOffset('${key}','xTickMargin',-1)" style="padding:2px 4px">▲</button>
+                        <input type="number" id="xTickMargin_${key}" value="${(chartStyles[key]||{}).xTickMargin||8}" onchange="setChartStyle('${key}','xTickMargin',+this.value)" style="width:40px" min="-20" max="30">px
+                        <button onclick="adjustAxisOffset('${key}','xTickMargin',1)" style="padding:2px 4px">▼</button>
+                        <strong style="margin-left:10px">Y刻度标签偏移</strong>
+                        <button onclick="adjustAxisOffset('${key}','yTickMargin',-1)" style="padding:2px 4px">◀</button>
+                        <input type="number" id="yTickMargin_${key}" value="${(chartStyles[key]||{}).yTickMargin||8}" onchange="setChartStyle('${key}','yTickMargin',+this.value)" style="width:40px" min="-20" max="30">px
+                        <button onclick="adjustAxisOffset('${key}','yTickMargin',1)" style="padding:2px 4px">▶</button>
+                    </div>
                     <div class="style-row"><strong>图例方向</strong>:<select onchange="setChartStyle('${key}','legendOrient',this.value)">
                         <option value="horizontal" ${(chartStyles[key]||{}).legendOrient!=='vertical'?'selected':''}>横向</option>
                         <option value="vertical" ${(chartStyles[key]||{}).legendOrient==='vertical'?'selected':''}>纵向</option>
@@ -2654,6 +2672,15 @@ def _generate_enhanced_cm_html(matrices_data, class_names, title_bg_base64='titl
                         <button onclick="adjustAxisOffset('${key}','yNameGap',-5)" style="padding:2px 4px">◀</button>
                         <input type="number" id="yNameGap_${key}" value="${cs.yNameGap||35}" onchange="setChartStyle('${key}','yNameGap',+this.value)" style="width:40px" min="-50" max="80">px
                         <button onclick="adjustAxisOffset('${key}','yNameGap',5)" style="padding:2px 4px">▶</button>
+                    </div>
+                    <div class="style-row"><strong>X刻度标签偏移</strong> 
+                        <button onclick="adjustAxisOffset('${key}','xTickMargin',-1)" style="padding:2px 4px">▲</button>
+                        <input type="number" id="xTickMargin_${key}" value="${cs.xTickMargin||8}" onchange="setChartStyle('${key}','xTickMargin',+this.value)" style="width:40px" min="-20" max="30">px
+                        <button onclick="adjustAxisOffset('${key}','xTickMargin',1)" style="padding:2px 4px">▼</button>
+                        <strong style="margin-left:10px">Y刻度标签偏移</strong>
+                        <button onclick="adjustAxisOffset('${key}','yTickMargin',-1)" style="padding:2px 4px">◀</button>
+                        <input type="number" id="yTickMargin_${key}" value="${cs.yTickMargin||8}" onchange="setChartStyle('${key}','yTickMargin',+this.value)" style="width:40px" min="-20" max="30">px
+                        <button onclick="adjustAxisOffset('${key}','yTickMargin',1)" style="padding:2px 4px">▶</button>
                     </div>
                     <div class="style-row"><strong>图例位置</strong> 
                         X:<button onclick="adjustLegend('${key}','X',-5)" style="padding:2px 6px">◀</button>
@@ -3365,28 +3392,28 @@ def _generate_enhanced_cm_html(matrices_data, class_names, title_bg_base64='titl
                     // 只更新ECharts选项，不重新渲染HTML
                     chart.setOption({
                         legend: { left: (cs.legendX || 50) + '%', top: (cs.legendY || 0) + '%', orient: cs.legendOrient || 'horizontal', itemWidth: cs.legendItemWidth || 25, itemHeight: cs.legendItemHeight || 14, textStyle: { fontFamily: cs.legendFont || 'Times New Roman', fontSize: cs.legendSize || 11, color: cs.legendColor || '#000' } },
-                        xAxis: { name: cs.xAxisName || '类别', nameGap: cs.xNameGap || 25, interval: cs.xTickInterval || null, nameTextStyle: { fontFamily: cs.axisLabelFont || 'Times New Roman', fontSize: cs.axisLabelSize || 12, color: cs.axisLabelColor || '#000' }, axisLabel: { fontFamily: cs.axisTickFont || 'Times New Roman', fontSize: cs.axisTickSize || 10, color: cs.axisTickColor || '#000' } },
-                        yAxis: { name: cs.yAxisName || '准确率(%)', nameGap: cs.yNameGap || 35, interval: cs.yTickInterval || null, nameTextStyle: { fontFamily: cs.axisLabelFont || 'Times New Roman', fontSize: cs.axisLabelSize || 12, color: cs.axisLabelColor || '#000' }, axisLabel: { fontFamily: cs.axisTickFont || 'Times New Roman', fontSize: cs.axisTickSize || 10, color: cs.axisTickColor || '#000' } }
+                        xAxis: { name: cs.xAxisName || '类别', nameGap: cs.xNameGap || 25, interval: cs.xTickInterval || null, nameTextStyle: { fontFamily: cs.axisLabelFont || 'Times New Roman', fontSize: cs.axisLabelSize || 12, color: cs.axisLabelColor || '#000' }, axisLabel: { margin: cs.xTickMargin || 8, fontFamily: cs.axisTickFont || 'Times New Roman', fontSize: cs.axisTickSize || 10, color: cs.axisTickColor || '#000' } },
+                        yAxis: { name: cs.yAxisName || '准确率(%)', nameGap: cs.yNameGap || 35, interval: cs.yTickInterval || null, nameTextStyle: { fontFamily: cs.axisLabelFont || 'Times New Roman', fontSize: cs.axisLabelSize || 12, color: cs.axisLabelColor || '#000' }, axisLabel: { margin: cs.yTickMargin || 8, fontFamily: cs.axisTickFont || 'Times New Roman', fontSize: cs.axisTickSize || 10, color: cs.axisTickColor || '#000' } }
                     });
                 } else if (chartType === 'multibar') {
                     // 只更新ECharts选项，不重新渲染HTML
                     chart.setOption({
                         legend: { left: (cs.legendX || 50) + '%', top: (cs.legendY || 0) + '%', orient: cs.legendOrient || 'horizontal', itemWidth: cs.legendItemWidth || 25, itemHeight: cs.legendItemHeight || 14, textStyle: { fontFamily: cs.legendFont || 'Times New Roman', fontSize: cs.legendSize || 11, color: cs.legendColor || '#000' } },
-                        xAxis: { name: cs.xAxisName || 'Evaluation budget', nameGap: cs.xNameGap || 25, interval: cs.xTickInterval || null, nameTextStyle: { fontFamily: cs.axisLabelFont || 'Times New Roman', fontSize: cs.axisLabelSize || 12, color: cs.axisLabelColor || '#000' }, axisLabel: { fontFamily: cs.axisTickFont || 'Times New Roman', fontSize: cs.axisTickSize || 10, color: cs.axisTickColor || '#000' } },
-                        yAxis: { name: cs.yAxisName || 'Terminal HV', nameGap: cs.yNameGap || 35, interval: cs.yTickInterval || null, nameTextStyle: { fontFamily: cs.axisLabelFont || 'Times New Roman', fontSize: cs.axisLabelSize || 12, color: cs.axisLabelColor || '#000' }, axisLabel: { fontFamily: cs.axisTickFont || 'Times New Roman', fontSize: cs.axisTickSize || 10, color: cs.axisTickColor || '#000' } }
+                        xAxis: { name: cs.xAxisName || 'Evaluation budget', nameGap: cs.xNameGap || 25, interval: cs.xTickInterval || null, nameTextStyle: { fontFamily: cs.axisLabelFont || 'Times New Roman', fontSize: cs.axisLabelSize || 12, color: cs.axisLabelColor || '#000' }, axisLabel: { margin: cs.xTickMargin || 8, fontFamily: cs.axisTickFont || 'Times New Roman', fontSize: cs.axisTickSize || 10, color: cs.axisTickColor || '#000' } },
+                        yAxis: { name: cs.yAxisName || 'Terminal HV', nameGap: cs.yNameGap || 35, interval: cs.yTickInterval || null, nameTextStyle: { fontFamily: cs.axisLabelFont || 'Times New Roman', fontSize: cs.axisLabelSize || 12, color: cs.axisLabelColor || '#000' }, axisLabel: { margin: cs.yTickMargin || 8, fontFamily: cs.axisTickFont || 'Times New Roman', fontSize: cs.axisTickSize || 10, color: cs.axisTickColor || '#000' } }
                     });
                 } else if (chartType === 'roc') {
                     chart.setOption({
                         legend: { left: (cs.legendX || 50) + '%', top: (cs.legendY || 0) + '%', orient: cs.legendOrient || 'horizontal', itemWidth: cs.legendItemWidth || 25, itemHeight: cs.legendItemHeight || 14, textStyle: { fontFamily: cs.legendFont || 'Times New Roman', fontSize: cs.legendSize || 11, color: cs.legendColor || '#000' } },
-                        xAxis: { name: cs.xAxisName || 'FPR', nameGap: cs.xNameGap || 25, interval: cs.xTickInterval || null, nameTextStyle: { fontFamily: cs.axisLabelFont || 'Times New Roman', fontSize: cs.axisLabelSize || 12, color: cs.axisLabelColor || '#000' }, axisLabel: { fontFamily: cs.axisTickFont || 'Times New Roman', fontSize: cs.axisTickSize || 10, color: cs.axisTickColor || '#000' } },
-                        yAxis: { name: cs.yAxisName || 'TPR', nameGap: cs.yNameGap || 35, interval: cs.yTickInterval || null, nameTextStyle: { fontFamily: cs.axisLabelFont || 'Times New Roman', fontSize: cs.axisLabelSize || 12, color: cs.axisLabelColor || '#000' }, axisLabel: { fontFamily: cs.axisTickFont || 'Times New Roman', fontSize: cs.axisTickSize || 10, color: cs.axisTickColor || '#000' } }
+                        xAxis: { name: cs.xAxisName || 'FPR', nameGap: cs.xNameGap || 25, interval: cs.xTickInterval || null, nameTextStyle: { fontFamily: cs.axisLabelFont || 'Times New Roman', fontSize: cs.axisLabelSize || 12, color: cs.axisLabelColor || '#000' }, axisLabel: { margin: cs.xTickMargin || 8, fontFamily: cs.axisTickFont || 'Times New Roman', fontSize: cs.axisTickSize || 10, color: cs.axisTickColor || '#000' } },
+                        yAxis: { name: cs.yAxisName || 'TPR', nameGap: cs.yNameGap || 35, interval: cs.yTickInterval || null, nameTextStyle: { fontFamily: cs.axisLabelFont || 'Times New Roman', fontSize: cs.axisLabelSize || 12, color: cs.axisLabelColor || '#000' }, axisLabel: { margin: cs.yTickMargin || 8, fontFamily: cs.axisTickFont || 'Times New Roman', fontSize: cs.axisTickSize || 10, color: cs.axisTickColor || '#000' } }
                     });
                 } else if (chartType === 'boxplot') {
                     // 只更新ECharts选项，不重新渲染HTML
                     chart.setOption({
                         legend: { left: (cs.legendX || 50) + '%', top: (cs.legendY || 0) + '%', orient: cs.legendOrient || 'horizontal', itemWidth: cs.legendItemWidth || 25, itemHeight: cs.legendItemHeight || 14, textStyle: { fontFamily: cs.legendFont || 'Times New Roman', fontSize: cs.legendSize || 11, color: cs.legendColor || '#000' } },
-                        xAxis: { name: cs.xAxisName || 'Evaluation budget', nameGap: cs.xNameGap || 25, interval: cs.xTickInterval || null, nameTextStyle: { fontFamily: cs.axisLabelFont || 'Times New Roman', fontSize: cs.axisLabelSize || 12, color: cs.axisLabelColor || '#000' }, axisLabel: { fontFamily: cs.axisTickFont || 'Times New Roman', fontSize: cs.axisTickSize || 10, color: cs.axisTickColor || '#000' } },
-                        yAxis: { name: cs.yAxisName || '准确率(%)', nameGap: cs.yNameGap || 35, interval: cs.yTickInterval || null, nameTextStyle: { fontFamily: cs.axisLabelFont || 'Times New Roman', fontSize: cs.axisLabelSize || 12, color: cs.axisLabelColor || '#000' }, axisLabel: { fontFamily: cs.axisTickFont || 'Times New Roman', fontSize: cs.axisTickSize || 10, color: cs.axisTickColor || '#000' } }
+                        xAxis: { name: cs.xAxisName || 'Evaluation budget', nameGap: cs.xNameGap || 25, interval: cs.xTickInterval || null, nameTextStyle: { fontFamily: cs.axisLabelFont || 'Times New Roman', fontSize: cs.axisLabelSize || 12, color: cs.axisLabelColor || '#000' }, axisLabel: { margin: cs.xTickMargin || 8, fontFamily: cs.axisTickFont || 'Times New Roman', fontSize: cs.axisTickSize || 10, color: cs.axisTickColor || '#000' } },
+                        yAxis: { name: cs.yAxisName || '准确率(%)', nameGap: cs.yNameGap || 35, interval: cs.yTickInterval || null, nameTextStyle: { fontFamily: cs.axisLabelFont || 'Times New Roman', fontSize: cs.axisLabelSize || 12, color: cs.axisLabelColor || '#000' }, axisLabel: { margin: cs.yTickMargin || 8, fontFamily: cs.axisTickFont || 'Times New Roman', fontSize: cs.axisTickSize || 10, color: cs.axisTickColor || '#000' } }
                     });
                 }
             }
@@ -3500,6 +3527,15 @@ def _generate_enhanced_cm_html(matrices_data, class_names, title_bg_base64='titl
                         <button onclick="adjustAxisOffset('${key}','yNameGap',-5)" style="padding:2px 4px">◀</button>
                         <input type="number" id="yNameGap_${key}" value="${(chartStyles[key]||{}).yNameGap||35}" onchange="setChartStyle('${key}','yNameGap',+this.value)" style="width:40px" min="-50" max="80">px
                         <button onclick="adjustAxisOffset('${key}','yNameGap',5)" style="padding:2px 4px">▶</button>
+                    </div>
+                    <div class="style-row"><strong>X刻度标签偏移</strong> 
+                        <button onclick="adjustAxisOffset('${key}','xTickMargin',-1)" style="padding:2px 4px">▲</button>
+                        <input type="number" id="xTickMargin_${key}" value="${(chartStyles[key]||{}).xTickMargin||8}" onchange="setChartStyle('${key}','xTickMargin',+this.value)" style="width:40px" min="-20" max="30">px
+                        <button onclick="adjustAxisOffset('${key}','xTickMargin',1)" style="padding:2px 4px">▼</button>
+                        <strong style="margin-left:10px">Y刻度标签偏移</strong>
+                        <button onclick="adjustAxisOffset('${key}','yTickMargin',-1)" style="padding:2px 4px">◀</button>
+                        <input type="number" id="yTickMargin_${key}" value="${(chartStyles[key]||{}).yTickMargin||8}" onchange="setChartStyle('${key}','yTickMargin',+this.value)" style="width:40px" min="-20" max="30">px
+                        <button onclick="adjustAxisOffset('${key}','yTickMargin',1)" style="padding:2px 4px">▶</button>
                     </div>
                     <div class="style-row"><strong>图例</strong> 字体:<select onchange="setChartStyle('${key}','legendFont',this.value)" style="width:70px">
                         <option value="Times New Roman" ${(chartStyles[key]||{}).legendFont==='Times New Roman'?'selected':''}>Times</option>
@@ -3774,6 +3810,15 @@ def _generate_enhanced_cm_html(matrices_data, class_names, title_bg_base64='titl
                         <input type="number" id="yNameGap_${key}" value="${cs.yNameGap||40}" onchange="setChartStyle('${key}','yNameGap',+this.value)" style="width:40px" min="-50" max="80">px
                         <button onclick="adjustAxisOffset('${key}','yNameGap',5)" style="padding:2px 4px">▶</button>
                     </div>
+                    <div class="style-row"><strong>X刻度标签偏移</strong> 
+                        <button onclick="adjustAxisOffset('${key}','xTickMargin',-1)" style="padding:2px 4px">▲</button>
+                        <input type="number" id="xTickMargin_${key}" value="${cs.xTickMargin||8}" onchange="setChartStyle('${key}','xTickMargin',+this.value)" style="width:40px" min="-20" max="30">px
+                        <button onclick="adjustAxisOffset('${key}','xTickMargin',1)" style="padding:2px 4px">▼</button>
+                        <strong style="margin-left:10px">Y刻度标签偏移</strong>
+                        <button onclick="adjustAxisOffset('${key}','yTickMargin',-1)" style="padding:2px 4px">◀</button>
+                        <input type="number" id="yTickMargin_${key}" value="${cs.yTickMargin||8}" onchange="setChartStyle('${key}','yTickMargin',+this.value)" style="width:40px" min="-20" max="30">px
+                        <button onclick="adjustAxisOffset('${key}','yTickMargin',1)" style="padding:2px 4px">▶</button>
+                    </div>
                     <hr style="margin:8px 0;border:none;border-top:1px solid #eee;">
                     <div class="style-row"><strong>图表尺寸</strong> 宽×高(px):
                         <input type="number" value="${cs.chartWidth||600}" onchange="setChartStyle('${key}','chartWidth',+this.value);renderChart('${key}')" style="width:60px" min="300" max="1200">×
@@ -4008,6 +4053,15 @@ def _generate_enhanced_cm_html(matrices_data, class_names, title_bg_base64='titl
                         <button onclick="adjustAxisOffset('${key}','yNameGap',-5)" style="padding:2px 4px">◀</button>
                         <input type="number" id="yNameGap_${key}" value="${cs.yNameGap||40}" onchange="setChartStyle('${key}','yNameGap',+this.value)" style="width:40px" min="-50" max="80">px
                         <button onclick="adjustAxisOffset('${key}','yNameGap',5)" style="padding:2px 4px">▶</button>
+                    </div>
+                    <div class="style-row"><strong>X刻度标签偏移</strong> 
+                        <button onclick="adjustAxisOffset('${key}','xTickMargin',-1)" style="padding:2px 4px">▲</button>
+                        <input type="number" id="xTickMargin_${key}" value="${cs.xTickMargin||8}" onchange="setChartStyle('${key}','xTickMargin',+this.value)" style="width:40px" min="-20" max="30">px
+                        <button onclick="adjustAxisOffset('${key}','xTickMargin',1)" style="padding:2px 4px">▼</button>
+                        <strong style="margin-left:10px">Y刻度标签偏移</strong>
+                        <button onclick="adjustAxisOffset('${key}','yTickMargin',-1)" style="padding:2px 4px">◀</button>
+                        <input type="number" id="yTickMargin_${key}" value="${cs.yTickMargin||8}" onchange="setChartStyle('${key}','yTickMargin',+this.value)" style="width:40px" min="-20" max="30">px
+                        <button onclick="adjustAxisOffset('${key}','yTickMargin',1)" style="padding:2px 4px">▶</button>
                     </div>
                     <hr style="margin:8px 0;border:none;border-top:1px solid #eee;">
                     <div class="style-row"><strong>图表尺寸</strong> 宽×高(px):
@@ -4479,6 +4533,15 @@ def _generate_enhanced_cm_html(matrices_data, class_names, title_bg_base64='titl
                         <button onclick="adjustAxisOffset('${key}','yNameGap',-5)" style="padding:2px 4px">◀</button>
                         <input type="number" id="yNameGap_${key}" value="${cs.yNameGap||35}" onchange="setChartStyle('${key}','yNameGap',+this.value)" style="width:40px" min="-50" max="80">px
                         <button onclick="adjustAxisOffset('${key}','yNameGap',5)" style="padding:2px 4px">▶</button>
+                    </div>
+                    <div class="style-row"><strong>X刻度标签偏移</strong> 
+                        <button onclick="adjustAxisOffset('${key}','xTickMargin',-1)" style="padding:2px 4px">▲</button>
+                        <input type="number" id="xTickMargin_${key}" value="${cs.xTickMargin||8}" onchange="setChartStyle('${key}','xTickMargin',+this.value)" style="width:40px" min="-20" max="30">px
+                        <button onclick="adjustAxisOffset('${key}','xTickMargin',1)" style="padding:2px 4px">▼</button>
+                        <strong style="margin-left:10px">Y刻度标签偏移</strong>
+                        <button onclick="adjustAxisOffset('${key}','yTickMargin',-1)" style="padding:2px 4px">◀</button>
+                        <input type="number" id="yTickMargin_${key}" value="${cs.yTickMargin||8}" onchange="setChartStyle('${key}','yTickMargin',+this.value)" style="width:40px" min="-20" max="30">px
+                        <button onclick="adjustAxisOffset('${key}','yTickMargin',1)" style="padding:2px 4px">▶</button>
                     </div>
                     <hr style="margin:8px 0;border:none;border-top:1px solid #eee;">
                     <div class="style-row"><strong>图表尺寸</strong> 宽×高(px):

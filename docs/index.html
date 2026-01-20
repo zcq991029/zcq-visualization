@@ -6,10 +6,10 @@
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="0">
-    <title>可视化仓库 v1768902131</title>
-    <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js?v=1768902131"></script>
-    <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js?v=1768902131"></script>
-    <script src="https://cdn.plot.ly/plotly-2.27.0.min.js?v=1768902131"></script>
+    <title>可视化仓库 v1768902693</title>
+    <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js?v=1768902693"></script>
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js?v=1768902693"></script>
+    <script src="https://cdn.plot.ly/plotly-2.27.0.min.js?v=1768902693"></script>
     <style>
         :root { --bg: #f5f5f7; --card: #fff; --text: #1d1d1f; --sub: #86868b; --accent: #0071e3; }
         * { box-sizing: border-box; }
@@ -388,7 +388,7 @@
         function showReadme() { document.getElementById('readmeModal').classList.add('show'); }
         function closeReadme() { document.getElementById('readmeModal').classList.remove('show'); }
         // 原始数据（程序生成的初始值）
-        const PROGRAM_DATA = JSON.parse(JSON.stringify({"fig1": {"name": "图1", "subtitle": "混淆矩阵", "type": "confusion", "data": [[252, 9, 4, 6, 9], [4, 262, 3, 4, 7], [8, 9, 248, 8, 7], [8, 11, 5, 241, 15], [5, 10, 5, 6, 254]]}, "fig2": {"name": "图2", "subtitle": "分类准确率", "type": "bar", "data": {"labels": ["A", "B", "C", "D", "E"], "values": [92.4, 88.6, 92.6, 87.2, 88.0]}}, "fig3": {"name": "图3", "subtitle": "对比图", "type": "multibar", "data": {"labels": ["A", "B", "C", "D", "E"], "values": [[74.8, 82.9, 87.8, 94.0, 98.0], [79.3, 81.3, 88.0, 95.0, 95.5], [76.9, 82.0, 88.5, 94.3, 99.4], [72.3, 84.7, 87.4, 90.9, 96.6], [77.7, 84.4, 87.2, 90.2, 99.7]]}}, "fig4": {"name": "图4", "subtitle": "ROC曲线", "type": "roc", "data": {"labels": ["A", "B", "C", "D", "E"], "curves": [{"fpr": [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0], "tpr": [0, 0.62, 0.62, 0.62, 0.63, 0.69, 0.74, 0.75, 0.84, 0.95, 1.0], "auc": 0.975}, {"fpr": [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0], "tpr": [0, 0.62, 0.62, 0.62, 0.67, 0.75, 0.8, 0.88, 0.94, 0.95, 1.0], "auc": 0.959}, {"fpr": [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0], "tpr": [0, 0.63, 0.65, 0.72, 0.8, 0.81, 0.84, 0.87, 0.91, 0.98, 1.0], "auc": 0.977}, {"fpr": [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0], "tpr": [0, 0.62, 0.65, 0.79, 0.86, 0.86, 0.91, 0.95, 0.99, 1.0, 1.0], "auc": 0.97}, {"fpr": [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0], "tpr": [0, 0.64, 0.64, 0.68, 0.7, 0.88, 0.91, 0.96, 0.97, 0.97, 1.0], "auc": 0.953}]}}, "fig5": {"name": "图5", "subtitle": "误差准确率图", "type": "boxplot", "data": {"labels": ["A", "B", "C", "D", "E"], "series": [{"name": "Ours", "avg": [85.5, 88.3, 91.1, 93.8, 95.2], "min": [80.2, 83.1, 86.5, 88.3, 90.1], "max": [90.8, 93.5, 96.7, 98.1, 99.3], "color": "#27ae60"}, {"name": "Method A", "avg": [82.2, 85.5, 88.2, 90.0, 92.5], "min": [77.1, 80.3, 83.5, 85.7, 87.2], "max": [87.3, 90.7, 92.9, 94.3, 97.8], "color": "#3498db"}]}}, "fig6": {"name": "图6", "subtitle": "折线图", "type": "line", "data": {"xAxis": ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"], "series": [{"name": "Series A", "data": [150, 230, 224, 218, 135, 147, 260], "color": "#5470c6"}, {"name": "Series B", "data": [80, 122, 201, 154, 190, 130, 110], "color": "#91cc75"}]}}, "fig7": {"name": "图7", "subtitle": "箱线图", "type": "realboxplot", "data": {"categories": ["Group A", "Group B", "Group C", "Group D"], "data": [[40.908018334662614, 40.33339965587899, 42.98912091313677, 38.66703655044577, 46.27250638720081, 50.941416247042085, 54.09883177582217, 64.37831929666095, 55.46210017063615, 30.592718980446094, 48.74648348161036, 49.76645601120654, 51.36053937757456, 56.71387122152679, 52.6506221350493, 68.93535464209378, 41.56342393965801, 35.227646347388195, 56.022757403267306, 33.131156470606314, 54.790362919849095, 41.65551361769276, 41.74335091620472, 42.321868861671554, 53.699573176681724, 52.28054290471723, 40.817329382915474, 59.97802890498278, 60.29702056882009, 52.0888291171186], [41.39062351785826, 67.6232919454418, 49.843237028908185, 59.11086233019193, 33.502809737723844, 50.66931608725622, 46.60494239638898, 53.33260175070995, 40.30019797124474, 43.417916422641575, 53.8841474407168, 38.98748516381235, 55.577071936316045, 30.71016931419986, 41.46452169136943, 29.12435662011079, 48.58653527797828, 74.05452080642067, 56.31275994417135, 47.14299838622533, 44.639125389007624, 53.60999145902822, 38.069189424984, 54.75710567616453, 61.655440431675956, 51.731443653912315, 57.2498625061897, 57.259016569715754, 47.3796700041762, 41.24005063884369], [49.283538125682945, 36.040473817601516, 45.6032907140865, 53.98195801420319, 64.2870171729187, 64.2592785030285, 42.514354262959614, 27.06721679858245, 40.322360577997244, 37.418216231622566, 48.84288653597282, 49.2696722703267, 60.71240249837908, 52.1352754017982, 40.5485879036883, 69.39977269160568, 34.81031883545976, 71.20364296829773, 36.73048069440083, 54.510434890178686, 52.82423923216746, 43.81265121994931, 33.10370480657657, 29.352820972012474, 35.89835494341841, 57.31087188172923, 68.38315106405958, 56.90658757661464, 44.542925547329986, 54.06573758568859], [45.23034237154628, 37.685692940634986, 59.89828796768228, 42.4572937879059, 44.63833059608128, 35.42332288842206, 64.58295917087948, 46.54504444397388, 53.29417506527417, 34.463125167898, 58.78260280102478, 45.292322758654024, 57.96845783424978, 51.00910277932077, 50.774056498443336, 39.49231080750373, 51.95511626402521, 54.38673472417831, 28.13363625765572, 65.71114175679293, 51.47353180400548, 48.52864839930372, 46.09126056853707, 58.478746009383045, 57.32408454893639, 47.80739668741367, 48.13161612701145, 35.52588094919166, 38.79417963601937, 43.112843535828446]]}}, "fig8": {"name": "图8", "subtitle": "蜘蛛图", "type": "radar", "data": {"indicator": [{"name": "Sales", "max": 100}, {"name": "Admin", "max": 100}, {"name": "IT", "max": 100}, {"name": "Support", "max": 100}, {"name": "Dev", "max": 100}, {"name": "Marketing", "max": 100}], "series": [{"name": "Budget", "data": [80, 90, 70, 85, 95, 75], "color": "#5470c6"}, {"name": "Actual", "data": [70, 85, 65, 90, 80, 85], "color": "#91cc75"}]}}, "fig9": {"name": "图9", "subtitle": "双轴图", "type": "dualaxis", "data": {"xAxis": ["Jan", "Feb", "Mar", "Apr", "May", "Jun"], "series": [{"name": "Revenue", "data": [2.0, 4.9, 7.0, 23.2, 25.6, 76.7], "type": "bar", "yAxisIndex": 0, "color": "#5470c6"}, {"name": "Growth Rate", "data": [2.6, 5.9, 9.0, 26.4, 28.7, 70.7], "type": "line", "yAxisIndex": 1, "color": "#ee6666"}], "yAxis": [{"name": "Revenue ($M)", "position": "left"}, {"name": "Growth (%)", "position": "right"}]}}, "fig10": {"name": "图10", "subtitle": "饼图", "type": "pie", "data": {"series": [{"name": "Category A", "value": 335}, {"name": "Category B", "value": 310}, {"name": "Category C", "value": 234}, {"name": "Category D", "value": 135}, {"name": "Category E", "value": 148}]}}}));
+        const PROGRAM_DATA = JSON.parse(JSON.stringify({"fig1": {"name": "图1", "subtitle": "混淆矩阵", "type": "confusion", "data": [[247, 7, 9, 10, 7], [5, 240, 11, 12, 12], [6, 3, 256, 9, 6], [6, 6, 5, 257, 6], [8, 4, 5, 2, 261]]}, "fig2": {"name": "图2", "subtitle": "分类准确率", "type": "bar", "data": {"labels": ["A", "B", "C", "D", "E"], "values": [85.3, 85.5, 95.2, 86.2, 98.5]}}, "fig3": {"name": "图3", "subtitle": "对比图", "type": "multibar", "data": {"labels": ["A", "B", "C", "D", "E"], "values": [[72.4, 82.9, 86.1, 94.7, 98.5], [76.5, 82.9, 85.1, 93.2, 95.1], [77.5, 81.7, 86.8, 94.9, 98.5], [78.0, 83.2, 86.6, 93.2, 95.4], [73.4, 83.9, 85.9, 93.5, 96.5]]}}, "fig4": {"name": "图4", "subtitle": "ROC曲线", "type": "roc", "data": {"labels": ["A", "B", "C", "D", "E"], "curves": [{"fpr": [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0], "tpr": [0, 0.61, 0.62, 0.82, 0.85, 0.86, 0.87, 0.87, 0.96, 0.99, 1.0], "auc": 0.943}, {"fpr": [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0], "tpr": [0, 0.61, 0.63, 0.64, 0.72, 0.76, 0.81, 0.83, 0.92, 1.0, 1.0], "auc": 0.983}, {"fpr": [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0], "tpr": [0, 0.71, 0.77, 0.79, 0.79, 0.83, 0.91, 0.91, 0.93, 0.94, 1.0], "auc": 0.977}, {"fpr": [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0], "tpr": [0, 0.66, 0.67, 0.68, 0.71, 0.72, 0.79, 0.81, 0.93, 0.97, 1.0], "auc": 0.921}, {"fpr": [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0], "tpr": [0, 0.62, 0.62, 0.64, 0.7, 0.72, 0.73, 0.76, 0.81, 0.96, 1.0], "auc": 0.953}]}}, "fig5": {"name": "图5", "subtitle": "误差准确率图", "type": "boxplot", "data": {"labels": ["A", "B", "C", "D", "E"], "series": [{"name": "Ours", "avg": [85.5, 88.3, 91.1, 93.8, 95.2], "min": [80.2, 83.1, 86.5, 88.3, 90.1], "max": [90.8, 93.5, 96.7, 98.1, 99.3], "color": "#27ae60"}, {"name": "Method A", "avg": [82.2, 85.5, 88.2, 90.0, 92.5], "min": [77.1, 80.3, 83.5, 85.7, 87.2], "max": [87.3, 90.7, 92.9, 94.3, 97.8], "color": "#3498db"}]}}, "fig6": {"name": "图6", "subtitle": "折线图", "type": "line", "data": {"xAxis": ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"], "series": [{"name": "Series A", "data": [150, 230, 224, 218, 135, 147, 260], "color": "#5470c6"}, {"name": "Series B", "data": [80, 122, 201, 154, 190, 130, 110], "color": "#91cc75"}]}}, "fig7": {"name": "图7", "subtitle": "箱线图", "type": "realboxplot", "data": {"categories": ["Group A", "Group B", "Group C", "Group D"], "data": [[36.54386735558671, 44.31076105161932, 63.660547062603044, 46.193123609742756, 46.108387812316714, 41.34628242940447, 54.76686597069957, 43.21522144774051, 65.21069425743407, 42.86608661758134, 33.10983384845517, 49.10571483825601, 58.836897657135914, 58.025367622381324, 45.13520213324868, 50.73261283461978, 48.39490497636671, 48.24945039355958, 61.7976886789697, 45.144658540601434, 55.6481255537815, 66.7047101164556, 68.35637471367498, 47.22492851037749, 45.59525503954739, 53.08677987064851, 37.511092866331886, 47.430473353561084, 56.521364359098, 47.48209928551609], [53.14450302975317, 49.48697694618318, 50.41318943730137, 35.75021701237041, 62.98197676234601, 44.94201387230105, 67.30494497252849, 33.80212706683884, 48.969541070975794, 59.24332381627699, 59.606675229712934, 56.46898579075909, 51.73587595977094, 48.25378042094031, 42.347077034374664, 46.8675605566474, 58.12450971465623, 48.89083062307228, 35.67250541683216, 47.06704592747464, 34.21077031494768, 47.963337504610884, 53.708486569441945, 31.424073093407802, 40.34075319707243, 49.15435711111064, 48.75209687609434, 37.66201434846822, 25.44696305781518, 50.0262471628543], [43.39883266901704, 68.99825582012087, 45.73893365199832, 57.97736380191841, 58.02218722564713, 48.45775466138341, 45.72178358003696, 64.31598239222619, 57.11291100399547, 56.38979863014379, 54.4990914277591, 49.813932258783815, 41.91374219140472, 39.69923948957252, 48.76415292409359, 39.84603267929489, 60.858673168283, 65.15260685427984, 37.949075538908666, 39.0277114204908, 43.777293434364985, 40.36132879811616, 29.18143484492354, 41.50552525356469, 41.20108193234095, 43.66684301684265, 50.09811014963965, 62.48477068142063, 47.58847575807049, 52.943701858534396], [53.69945560490084, 45.69754430901688, 38.14817452330837, 50.14324899736176, 65.02613474817528, 65.74424021627138, 65.10172310967774, 50.35302358529117, 46.215187653429325, 46.70280791538284, 49.20850330760969, 31.516535228807964, 58.0122871836455, 59.10880877677246, 50.60028358804153, 29.200762476884353, 37.11224628021109, 45.004102626533964, 52.47171566820049, 39.27187209300744, 32.95281144823419, 39.48433556665765, 40.067288845413096, 40.06169357069375, 38.90483513956393, 54.19160034226873, 43.05655794437635, 40.356697479599845, 32.770250276838254, 55.020679077554895]]}}, "fig8": {"name": "图8", "subtitle": "蜘蛛图", "type": "radar", "data": {"indicator": [{"name": "Sales", "max": 100}, {"name": "Admin", "max": 100}, {"name": "IT", "max": 100}, {"name": "Support", "max": 100}, {"name": "Dev", "max": 100}, {"name": "Marketing", "max": 100}], "series": [{"name": "Budget", "data": [80, 90, 70, 85, 95, 75], "color": "#5470c6"}, {"name": "Actual", "data": [70, 85, 65, 90, 80, 85], "color": "#91cc75"}]}}, "fig9": {"name": "图9", "subtitle": "双轴图", "type": "dualaxis", "data": {"xAxis": ["Jan", "Feb", "Mar", "Apr", "May", "Jun"], "series": [{"name": "Revenue", "data": [2.0, 4.9, 7.0, 23.2, 25.6, 76.7], "type": "bar", "yAxisIndex": 0, "color": "#5470c6"}, {"name": "Growth Rate", "data": [2.6, 5.9, 9.0, 26.4, 28.7, 70.7], "type": "line", "yAxisIndex": 1, "color": "#ee6666"}], "yAxis": [{"name": "Revenue ($M)", "position": "left"}, {"name": "Growth (%)", "position": "right"}]}}, "fig10": {"name": "图10", "subtitle": "饼图", "type": "pie", "data": {"series": [{"name": "Category A", "value": 335}, {"name": "Category B", "value": 310}, {"name": "Category C", "value": 234}, {"name": "Category D", "value": 135}, {"name": "Category E", "value": 148}]}}}));
         const STORAGE_KEY = 'confusion_matrix_data';
         const SETTINGS_KEY = 'confusion_matrix_settings';
         const CHECKPOINT_KEY = 'confusion_matrix_checkpoint';
@@ -1020,6 +1020,15 @@
                         <button onclick="adjustAxisOffset('${key}','yNameGap',-5)" style="padding:2px 4px">◀</button>
                         <input type="number" id="yNameGap_${key}" value="${(chartStyles[key]||{}).yNameGap||35}" onchange="setChartStyle('${key}','yNameGap',+this.value)" style="width:40px" min="-50" max="80">px
                         <button onclick="adjustAxisOffset('${key}','yNameGap',5)" style="padding:2px 4px">▶</button>
+                    </div>
+                    <div class="style-row"><strong>X刻度标签偏移</strong> 
+                        <button onclick="adjustAxisOffset('${key}','xTickMargin',-1)" style="padding:2px 4px">▲</button>
+                        <input type="number" id="xTickMargin_${key}" value="${(chartStyles[key]||{}).xTickMargin||8}" onchange="setChartStyle('${key}','xTickMargin',+this.value)" style="width:40px" min="-20" max="30">px
+                        <button onclick="adjustAxisOffset('${key}','xTickMargin',1)" style="padding:2px 4px">▼</button>
+                        <strong style="margin-left:10px">Y刻度标签偏移</strong>
+                        <button onclick="adjustAxisOffset('${key}','yTickMargin',-1)" style="padding:2px 4px">◀</button>
+                        <input type="number" id="yTickMargin_${key}" value="${(chartStyles[key]||{}).yTickMargin||8}" onchange="setChartStyle('${key}','yTickMargin',+this.value)" style="width:40px" min="-20" max="30">px
+                        <button onclick="adjustAxisOffset('${key}','yTickMargin',1)" style="padding:2px 4px">▶</button>
                     </div>
                     <div class="style-row"><strong>图例</strong> 字体:<select onchange="setChartStyle('${key}','legendFont',this.value)" style="width:70px">
                         <option value="Times New Roman" ${(chartStyles[key]||{}).legendFont==='Times New Roman'?'selected':''}>Times</option>
@@ -1741,6 +1750,15 @@
                         <input type="number" id="yNameGap_${key}" value="${(chartStyles[key]||{}).yNameGap||35}" onchange="setChartStyle('${key}','yNameGap',+this.value)" style="width:40px" min="-50" max="80">px
                         <button onclick="adjustAxisOffset('${key}','yNameGap',5)" style="padding:2px 4px">▶</button>
                     </div>
+                    <div class="style-row"><strong>X刻度标签偏移</strong> 
+                        <button onclick="adjustAxisOffset('${key}','xTickMargin',-1)" style="padding:2px 4px">▲</button>
+                        <input type="number" id="xTickMargin_${key}" value="${(chartStyles[key]||{}).xTickMargin||8}" onchange="setChartStyle('${key}','xTickMargin',+this.value)" style="width:40px" min="-20" max="30">px
+                        <button onclick="adjustAxisOffset('${key}','xTickMargin',1)" style="padding:2px 4px">▼</button>
+                        <strong style="margin-left:10px">Y刻度标签偏移</strong>
+                        <button onclick="adjustAxisOffset('${key}','yTickMargin',-1)" style="padding:2px 4px">◀</button>
+                        <input type="number" id="yTickMargin_${key}" value="${(chartStyles[key]||{}).yTickMargin||8}" onchange="setChartStyle('${key}','yTickMargin',+this.value)" style="width:40px" min="-20" max="30">px
+                        <button onclick="adjustAxisOffset('${key}','yTickMargin',1)" style="padding:2px 4px">▶</button>
+                    </div>
                     <div class="style-row"><strong>图例方向</strong>:<select onchange="setChartStyle('${key}','legendOrient',this.value)">
                         <option value="horizontal" ${(chartStyles[key]||{}).legendOrient!=='vertical'?'selected':''}>横向</option>
                         <option value="vertical" ${(chartStyles[key]||{}).legendOrient==='vertical'?'selected':''}>纵向</option>
@@ -2311,6 +2329,15 @@
                         <button onclick="adjustAxisOffset('${key}','yNameGap',-5)" style="padding:2px 4px">◀</button>
                         <input type="number" id="yNameGap_${key}" value="${cs.yNameGap||35}" onchange="setChartStyle('${key}','yNameGap',+this.value)" style="width:40px" min="-50" max="80">px
                         <button onclick="adjustAxisOffset('${key}','yNameGap',5)" style="padding:2px 4px">▶</button>
+                    </div>
+                    <div class="style-row"><strong>X刻度标签偏移</strong> 
+                        <button onclick="adjustAxisOffset('${key}','xTickMargin',-1)" style="padding:2px 4px">▲</button>
+                        <input type="number" id="xTickMargin_${key}" value="${cs.xTickMargin||8}" onchange="setChartStyle('${key}','xTickMargin',+this.value)" style="width:40px" min="-20" max="30">px
+                        <button onclick="adjustAxisOffset('${key}','xTickMargin',1)" style="padding:2px 4px">▼</button>
+                        <strong style="margin-left:10px">Y刻度标签偏移</strong>
+                        <button onclick="adjustAxisOffset('${key}','yTickMargin',-1)" style="padding:2px 4px">◀</button>
+                        <input type="number" id="yTickMargin_${key}" value="${cs.yTickMargin||8}" onchange="setChartStyle('${key}','yTickMargin',+this.value)" style="width:40px" min="-20" max="30">px
+                        <button onclick="adjustAxisOffset('${key}','yTickMargin',1)" style="padding:2px 4px">▶</button>
                     </div>
                     <div class="style-row"><strong>图例位置</strong> 
                         X:<button onclick="adjustLegend('${key}','X',-5)" style="padding:2px 6px">◀</button>
@@ -3022,28 +3049,28 @@
                     // 只更新ECharts选项，不重新渲染HTML
                     chart.setOption({
                         legend: { left: (cs.legendX || 50) + '%', top: (cs.legendY || 0) + '%', orient: cs.legendOrient || 'horizontal', itemWidth: cs.legendItemWidth || 25, itemHeight: cs.legendItemHeight || 14, textStyle: { fontFamily: cs.legendFont || 'Times New Roman', fontSize: cs.legendSize || 11, color: cs.legendColor || '#000' } },
-                        xAxis: { name: cs.xAxisName || '类别', nameGap: cs.xNameGap || 25, interval: cs.xTickInterval || null, nameTextStyle: { fontFamily: cs.axisLabelFont || 'Times New Roman', fontSize: cs.axisLabelSize || 12, color: cs.axisLabelColor || '#000' }, axisLabel: { fontFamily: cs.axisTickFont || 'Times New Roman', fontSize: cs.axisTickSize || 10, color: cs.axisTickColor || '#000' } },
-                        yAxis: { name: cs.yAxisName || '准确率(%)', nameGap: cs.yNameGap || 35, interval: cs.yTickInterval || null, nameTextStyle: { fontFamily: cs.axisLabelFont || 'Times New Roman', fontSize: cs.axisLabelSize || 12, color: cs.axisLabelColor || '#000' }, axisLabel: { fontFamily: cs.axisTickFont || 'Times New Roman', fontSize: cs.axisTickSize || 10, color: cs.axisTickColor || '#000' } }
+                        xAxis: { name: cs.xAxisName || '类别', nameGap: cs.xNameGap || 25, interval: cs.xTickInterval || null, nameTextStyle: { fontFamily: cs.axisLabelFont || 'Times New Roman', fontSize: cs.axisLabelSize || 12, color: cs.axisLabelColor || '#000' }, axisLabel: { margin: cs.xTickMargin || 8, fontFamily: cs.axisTickFont || 'Times New Roman', fontSize: cs.axisTickSize || 10, color: cs.axisTickColor || '#000' } },
+                        yAxis: { name: cs.yAxisName || '准确率(%)', nameGap: cs.yNameGap || 35, interval: cs.yTickInterval || null, nameTextStyle: { fontFamily: cs.axisLabelFont || 'Times New Roman', fontSize: cs.axisLabelSize || 12, color: cs.axisLabelColor || '#000' }, axisLabel: { margin: cs.yTickMargin || 8, fontFamily: cs.axisTickFont || 'Times New Roman', fontSize: cs.axisTickSize || 10, color: cs.axisTickColor || '#000' } }
                     });
                 } else if (chartType === 'multibar') {
                     // 只更新ECharts选项，不重新渲染HTML
                     chart.setOption({
                         legend: { left: (cs.legendX || 50) + '%', top: (cs.legendY || 0) + '%', orient: cs.legendOrient || 'horizontal', itemWidth: cs.legendItemWidth || 25, itemHeight: cs.legendItemHeight || 14, textStyle: { fontFamily: cs.legendFont || 'Times New Roman', fontSize: cs.legendSize || 11, color: cs.legendColor || '#000' } },
-                        xAxis: { name: cs.xAxisName || 'Evaluation budget', nameGap: cs.xNameGap || 25, interval: cs.xTickInterval || null, nameTextStyle: { fontFamily: cs.axisLabelFont || 'Times New Roman', fontSize: cs.axisLabelSize || 12, color: cs.axisLabelColor || '#000' }, axisLabel: { fontFamily: cs.axisTickFont || 'Times New Roman', fontSize: cs.axisTickSize || 10, color: cs.axisTickColor || '#000' } },
-                        yAxis: { name: cs.yAxisName || 'Terminal HV', nameGap: cs.yNameGap || 35, interval: cs.yTickInterval || null, nameTextStyle: { fontFamily: cs.axisLabelFont || 'Times New Roman', fontSize: cs.axisLabelSize || 12, color: cs.axisLabelColor || '#000' }, axisLabel: { fontFamily: cs.axisTickFont || 'Times New Roman', fontSize: cs.axisTickSize || 10, color: cs.axisTickColor || '#000' } }
+                        xAxis: { name: cs.xAxisName || 'Evaluation budget', nameGap: cs.xNameGap || 25, interval: cs.xTickInterval || null, nameTextStyle: { fontFamily: cs.axisLabelFont || 'Times New Roman', fontSize: cs.axisLabelSize || 12, color: cs.axisLabelColor || '#000' }, axisLabel: { margin: cs.xTickMargin || 8, fontFamily: cs.axisTickFont || 'Times New Roman', fontSize: cs.axisTickSize || 10, color: cs.axisTickColor || '#000' } },
+                        yAxis: { name: cs.yAxisName || 'Terminal HV', nameGap: cs.yNameGap || 35, interval: cs.yTickInterval || null, nameTextStyle: { fontFamily: cs.axisLabelFont || 'Times New Roman', fontSize: cs.axisLabelSize || 12, color: cs.axisLabelColor || '#000' }, axisLabel: { margin: cs.yTickMargin || 8, fontFamily: cs.axisTickFont || 'Times New Roman', fontSize: cs.axisTickSize || 10, color: cs.axisTickColor || '#000' } }
                     });
                 } else if (chartType === 'roc') {
                     chart.setOption({
                         legend: { left: (cs.legendX || 50) + '%', top: (cs.legendY || 0) + '%', orient: cs.legendOrient || 'horizontal', itemWidth: cs.legendItemWidth || 25, itemHeight: cs.legendItemHeight || 14, textStyle: { fontFamily: cs.legendFont || 'Times New Roman', fontSize: cs.legendSize || 11, color: cs.legendColor || '#000' } },
-                        xAxis: { name: cs.xAxisName || 'FPR', nameGap: cs.xNameGap || 25, interval: cs.xTickInterval || null, nameTextStyle: { fontFamily: cs.axisLabelFont || 'Times New Roman', fontSize: cs.axisLabelSize || 12, color: cs.axisLabelColor || '#000' }, axisLabel: { fontFamily: cs.axisTickFont || 'Times New Roman', fontSize: cs.axisTickSize || 10, color: cs.axisTickColor || '#000' } },
-                        yAxis: { name: cs.yAxisName || 'TPR', nameGap: cs.yNameGap || 35, interval: cs.yTickInterval || null, nameTextStyle: { fontFamily: cs.axisLabelFont || 'Times New Roman', fontSize: cs.axisLabelSize || 12, color: cs.axisLabelColor || '#000' }, axisLabel: { fontFamily: cs.axisTickFont || 'Times New Roman', fontSize: cs.axisTickSize || 10, color: cs.axisTickColor || '#000' } }
+                        xAxis: { name: cs.xAxisName || 'FPR', nameGap: cs.xNameGap || 25, interval: cs.xTickInterval || null, nameTextStyle: { fontFamily: cs.axisLabelFont || 'Times New Roman', fontSize: cs.axisLabelSize || 12, color: cs.axisLabelColor || '#000' }, axisLabel: { margin: cs.xTickMargin || 8, fontFamily: cs.axisTickFont || 'Times New Roman', fontSize: cs.axisTickSize || 10, color: cs.axisTickColor || '#000' } },
+                        yAxis: { name: cs.yAxisName || 'TPR', nameGap: cs.yNameGap || 35, interval: cs.yTickInterval || null, nameTextStyle: { fontFamily: cs.axisLabelFont || 'Times New Roman', fontSize: cs.axisLabelSize || 12, color: cs.axisLabelColor || '#000' }, axisLabel: { margin: cs.yTickMargin || 8, fontFamily: cs.axisTickFont || 'Times New Roman', fontSize: cs.axisTickSize || 10, color: cs.axisTickColor || '#000' } }
                     });
                 } else if (chartType === 'boxplot') {
                     // 只更新ECharts选项，不重新渲染HTML
                     chart.setOption({
                         legend: { left: (cs.legendX || 50) + '%', top: (cs.legendY || 0) + '%', orient: cs.legendOrient || 'horizontal', itemWidth: cs.legendItemWidth || 25, itemHeight: cs.legendItemHeight || 14, textStyle: { fontFamily: cs.legendFont || 'Times New Roman', fontSize: cs.legendSize || 11, color: cs.legendColor || '#000' } },
-                        xAxis: { name: cs.xAxisName || 'Evaluation budget', nameGap: cs.xNameGap || 25, interval: cs.xTickInterval || null, nameTextStyle: { fontFamily: cs.axisLabelFont || 'Times New Roman', fontSize: cs.axisLabelSize || 12, color: cs.axisLabelColor || '#000' }, axisLabel: { fontFamily: cs.axisTickFont || 'Times New Roman', fontSize: cs.axisTickSize || 10, color: cs.axisTickColor || '#000' } },
-                        yAxis: { name: cs.yAxisName || '准确率(%)', nameGap: cs.yNameGap || 35, interval: cs.yTickInterval || null, nameTextStyle: { fontFamily: cs.axisLabelFont || 'Times New Roman', fontSize: cs.axisLabelSize || 12, color: cs.axisLabelColor || '#000' }, axisLabel: { fontFamily: cs.axisTickFont || 'Times New Roman', fontSize: cs.axisTickSize || 10, color: cs.axisTickColor || '#000' } }
+                        xAxis: { name: cs.xAxisName || 'Evaluation budget', nameGap: cs.xNameGap || 25, interval: cs.xTickInterval || null, nameTextStyle: { fontFamily: cs.axisLabelFont || 'Times New Roman', fontSize: cs.axisLabelSize || 12, color: cs.axisLabelColor || '#000' }, axisLabel: { margin: cs.xTickMargin || 8, fontFamily: cs.axisTickFont || 'Times New Roman', fontSize: cs.axisTickSize || 10, color: cs.axisTickColor || '#000' } },
+                        yAxis: { name: cs.yAxisName || '准确率(%)', nameGap: cs.yNameGap || 35, interval: cs.yTickInterval || null, nameTextStyle: { fontFamily: cs.axisLabelFont || 'Times New Roman', fontSize: cs.axisLabelSize || 12, color: cs.axisLabelColor || '#000' }, axisLabel: { margin: cs.yTickMargin || 8, fontFamily: cs.axisTickFont || 'Times New Roman', fontSize: cs.axisTickSize || 10, color: cs.axisTickColor || '#000' } }
                     });
                 }
             }
@@ -3157,6 +3184,15 @@
                         <button onclick="adjustAxisOffset('${key}','yNameGap',-5)" style="padding:2px 4px">◀</button>
                         <input type="number" id="yNameGap_${key}" value="${(chartStyles[key]||{}).yNameGap||35}" onchange="setChartStyle('${key}','yNameGap',+this.value)" style="width:40px" min="-50" max="80">px
                         <button onclick="adjustAxisOffset('${key}','yNameGap',5)" style="padding:2px 4px">▶</button>
+                    </div>
+                    <div class="style-row"><strong>X刻度标签偏移</strong> 
+                        <button onclick="adjustAxisOffset('${key}','xTickMargin',-1)" style="padding:2px 4px">▲</button>
+                        <input type="number" id="xTickMargin_${key}" value="${(chartStyles[key]||{}).xTickMargin||8}" onchange="setChartStyle('${key}','xTickMargin',+this.value)" style="width:40px" min="-20" max="30">px
+                        <button onclick="adjustAxisOffset('${key}','xTickMargin',1)" style="padding:2px 4px">▼</button>
+                        <strong style="margin-left:10px">Y刻度标签偏移</strong>
+                        <button onclick="adjustAxisOffset('${key}','yTickMargin',-1)" style="padding:2px 4px">◀</button>
+                        <input type="number" id="yTickMargin_${key}" value="${(chartStyles[key]||{}).yTickMargin||8}" onchange="setChartStyle('${key}','yTickMargin',+this.value)" style="width:40px" min="-20" max="30">px
+                        <button onclick="adjustAxisOffset('${key}','yTickMargin',1)" style="padding:2px 4px">▶</button>
                     </div>
                     <div class="style-row"><strong>图例</strong> 字体:<select onchange="setChartStyle('${key}','legendFont',this.value)" style="width:70px">
                         <option value="Times New Roman" ${(chartStyles[key]||{}).legendFont==='Times New Roman'?'selected':''}>Times</option>
@@ -3431,6 +3467,15 @@
                         <input type="number" id="yNameGap_${key}" value="${cs.yNameGap||40}" onchange="setChartStyle('${key}','yNameGap',+this.value)" style="width:40px" min="-50" max="80">px
                         <button onclick="adjustAxisOffset('${key}','yNameGap',5)" style="padding:2px 4px">▶</button>
                     </div>
+                    <div class="style-row"><strong>X刻度标签偏移</strong> 
+                        <button onclick="adjustAxisOffset('${key}','xTickMargin',-1)" style="padding:2px 4px">▲</button>
+                        <input type="number" id="xTickMargin_${key}" value="${cs.xTickMargin||8}" onchange="setChartStyle('${key}','xTickMargin',+this.value)" style="width:40px" min="-20" max="30">px
+                        <button onclick="adjustAxisOffset('${key}','xTickMargin',1)" style="padding:2px 4px">▼</button>
+                        <strong style="margin-left:10px">Y刻度标签偏移</strong>
+                        <button onclick="adjustAxisOffset('${key}','yTickMargin',-1)" style="padding:2px 4px">◀</button>
+                        <input type="number" id="yTickMargin_${key}" value="${cs.yTickMargin||8}" onchange="setChartStyle('${key}','yTickMargin',+this.value)" style="width:40px" min="-20" max="30">px
+                        <button onclick="adjustAxisOffset('${key}','yTickMargin',1)" style="padding:2px 4px">▶</button>
+                    </div>
                     <hr style="margin:8px 0;border:none;border-top:1px solid #eee;">
                     <div class="style-row"><strong>图表尺寸</strong> 宽×高(px):
                         <input type="number" value="${cs.chartWidth||600}" onchange="setChartStyle('${key}','chartWidth',+this.value);renderChart('${key}')" style="width:60px" min="300" max="1200">×
@@ -3665,6 +3710,15 @@
                         <button onclick="adjustAxisOffset('${key}','yNameGap',-5)" style="padding:2px 4px">◀</button>
                         <input type="number" id="yNameGap_${key}" value="${cs.yNameGap||40}" onchange="setChartStyle('${key}','yNameGap',+this.value)" style="width:40px" min="-50" max="80">px
                         <button onclick="adjustAxisOffset('${key}','yNameGap',5)" style="padding:2px 4px">▶</button>
+                    </div>
+                    <div class="style-row"><strong>X刻度标签偏移</strong> 
+                        <button onclick="adjustAxisOffset('${key}','xTickMargin',-1)" style="padding:2px 4px">▲</button>
+                        <input type="number" id="xTickMargin_${key}" value="${cs.xTickMargin||8}" onchange="setChartStyle('${key}','xTickMargin',+this.value)" style="width:40px" min="-20" max="30">px
+                        <button onclick="adjustAxisOffset('${key}','xTickMargin',1)" style="padding:2px 4px">▼</button>
+                        <strong style="margin-left:10px">Y刻度标签偏移</strong>
+                        <button onclick="adjustAxisOffset('${key}','yTickMargin',-1)" style="padding:2px 4px">◀</button>
+                        <input type="number" id="yTickMargin_${key}" value="${cs.yTickMargin||8}" onchange="setChartStyle('${key}','yTickMargin',+this.value)" style="width:40px" min="-20" max="30">px
+                        <button onclick="adjustAxisOffset('${key}','yTickMargin',1)" style="padding:2px 4px">▶</button>
                     </div>
                     <hr style="margin:8px 0;border:none;border-top:1px solid #eee;">
                     <div class="style-row"><strong>图表尺寸</strong> 宽×高(px):
@@ -4136,6 +4190,15 @@
                         <button onclick="adjustAxisOffset('${key}','yNameGap',-5)" style="padding:2px 4px">◀</button>
                         <input type="number" id="yNameGap_${key}" value="${cs.yNameGap||35}" onchange="setChartStyle('${key}','yNameGap',+this.value)" style="width:40px" min="-50" max="80">px
                         <button onclick="adjustAxisOffset('${key}','yNameGap',5)" style="padding:2px 4px">▶</button>
+                    </div>
+                    <div class="style-row"><strong>X刻度标签偏移</strong> 
+                        <button onclick="adjustAxisOffset('${key}','xTickMargin',-1)" style="padding:2px 4px">▲</button>
+                        <input type="number" id="xTickMargin_${key}" value="${cs.xTickMargin||8}" onchange="setChartStyle('${key}','xTickMargin',+this.value)" style="width:40px" min="-20" max="30">px
+                        <button onclick="adjustAxisOffset('${key}','xTickMargin',1)" style="padding:2px 4px">▼</button>
+                        <strong style="margin-left:10px">Y刻度标签偏移</strong>
+                        <button onclick="adjustAxisOffset('${key}','yTickMargin',-1)" style="padding:2px 4px">◀</button>
+                        <input type="number" id="yTickMargin_${key}" value="${cs.yTickMargin||8}" onchange="setChartStyle('${key}','yTickMargin',+this.value)" style="width:40px" min="-20" max="30">px
+                        <button onclick="adjustAxisOffset('${key}','yTickMargin',1)" style="padding:2px 4px">▶</button>
                     </div>
                     <hr style="margin:8px 0;border:none;border-top:1px solid #eee;">
                     <div class="style-row"><strong>图表尺寸</strong> 宽×高(px):
