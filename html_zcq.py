@@ -3479,20 +3479,22 @@ def _generate_enhanced_cm_html(matrices_data, class_names, title_bg_base64='titl
                 chartStyles[key][prop] = value;
             }
             // 实时预览，但不保存到localStorage
-            updateChartOnly(key);
+            // 只有改变尺寸时才resize
+            const needResize = (prop === 'chartWidth' || prop === 'chartHeight');
+            updateChartOnly(key, needResize);
         }
         
         // 只更新ECharts图表，保持样式面板状态
-        function updateChartOnly(key) {
+        function updateChartOnly(key, resizeChart = false) {
             const info = matricesData[key];
             const chartType = info.type || 'confusion';
             if (chartType === 'confusion') {
                 renderChart(key); // 混淆矩阵需要完全重新渲染
             } else if (chartInstances[key]) {
-                // 更新图表容器尺寸和ECharts option
                 const cs = chartStyles[key] || {};
                 const chartDiv = document.getElementById('chart_' + key);
-                if (chartDiv) {
+                // 只有明确要求resize时才改变容器尺寸
+                if (resizeChart && chartDiv) {
                     chartDiv.style.width = (cs.chartWidth || 10) * 96 + 'px';
                     chartDiv.style.height = (cs.chartHeight || 5) * 96 + 'px';
                     chartInstances[key].resize();
