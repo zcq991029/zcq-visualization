@@ -1265,7 +1265,7 @@ def _generate_enhanced_cm_html(matrices_data, class_names, title_bg_base64='titl
             `;
             
             for (let i = 0; i < currentClassCount; i++) {
-                html += `<tr><th style="font-family:${globalStyles.labelFontFamily};font-size:${globalStyles.labelFontSize}px;font-weight:${globalStyles.labelFontWeight};padding-right:${globalStyles.yLabelPadding||8}px;cursor:pointer" onclick="editCMLabel(${i})">${customLabels[i]}</th>`;
+                html += `<tr><th style="font-family:${globalStyles.labelFontFamily};font-size:${globalStyles.labelFontSize}px;font-weight:${globalStyles.labelFontWeight};padding-right:${Math.max(0, globalStyles.yLabelPadding||8)}px;margin-right:${Math.min(0, globalStyles.yLabelPadding||8)}px;cursor:pointer" onclick="editCMLabel(${i})">${customLabels[i]}</th>`;
                 const rowSum = rowSums[i];
                 for (let j = 0; j < currentClassCount; j++) {
                     const val = data[i][j];
@@ -1280,7 +1280,7 @@ def _generate_enhanced_cm_html(matrices_data, class_names, title_bg_base64='titl
             }
             
             // X轴标签放在底部
-            html += `<tr><th></th>${customLabels.map((n, idx) => `<th style="font-family:${globalStyles.labelFontFamily};font-size:${globalStyles.labelFontSize}px;font-weight:${globalStyles.labelFontWeight};padding-top:${globalStyles.xLabelPadding||8}px;cursor:pointer" onclick="editCMLabel(${idx})">${n}</th>`).join('')}</tr>`;
+            html += `<tr><th></th>${customLabels.map((n, idx) => `<th style="font-family:${globalStyles.labelFontFamily};font-size:${globalStyles.labelFontSize}px;font-weight:${globalStyles.labelFontWeight};padding-top:${Math.max(0, globalStyles.xLabelPadding||8)}px;margin-top:${Math.min(0, globalStyles.xLabelPadding||8)}px;cursor:pointer" onclick="editCMLabel(${idx})">${n}</th>`).join('')}</tr>`;
             html += `</table></div>`;
             
             // 统计
