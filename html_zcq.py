@@ -2282,14 +2282,19 @@ def _generate_enhanced_cm_html(matrices_data, class_names, title_bg_base64='titl
                 if (chartInstances[key]) chartInstances[key].dispose();
                 const chartDiv = document.getElementById('chart_' + key);
                 
-                // ★★★ 重新获取最新的样式配置，动态计算容器宽度 ★★★
+                // ★★★ 重新获取最新的样式配置，根据刻度像素间距计算容器尺寸 ★★★
                 const latestCs = chartStyles[key] || {};
                 const barWidth = latestCs.barWidth || 25;
                 const xLabels = latestCs.xTickLabels || data.labels || ['B=15', 'B=20', 'B=25', 'B=30'];
+                const yLabels = latestCs.yTickLabels || ['0','20','40','60','80','100'];
+                const xTickGapPx = latestCs.xTickGapPx || 150;
+                const yTickGapPx = latestCs.yTickGapPx || 60;
                 const gridMargin = 2 * barWidth * seriesConfig.count + 90;
-                const chartAreaWidth = xLabels.length * (seriesConfig.count + 1) * barWidth;
-                const chartWidth = Math.max(chartAreaWidth + gridMargin, 400);
+                // 根据刻度数量和像素间距计算图表尺寸
+                const chartWidth = Math.max(xLabels.length * xTickGapPx + gridMargin, 400);
+                const chartHeight = Math.max(yLabels.length * yTickGapPx + 120, 300);
                 chartDiv.style.width = chartWidth + 'px';
+                chartDiv.style.height = chartHeight + 'px';
                 
                 chartInstances[key] = echarts.init(chartDiv);
                 
@@ -2864,19 +2869,21 @@ def _generate_enhanced_cm_html(matrices_data, class_names, title_bg_base64='titl
                 if (chartInstances[key]) chartInstances[key].dispose();
                 const chartDiv = document.getElementById('chart_' + key);
                 
-                // ★★★ 重新获取最新的样式配置 ★★★
+                // ★★★ 重新获取最新的样式配置，根据刻度像素间距计算容器尺寸 ★★★
                 const latestCs = chartStyles[key] || {};
                 const seriesCount = (data.series || []).length;
                 const barWidth = latestCs.barWidth || 30;
                 const xLabels = latestCs.xTickLabels || data.labels || ['A','B','C','D','E'];
+                const yLabels = latestCs.yTickLabels || ['0','20','40','60','80','100'];
+                const xTickGapPx = latestCs.xTickGapPx || 80;
+                const yTickGapPx = latestCs.yTickGapPx || 50;
                 
-                // ★★★ 关键公式：容器宽度 = 图表区域 + grid边距 ★★★
-                // 图表区域 = 刻度数 × (系列数+1) × barWidth（每刻度：系列柱子组 + 1个间隙）
-                // grid边距 = left(barWidth+60) + right(barWidth+30) = 2*barWidth + 90
+                // 根据刻度数量和像素间距计算图表尺寸
                 const gridMargin = 2 * barWidth + 90;
-                const chartAreaWidth = xLabels.length * (seriesCount + 1) * barWidth;
-                const chartWidth = Math.max(chartAreaWidth + gridMargin, 400);
+                const chartWidth = Math.max(xLabels.length * xTickGapPx + gridMargin, 400);
+                const chartHeight = Math.max(yLabels.length * yTickGapPx + 120, 300);
                 chartDiv.style.width = chartWidth + 'px';
+                chartDiv.style.height = chartHeight + 'px';
                 
                 chartInstances[key] = echarts.init(chartDiv);
                 const seriesData = [];
@@ -3968,9 +3975,19 @@ def _generate_enhanced_cm_html(matrices_data, class_names, title_bg_base64='titl
             
             const chartDiv = document.getElementById('chart_' + key);
             if (chartInstances[key]) chartInstances[key].dispose();
-            chartInstances[key] = echarts.init(chartDiv);
             
+            // ★★★ 根据刻度像素间距计算容器尺寸 ★★★
             const latestCs = chartStyles[key] || {};
+            const xLabels = data.xAxis || [];
+            const xTickGapPx = latestCs.xTickGapPx || 80;
+            const yTickGapPx = latestCs.yTickGapPx || 50;
+            const yTickCount = 6; // 默认Y轴刻度数
+            const chartWidth = Math.max(xLabels.length * xTickGapPx + 150, 400);
+            const chartHeight = Math.max(yTickCount * yTickGapPx + 120, 300);
+            chartDiv.style.width = chartWidth + 'px';
+            chartDiv.style.height = chartHeight + 'px';
+            
+            chartInstances[key] = echarts.init(chartDiv);
             chartInstances[key].setOption({
                 tooltip: { trigger: 'axis' },
                 legend: { data: data.series.map(s => s.name), triggerEvent: true },
@@ -4214,8 +4231,19 @@ def _generate_enhanced_cm_html(matrices_data, class_names, title_bg_base64='titl
             
             const chartDiv = document.getElementById('chart_' + key);
             if (chartInstances[key]) chartInstances[key].dispose();
-            chartInstances[key] = echarts.init(chartDiv);
+            
+            // ★★★ 根据刻度像素间距计算容器尺寸 ★★★
             const latestCs = chartStyles[key] || {};
+            const xLabels = data.xAxis || [];
+            const xTickGapPx = latestCs.xTickGapPx || 80;
+            const yTickGapPx = latestCs.yTickGapPx || 50;
+            const yTickCount = 6;
+            const chartWidth = Math.max(xLabels.length * xTickGapPx + 180, 400);
+            const chartHeight = Math.max(yTickCount * yTickGapPx + 120, 300);
+            chartDiv.style.width = chartWidth + 'px';
+            chartDiv.style.height = chartHeight + 'px';
+            
+            chartInstances[key] = echarts.init(chartDiv);
             chartInstances[key].setOption({
                 tooltip: { trigger: 'axis' },
                 legend: { data: data.series.map(s => s.name) },
@@ -4696,6 +4724,17 @@ def _generate_enhanced_cm_html(matrices_data, class_names, title_bg_base64='titl
             
             const chartDiv = document.getElementById('chart_' + key);
             if (chartInstances[key]) chartInstances[key].dispose();
+            
+            // ★★★ 根据刻度像素间距计算容器尺寸 ★★★
+            const xLabels = data.categories || [];
+            const xTickGapPx = cs.xTickGapPx || 80;
+            const yTickGapPx = cs.yTickGapPx || 50;
+            const yTickCount = 6;
+            const chartWidth = Math.max(xLabels.length * xTickGapPx + 150, 400);
+            const chartHeight = Math.max(yTickCount * yTickGapPx + 120, 300);
+            chartDiv.style.width = chartWidth + 'px';
+            chartDiv.style.height = chartHeight + 'px';
+            
             chartInstances[key] = echarts.init(chartDiv);
             
             // 计算箱线图数据: [min, Q1, median, Q3, max] + 异常值
