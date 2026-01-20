@@ -6,10 +6,10 @@
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="0">
-    <title>可视化仓库 v1768901616</title>
-    <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js?v=1768901616"></script>
-    <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js?v=1768901616"></script>
-    <script src="https://cdn.plot.ly/plotly-2.27.0.min.js?v=1768901616"></script>
+    <title>可视化仓库 v1768901787</title>
+    <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js?v=1768901787"></script>
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js?v=1768901787"></script>
+    <script src="https://cdn.plot.ly/plotly-2.27.0.min.js?v=1768901787"></script>
     <style>
         :root { --bg: #f5f5f7; --card: #fff; --text: #1d1d1f; --sub: #86868b; --accent: #0071e3; }
         * { box-sizing: border-box; }
@@ -388,7 +388,7 @@
         function showReadme() { document.getElementById('readmeModal').classList.add('show'); }
         function closeReadme() { document.getElementById('readmeModal').classList.remove('show'); }
         // 原始数据（程序生成的初始值）
-        const PROGRAM_DATA = JSON.parse(JSON.stringify({"fig1": {"name": "图1", "subtitle": "混淆矩阵", "type": "confusion", "data": [[239, 7, 8, 9, 17], [10, 247, 8, 5, 10], [4, 5, 263, 5, 3], [9, 6, 8, 250, 7], [7, 8, 7, 5, 253]]}, "fig2": {"name": "图2", "subtitle": "分类准确率", "type": "bar", "data": {"labels": ["A", "B", "C", "D", "E"], "values": [97.5, 86.7, 97.4, 88.7, 97.4]}}, "fig3": {"name": "图3", "subtitle": "对比图", "type": "multibar", "data": {"labels": ["A", "B", "C", "D", "E"], "values": [[73.2, 82.0, 86.4, 93.3, 98.0], [72.5, 81.6, 89.0, 93.1, 99.6], [72.6, 80.3, 85.1, 94.1, 96.2], [77.4, 83.6, 85.6, 94.4, 99.7], [77.4, 82.4, 85.2, 94.9, 95.9]]}}, "fig4": {"name": "图4", "subtitle": "ROC曲线", "type": "roc", "data": {"labels": ["A", "B", "C", "D", "E"], "curves": [{"fpr": [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0], "tpr": [0, 0.6, 0.61, 0.71, 0.75, 0.82, 0.83, 0.87, 0.89, 0.9, 1.0], "auc": 0.946}, {"fpr": [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0], "tpr": [0, 0.61, 0.65, 0.71, 0.75, 0.77, 0.8, 0.81, 0.93, 0.94, 1.0], "auc": 0.926}, {"fpr": [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0], "tpr": [0, 0.62, 0.71, 0.75, 0.75, 0.76, 0.77, 0.78, 0.81, 0.83, 1.0], "auc": 0.921}, {"fpr": [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0], "tpr": [0, 0.66, 0.68, 0.82, 0.85, 0.92, 0.93, 0.94, 0.98, 1.0, 1.0], "auc": 0.964}, {"fpr": [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0], "tpr": [0, 0.61, 0.62, 0.7, 0.75, 0.78, 0.81, 0.83, 0.92, 0.94, 1.0], "auc": 0.964}]}}, "fig5": {"name": "图5", "subtitle": "误差准确率图", "type": "boxplot", "data": {"labels": ["A", "B", "C", "D", "E"], "series": [{"name": "Ours", "avg": [85.5, 88.3, 91.1, 93.8, 95.2], "min": [80.2, 83.1, 86.5, 88.3, 90.1], "max": [90.8, 93.5, 96.7, 98.1, 99.3], "color": "#27ae60"}, {"name": "Method A", "avg": [82.2, 85.5, 88.2, 90.0, 92.5], "min": [77.1, 80.3, 83.5, 85.7, 87.2], "max": [87.3, 90.7, 92.9, 94.3, 97.8], "color": "#3498db"}]}}, "fig6": {"name": "图6", "subtitle": "折线图", "type": "line", "data": {"xAxis": ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"], "series": [{"name": "Series A", "data": [150, 230, 224, 218, 135, 147, 260], "color": "#5470c6"}, {"name": "Series B", "data": [80, 122, 201, 154, 190, 130, 110], "color": "#91cc75"}]}}, "fig7": {"name": "图7", "subtitle": "箱线图", "type": "realboxplot", "data": {"categories": ["Group A", "Group B", "Group C", "Group D"], "data": [[51.32011056067624, 57.435884043913994, 48.03714489469008, 60.90609109530516, 41.93878140923009, 59.28644441112911, 72.53493042230184, 45.79797743777369, 46.537066514236386, 51.01686153409611, 43.70716245622194, 57.39440257809397, 33.114915521778435, 38.69253147333194, 61.131571287700524, 51.4584332774275, 59.79625281883195, 31.419111962402194, 38.04577301072707, 51.71580589777663, 49.401297682749224, 43.66963329448035, 59.09335285049186, 59.09089684072403, 68.0486342935059, 47.761773777929214, 37.94270355067388, 66.68270870020413, 32.11378548743765, 51.9690891537472], [57.4685340372667, 54.81343546430633, 56.40062711116529, 56.865585758447544, 38.65023441083527, 45.64565424429576, 35.639565495929176, 41.3286773301749, 47.11048367745, 73.07471978775976, 72.78462964163903, 46.66387903230342, 53.31299020173216, 53.47785271684257, 35.564702597672095, 27.990520881169125, 51.12526622076582, 42.82127621701487, 49.73236408630124, 48.824679254883, 58.51488736164927, 49.642694968469634, 44.17936975941916, 51.207914880987744, 68.05140902092842, 57.074516003064005, 48.695366271358, 51.69836899050047, 55.77394365887615, 58.67713586738059], [45.24659340726266, 64.05552119198231, 44.79839857601566, 59.31629943130116, 52.15053375772377, 43.76588657515869, 44.16263158610674, 46.20044468111847, 39.18386823511371, 49.59012115889251, 47.90475468903723, 49.255270665842886, 53.494849726751575, 49.35892343842657, 51.50733121819487, 40.45505191838605, 41.5153577147224, 49.231282979451194, 59.68386440564181, 63.490318006254384, 55.968988050180585, 45.2234726685553, 53.62928065864304, 57.980204720836696, 47.62756906997001, 52.463885160969326, 46.28162543327772, 49.351212983382396, 40.33781728109976, 43.54067751383047], [63.36735297259213, 64.65591840400711, 37.70083539774994, 48.240002901915744, 43.955165112853315, 47.99278130278995, 51.141500465051855, 32.45475986978754, 64.62813998422563, 67.20268415404094, 57.419748987601075, 35.72071552952268, 65.29934119270052, 43.03793106441652, 75.10368571892684, 65.2048661268636, 46.289946633173756, 47.22045188885698, 46.37600736160138, 53.33303966054591, 40.958264995135934, 52.06625744685436, 54.008696993084065, 47.71256584127371, 63.77744443742664, 45.66766971655957, 61.60355939841216, 46.37148642378891, 32.80280826700841, 42.12976489327471]]}}, "fig8": {"name": "图8", "subtitle": "蜘蛛图", "type": "radar", "data": {"indicator": [{"name": "Sales", "max": 100}, {"name": "Admin", "max": 100}, {"name": "IT", "max": 100}, {"name": "Support", "max": 100}, {"name": "Dev", "max": 100}, {"name": "Marketing", "max": 100}], "series": [{"name": "Budget", "data": [80, 90, 70, 85, 95, 75], "color": "#5470c6"}, {"name": "Actual", "data": [70, 85, 65, 90, 80, 85], "color": "#91cc75"}]}}, "fig9": {"name": "图9", "subtitle": "双轴图", "type": "dualaxis", "data": {"xAxis": ["Jan", "Feb", "Mar", "Apr", "May", "Jun"], "series": [{"name": "Revenue", "data": [2.0, 4.9, 7.0, 23.2, 25.6, 76.7], "type": "bar", "yAxisIndex": 0, "color": "#5470c6"}, {"name": "Growth Rate", "data": [2.6, 5.9, 9.0, 26.4, 28.7, 70.7], "type": "line", "yAxisIndex": 1, "color": "#ee6666"}], "yAxis": [{"name": "Revenue ($M)", "position": "left"}, {"name": "Growth (%)", "position": "right"}]}}, "fig10": {"name": "图10", "subtitle": "饼图", "type": "pie", "data": {"series": [{"name": "Category A", "value": 335}, {"name": "Category B", "value": 310}, {"name": "Category C", "value": 234}, {"name": "Category D", "value": 135}, {"name": "Category E", "value": 148}]}}}));
+        const PROGRAM_DATA = JSON.parse(JSON.stringify({"fig1": {"name": "图1", "subtitle": "混淆矩阵", "type": "confusion", "data": [[249, 4, 14, 10, 3], [6, 252, 9, 6, 7], [7, 5, 261, 5, 2], [14, 8, 5, 248, 5], [7, 8, 6, 11, 248]]}, "fig2": {"name": "图2", "subtitle": "分类准确率", "type": "bar", "data": {"labels": ["A", "B", "C", "D", "E"], "values": [93.9, 92.2, 90.7, 86.7, 92.9]}}, "fig3": {"name": "图3", "subtitle": "对比图", "type": "multibar", "data": {"labels": ["A", "B", "C", "D", "E"], "values": [[71.1, 83.6, 85.8, 90.8, 96.2], [72.5, 81.1, 85.1, 94.5, 95.6], [74.8, 83.7, 86.4, 92.2, 99.8], [76.9, 81.7, 87.4, 94.1, 95.5], [75.2, 84.5, 89.6, 91.8, 98.7]]}}, "fig4": {"name": "图4", "subtitle": "ROC曲线", "type": "roc", "data": {"labels": ["A", "B", "C", "D", "E"], "curves": [{"fpr": [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0], "tpr": [0, 0.61, 0.64, 0.66, 0.68, 0.69, 0.87, 0.92, 0.93, 0.94, 1.0], "auc": 0.942}, {"fpr": [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0], "tpr": [0, 0.61, 0.63, 0.64, 0.65, 0.71, 0.73, 0.8, 0.8, 1.0, 1.0], "auc": 0.912}, {"fpr": [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0], "tpr": [0, 0.61, 0.67, 0.7, 0.72, 0.78, 0.85, 0.91, 0.91, 0.98, 1.0], "auc": 0.909}, {"fpr": [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0], "tpr": [0, 0.68, 0.69, 0.71, 0.73, 0.84, 0.85, 0.86, 0.88, 0.93, 1.0], "auc": 0.985}, {"fpr": [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0], "tpr": [0, 0.67, 0.69, 0.7, 0.76, 0.76, 0.82, 0.85, 0.99, 1.0, 1.0], "auc": 0.922}]}}, "fig5": {"name": "图5", "subtitle": "误差准确率图", "type": "boxplot", "data": {"labels": ["A", "B", "C", "D", "E"], "series": [{"name": "Ours", "avg": [85.5, 88.3, 91.1, 93.8, 95.2], "min": [80.2, 83.1, 86.5, 88.3, 90.1], "max": [90.8, 93.5, 96.7, 98.1, 99.3], "color": "#27ae60"}, {"name": "Method A", "avg": [82.2, 85.5, 88.2, 90.0, 92.5], "min": [77.1, 80.3, 83.5, 85.7, 87.2], "max": [87.3, 90.7, 92.9, 94.3, 97.8], "color": "#3498db"}]}}, "fig6": {"name": "图6", "subtitle": "折线图", "type": "line", "data": {"xAxis": ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"], "series": [{"name": "Series A", "data": [150, 230, 224, 218, 135, 147, 260], "color": "#5470c6"}, {"name": "Series B", "data": [80, 122, 201, 154, 190, 130, 110], "color": "#91cc75"}]}}, "fig7": {"name": "图7", "subtitle": "箱线图", "type": "realboxplot", "data": {"categories": ["Group A", "Group B", "Group C", "Group D"], "data": [[55.24129462865282, 38.265266679597495, 50.79452254657837, 74.66092408046565, 56.3261727145817, 43.8250062440451, 39.11316493835258, 56.570145702917614, 60.784583800507065, 42.264141993597555, 62.30629759643662, 51.894954857895335, 47.84263567666402, 39.72901872411816, 44.75821168025965, 52.12017486528457, 47.60853701669997, 63.0601912436938, 55.44123799552183, 39.36957123765514, 52.41079512763798, 58.484170797049515, 53.95573146027281, 47.14418004643301, 45.25560129506864, 49.9497150139096, 58.529057284280285, 55.758984646425944, 63.11771575235155, 39.16366606650939], [63.91069257071427, 64.67246948399887, 37.22167872221158, 51.85028296182584, 61.86300893721726, 56.219407509022766, 48.82603941997207, 50.761415668878996, 46.89564318917003, 61.29030950890151, 20.995304983472668, 50.74333980008629, 68.69534260590277, 57.238203028550615, 65.00828130474886, 76.92566527519944, 33.85083069342948, 42.208569633068706, 47.68104868893781, 43.22721856620445, 54.28970031750899, 51.910116830964746, 65.10891425408357, 50.62104768780022, 50.40349708810413, 55.74884396242209, 54.3904185817588, 50.9928339430052, 47.61301915716142, 35.425941876505256], [39.55133970851957, 43.40300465376895, 49.81531068036308, 54.57165874714358, 60.67367970349692, 72.01418892509719, 44.727651513701716, 51.54050105462507, 50.915205449258615, 39.09328181687192, 48.16026378801197, 52.005001078365346, 54.10054274228076, 65.33099301252197, 32.38292176975507, 67.39664820660657, 63.04063605694184, 67.09240548248556, 51.49246985937058, 53.29050834785359, 61.89773175503761, 52.135041908207214, 57.754114297646154, 55.35378877854127, 31.42178925241846, 36.35421876758556, 46.3739320871899, 49.996264456397256, 55.649184169708946, 40.51089896606959], [41.480240956819415, 46.15720304104205, 31.43924283812077, 43.29513528729071, 43.89882770978452, 58.606046730241225, 38.7353038614778, 47.316615241153606, 35.342629260244074, 64.19705178468121, 46.954801043797964, 44.50706208122342, 38.04332444629913, 43.7642885139391, 57.55049760036161, 56.45479598627933, 42.36058206531849, 45.70201360498446, 40.57144027284194, 47.39867941917145, 63.95076861366859, 53.82377199746725, 52.67708245174026, 38.68904163707937, 43.00328613279296, 58.28769703241473, 32.48175242165004, 66.11924695928187, 32.60632079613955, 47.65421772043276]]}}, "fig8": {"name": "图8", "subtitle": "蜘蛛图", "type": "radar", "data": {"indicator": [{"name": "Sales", "max": 100}, {"name": "Admin", "max": 100}, {"name": "IT", "max": 100}, {"name": "Support", "max": 100}, {"name": "Dev", "max": 100}, {"name": "Marketing", "max": 100}], "series": [{"name": "Budget", "data": [80, 90, 70, 85, 95, 75], "color": "#5470c6"}, {"name": "Actual", "data": [70, 85, 65, 90, 80, 85], "color": "#91cc75"}]}}, "fig9": {"name": "图9", "subtitle": "双轴图", "type": "dualaxis", "data": {"xAxis": ["Jan", "Feb", "Mar", "Apr", "May", "Jun"], "series": [{"name": "Revenue", "data": [2.0, 4.9, 7.0, 23.2, 25.6, 76.7], "type": "bar", "yAxisIndex": 0, "color": "#5470c6"}, {"name": "Growth Rate", "data": [2.6, 5.9, 9.0, 26.4, 28.7, 70.7], "type": "line", "yAxisIndex": 1, "color": "#ee6666"}], "yAxis": [{"name": "Revenue ($M)", "position": "left"}, {"name": "Growth (%)", "position": "right"}]}}, "fig10": {"name": "图10", "subtitle": "饼图", "type": "pie", "data": {"series": [{"name": "Category A", "value": 335}, {"name": "Category B", "value": 310}, {"name": "Category C", "value": 234}, {"name": "Category D", "value": 135}, {"name": "Category E", "value": 148}]}}}));
         const STORAGE_KEY = 'confusion_matrix_data';
         const SETTINGS_KEY = 'confusion_matrix_settings';
         const CHECKPOINT_KEY = 'confusion_matrix_checkpoint';
@@ -1014,11 +1014,11 @@
                         Y轴:<input type="number" value="${(chartStyles[key]||{}).yTickInterval||20}" onchange="setChartStyle('${key}','yTickInterval',+this.value)" style="width:50px" min="5" max="50" step="5"></div>
                     <div class="style-row"><strong>X轴名偏移</strong> 
                         <button onclick="adjustAxisOffset('${key}','xNameGap',-5)" style="padding:2px 4px">◀</button>
-                        <input type="number" id="xNameGap_${key}" value="${(chartStyles[key]||{}).xNameGap||25}" onchange="setChartStyle('${key}','xNameGap',+this.value)" style="width:40px" min="0" max="80">px
+                        <input type="number" id="xNameGap_${key}" value="${(chartStyles[key]||{}).xNameGap||25}" onchange="setChartStyle('${key}','xNameGap',+this.value)" style="width:40px" min="-50" max="80">px
                         <button onclick="adjustAxisOffset('${key}','xNameGap',5)" style="padding:2px 4px">▶</button>
                         <strong style="margin-left:10px">Y轴名偏移</strong>
                         <button onclick="adjustAxisOffset('${key}','yNameGap',-5)" style="padding:2px 4px">◀</button>
-                        <input type="number" id="yNameGap_${key}" value="${(chartStyles[key]||{}).yNameGap||35}" onchange="setChartStyle('${key}','yNameGap',+this.value)" style="width:40px" min="0" max="80">px
+                        <input type="number" id="yNameGap_${key}" value="${(chartStyles[key]||{}).yNameGap||35}" onchange="setChartStyle('${key}','yNameGap',+this.value)" style="width:40px" min="-50" max="80">px
                         <button onclick="adjustAxisOffset('${key}','yNameGap',5)" style="padding:2px 4px">▶</button>
                     </div>
                     <div class="style-row"><strong>图例</strong> 字体:<select onchange="setChartStyle('${key}','legendFont',this.value)" style="width:70px">
@@ -1734,11 +1734,11 @@
                     </div>
                     <div class="style-row"><strong>X轴名偏移</strong> 
                         <button onclick="adjustAxisOffset('${key}','xNameGap',-5)" style="padding:2px 4px">◀</button>
-                        <input type="number" id="xNameGap_${key}" value="${(chartStyles[key]||{}).xNameGap||25}" onchange="setChartStyle('${key}','xNameGap',+this.value)" style="width:40px" min="0" max="80">px
+                        <input type="number" id="xNameGap_${key}" value="${(chartStyles[key]||{}).xNameGap||25}" onchange="setChartStyle('${key}','xNameGap',+this.value)" style="width:40px" min="-50" max="80">px
                         <button onclick="adjustAxisOffset('${key}','xNameGap',5)" style="padding:2px 4px">▶</button>
                         <strong style="margin-left:10px">Y轴名偏移</strong>
                         <button onclick="adjustAxisOffset('${key}','yNameGap',-5)" style="padding:2px 4px">◀</button>
-                        <input type="number" id="yNameGap_${key}" value="${(chartStyles[key]||{}).yNameGap||35}" onchange="setChartStyle('${key}','yNameGap',+this.value)" style="width:40px" min="0" max="80">px
+                        <input type="number" id="yNameGap_${key}" value="${(chartStyles[key]||{}).yNameGap||35}" onchange="setChartStyle('${key}','yNameGap',+this.value)" style="width:40px" min="-50" max="80">px
                         <button onclick="adjustAxisOffset('${key}','yNameGap',5)" style="padding:2px 4px">▶</button>
                     </div>
                     <div class="style-row"><strong>图例方向</strong>:<select onchange="setChartStyle('${key}','legendOrient',this.value)">
@@ -2305,11 +2305,11 @@
                     </div>
                     <div class="style-row"><strong>X轴名偏移</strong> 
                         <button onclick="adjustAxisOffset('${key}','xNameGap',-5)" style="padding:2px 4px">◀</button>
-                        <input type="number" id="xNameGap_${key}" value="${cs.xNameGap||25}" onchange="setChartStyle('${key}','xNameGap',+this.value)" style="width:40px" min="0" max="80">px
+                        <input type="number" id="xNameGap_${key}" value="${cs.xNameGap||25}" onchange="setChartStyle('${key}','xNameGap',+this.value)" style="width:40px" min="-50" max="80">px
                         <button onclick="adjustAxisOffset('${key}','xNameGap',5)" style="padding:2px 4px">▶</button>
                         <strong style="margin-left:10px">Y轴名偏移</strong>
                         <button onclick="adjustAxisOffset('${key}','yNameGap',-5)" style="padding:2px 4px">◀</button>
-                        <input type="number" id="yNameGap_${key}" value="${cs.yNameGap||35}" onchange="setChartStyle('${key}','yNameGap',+this.value)" style="width:40px" min="0" max="80">px
+                        <input type="number" id="yNameGap_${key}" value="${cs.yNameGap||35}" onchange="setChartStyle('${key}','yNameGap',+this.value)" style="width:40px" min="-50" max="80">px
                         <button onclick="adjustAxisOffset('${key}','yNameGap',5)" style="padding:2px 4px">▶</button>
                     </div>
                     <div class="style-row"><strong>图例位置</strong> 
@@ -2932,7 +2932,8 @@
             // 优先使用输入框中的实际值
             const input = document.getElementById(prop + '_' + key);
             const currentVal = input ? parseInt(input.value) : (chartStyles[key][prop] || (prop === 'xNameGap' ? 25 : 35));
-            const newVal = Math.max(0, Math.min(80, currentVal + delta));
+            // 允许负值(-50到80)，让标签可以更靠近图表
+            const newVal = Math.max(-50, Math.min(80, currentVal + delta));
             chartStyles[key][prop] = newVal;
             if (input) input.value = newVal;
             saveAllToStorage();
@@ -3135,11 +3136,11 @@
                         Y轴:<input type="number" value="${(chartStyles[key]||{}).yTickInterval||0.2}" onchange="setChartStyle('${key}','yTickInterval',+this.value)" style="width:50px" min="0.1" max="0.5" step="0.1"></div>
                     <div class="style-row"><strong>X轴名偏移</strong> 
                         <button onclick="adjustAxisOffset('${key}','xNameGap',-5)" style="padding:2px 4px">◀</button>
-                        <input type="number" id="xNameGap_${key}" value="${(chartStyles[key]||{}).xNameGap||25}" onchange="setChartStyle('${key}','xNameGap',+this.value)" style="width:40px" min="0" max="80">px
+                        <input type="number" id="xNameGap_${key}" value="${(chartStyles[key]||{}).xNameGap||25}" onchange="setChartStyle('${key}','xNameGap',+this.value)" style="width:40px" min="-50" max="80">px
                         <button onclick="adjustAxisOffset('${key}','xNameGap',5)" style="padding:2px 4px">▶</button>
                         <strong style="margin-left:10px">Y轴名偏移</strong>
                         <button onclick="adjustAxisOffset('${key}','yNameGap',-5)" style="padding:2px 4px">◀</button>
-                        <input type="number" id="yNameGap_${key}" value="${(chartStyles[key]||{}).yNameGap||35}" onchange="setChartStyle('${key}','yNameGap',+this.value)" style="width:40px" min="0" max="80">px
+                        <input type="number" id="yNameGap_${key}" value="${(chartStyles[key]||{}).yNameGap||35}" onchange="setChartStyle('${key}','yNameGap',+this.value)" style="width:40px" min="-50" max="80">px
                         <button onclick="adjustAxisOffset('${key}','yNameGap',5)" style="padding:2px 4px">▶</button>
                     </div>
                     <div class="style-row"><strong>图例</strong> 字体:<select onchange="setChartStyle('${key}','legendFont',this.value)" style="width:70px">
@@ -3408,11 +3409,11 @@
                     颜色:<input type="color" value="${cs.axisTickColor||'#000000'}" onchange="setChartStyle('${key}','axisTickColor',this.value)" style="width:30px;height:22px"></div>
                     <div class="style-row"><strong>X轴名偏移</strong> 
                         <button onclick="adjustAxisOffset('${key}','xNameGap',-5)" style="padding:2px 4px">◀</button>
-                        <input type="number" id="xNameGap_${key}" value="${cs.xNameGap||30}" onchange="setChartStyle('${key}','xNameGap',+this.value)" style="width:40px" min="0" max="80">px
+                        <input type="number" id="xNameGap_${key}" value="${cs.xNameGap||30}" onchange="setChartStyle('${key}','xNameGap',+this.value)" style="width:40px" min="-50" max="80">px
                         <button onclick="adjustAxisOffset('${key}','xNameGap',5)" style="padding:2px 4px">▶</button>
                         <strong style="margin-left:10px">Y轴名偏移</strong>
                         <button onclick="adjustAxisOffset('${key}','yNameGap',-5)" style="padding:2px 4px">◀</button>
-                        <input type="number" id="yNameGap_${key}" value="${cs.yNameGap||40}" onchange="setChartStyle('${key}','yNameGap',+this.value)" style="width:40px" min="0" max="80">px
+                        <input type="number" id="yNameGap_${key}" value="${cs.yNameGap||40}" onchange="setChartStyle('${key}','yNameGap',+this.value)" style="width:40px" min="-50" max="80">px
                         <button onclick="adjustAxisOffset('${key}','yNameGap',5)" style="padding:2px 4px">▶</button>
                     </div>
                     <hr style="margin:8px 0;border:none;border-top:1px solid #eee;">
@@ -3643,11 +3644,11 @@
                     颜色:<input type="color" value="${cs.axisTickColor||'#000000'}" onchange="setChartStyle('${key}','axisTickColor',this.value);renderChart('${key}')" style="width:30px;height:22px"></div>
                     <div class="style-row"><strong>X轴名偏移</strong> 
                         <button onclick="adjustAxisOffset('${key}','xNameGap',-5)" style="padding:2px 4px">◀</button>
-                        <input type="number" id="xNameGap_${key}" value="${cs.xNameGap||30}" onchange="setChartStyle('${key}','xNameGap',+this.value)" style="width:40px" min="0" max="80">px
+                        <input type="number" id="xNameGap_${key}" value="${cs.xNameGap||30}" onchange="setChartStyle('${key}','xNameGap',+this.value)" style="width:40px" min="-50" max="80">px
                         <button onclick="adjustAxisOffset('${key}','xNameGap',5)" style="padding:2px 4px">▶</button>
                         <strong style="margin-left:10px">Y轴名偏移</strong>
                         <button onclick="adjustAxisOffset('${key}','yNameGap',-5)" style="padding:2px 4px">◀</button>
-                        <input type="number" id="yNameGap_${key}" value="${cs.yNameGap||40}" onchange="setChartStyle('${key}','yNameGap',+this.value)" style="width:40px" min="0" max="80">px
+                        <input type="number" id="yNameGap_${key}" value="${cs.yNameGap||40}" onchange="setChartStyle('${key}','yNameGap',+this.value)" style="width:40px" min="-50" max="80">px
                         <button onclick="adjustAxisOffset('${key}','yNameGap',5)" style="padding:2px 4px">▶</button>
                     </div>
                     <hr style="margin:8px 0;border:none;border-top:1px solid #eee;">
@@ -4114,11 +4115,11 @@
                     颜色:<input type="color" value="${cs.axisTickColor||'#000000'}" onchange="setChartStyle('${key}','axisTickColor',this.value);renderChart('${key}')" style="width:30px;height:22px"></div>
                     <div class="style-row"><strong>X轴名偏移</strong> 
                         <button onclick="adjustAxisOffset('${key}','xNameGap',-5)" style="padding:2px 4px">◀</button>
-                        <input type="number" id="xNameGap_${key}" value="${cs.xNameGap||25}" onchange="setChartStyle('${key}','xNameGap',+this.value)" style="width:40px" min="0" max="80">px
+                        <input type="number" id="xNameGap_${key}" value="${cs.xNameGap||25}" onchange="setChartStyle('${key}','xNameGap',+this.value)" style="width:40px" min="-50" max="80">px
                         <button onclick="adjustAxisOffset('${key}','xNameGap',5)" style="padding:2px 4px">▶</button>
                         <strong style="margin-left:10px">Y轴名偏移</strong>
                         <button onclick="adjustAxisOffset('${key}','yNameGap',-5)" style="padding:2px 4px">◀</button>
-                        <input type="number" id="yNameGap_${key}" value="${cs.yNameGap||35}" onchange="setChartStyle('${key}','yNameGap',+this.value)" style="width:40px" min="0" max="80">px
+                        <input type="number" id="yNameGap_${key}" value="${cs.yNameGap||35}" onchange="setChartStyle('${key}','yNameGap',+this.value)" style="width:40px" min="-50" max="80">px
                         <button onclick="adjustAxisOffset('${key}','yNameGap',5)" style="padding:2px 4px">▶</button>
                     </div>
                     <hr style="margin:8px 0;border:none;border-top:1px solid #eee;">

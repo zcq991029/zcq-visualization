@@ -1357,11 +1357,11 @@ def _generate_enhanced_cm_html(matrices_data, class_names, title_bg_base64='titl
                         Y轴:<input type="number" value="${(chartStyles[key]||{}).yTickInterval||20}" onchange="setChartStyle('${key}','yTickInterval',+this.value)" style="width:50px" min="5" max="50" step="5"></div>
                     <div class="style-row"><strong>X轴名偏移</strong> 
                         <button onclick="adjustAxisOffset('${key}','xNameGap',-5)" style="padding:2px 4px">◀</button>
-                        <input type="number" id="xNameGap_${key}" value="${(chartStyles[key]||{}).xNameGap||25}" onchange="setChartStyle('${key}','xNameGap',+this.value)" style="width:40px" min="0" max="80">px
+                        <input type="number" id="xNameGap_${key}" value="${(chartStyles[key]||{}).xNameGap||25}" onchange="setChartStyle('${key}','xNameGap',+this.value)" style="width:40px" min="-50" max="80">px
                         <button onclick="adjustAxisOffset('${key}','xNameGap',5)" style="padding:2px 4px">▶</button>
                         <strong style="margin-left:10px">Y轴名偏移</strong>
                         <button onclick="adjustAxisOffset('${key}','yNameGap',-5)" style="padding:2px 4px">◀</button>
-                        <input type="number" id="yNameGap_${key}" value="${(chartStyles[key]||{}).yNameGap||35}" onchange="setChartStyle('${key}','yNameGap',+this.value)" style="width:40px" min="0" max="80">px
+                        <input type="number" id="yNameGap_${key}" value="${(chartStyles[key]||{}).yNameGap||35}" onchange="setChartStyle('${key}','yNameGap',+this.value)" style="width:40px" min="-50" max="80">px
                         <button onclick="adjustAxisOffset('${key}','yNameGap',5)" style="padding:2px 4px">▶</button>
                     </div>
                     <div class="style-row"><strong>图例</strong> 字体:<select onchange="setChartStyle('${key}','legendFont',this.value)" style="width:70px">
@@ -2077,11 +2077,11 @@ def _generate_enhanced_cm_html(matrices_data, class_names, title_bg_base64='titl
                     </div>
                     <div class="style-row"><strong>X轴名偏移</strong> 
                         <button onclick="adjustAxisOffset('${key}','xNameGap',-5)" style="padding:2px 4px">◀</button>
-                        <input type="number" id="xNameGap_${key}" value="${(chartStyles[key]||{}).xNameGap||25}" onchange="setChartStyle('${key}','xNameGap',+this.value)" style="width:40px" min="0" max="80">px
+                        <input type="number" id="xNameGap_${key}" value="${(chartStyles[key]||{}).xNameGap||25}" onchange="setChartStyle('${key}','xNameGap',+this.value)" style="width:40px" min="-50" max="80">px
                         <button onclick="adjustAxisOffset('${key}','xNameGap',5)" style="padding:2px 4px">▶</button>
                         <strong style="margin-left:10px">Y轴名偏移</strong>
                         <button onclick="adjustAxisOffset('${key}','yNameGap',-5)" style="padding:2px 4px">◀</button>
-                        <input type="number" id="yNameGap_${key}" value="${(chartStyles[key]||{}).yNameGap||35}" onchange="setChartStyle('${key}','yNameGap',+this.value)" style="width:40px" min="0" max="80">px
+                        <input type="number" id="yNameGap_${key}" value="${(chartStyles[key]||{}).yNameGap||35}" onchange="setChartStyle('${key}','yNameGap',+this.value)" style="width:40px" min="-50" max="80">px
                         <button onclick="adjustAxisOffset('${key}','yNameGap',5)" style="padding:2px 4px">▶</button>
                     </div>
                     <div class="style-row"><strong>图例方向</strong>:<select onchange="setChartStyle('${key}','legendOrient',this.value)">
@@ -2648,11 +2648,11 @@ def _generate_enhanced_cm_html(matrices_data, class_names, title_bg_base64='titl
                     </div>
                     <div class="style-row"><strong>X轴名偏移</strong> 
                         <button onclick="adjustAxisOffset('${key}','xNameGap',-5)" style="padding:2px 4px">◀</button>
-                        <input type="number" id="xNameGap_${key}" value="${cs.xNameGap||25}" onchange="setChartStyle('${key}','xNameGap',+this.value)" style="width:40px" min="0" max="80">px
+                        <input type="number" id="xNameGap_${key}" value="${cs.xNameGap||25}" onchange="setChartStyle('${key}','xNameGap',+this.value)" style="width:40px" min="-50" max="80">px
                         <button onclick="adjustAxisOffset('${key}','xNameGap',5)" style="padding:2px 4px">▶</button>
                         <strong style="margin-left:10px">Y轴名偏移</strong>
                         <button onclick="adjustAxisOffset('${key}','yNameGap',-5)" style="padding:2px 4px">◀</button>
-                        <input type="number" id="yNameGap_${key}" value="${cs.yNameGap||35}" onchange="setChartStyle('${key}','yNameGap',+this.value)" style="width:40px" min="0" max="80">px
+                        <input type="number" id="yNameGap_${key}" value="${cs.yNameGap||35}" onchange="setChartStyle('${key}','yNameGap',+this.value)" style="width:40px" min="-50" max="80">px
                         <button onclick="adjustAxisOffset('${key}','yNameGap',5)" style="padding:2px 4px">▶</button>
                     </div>
                     <div class="style-row"><strong>图例位置</strong> 
@@ -3275,7 +3275,8 @@ def _generate_enhanced_cm_html(matrices_data, class_names, title_bg_base64='titl
             // 优先使用输入框中的实际值
             const input = document.getElementById(prop + '_' + key);
             const currentVal = input ? parseInt(input.value) : (chartStyles[key][prop] || (prop === 'xNameGap' ? 25 : 35));
-            const newVal = Math.max(0, Math.min(80, currentVal + delta));
+            // 允许负值(-50到80)，让标签可以更靠近图表
+            const newVal = Math.max(-50, Math.min(80, currentVal + delta));
             chartStyles[key][prop] = newVal;
             if (input) input.value = newVal;
             saveAllToStorage();
@@ -3478,11 +3479,11 @@ def _generate_enhanced_cm_html(matrices_data, class_names, title_bg_base64='titl
                         Y轴:<input type="number" value="${(chartStyles[key]||{}).yTickInterval||0.2}" onchange="setChartStyle('${key}','yTickInterval',+this.value)" style="width:50px" min="0.1" max="0.5" step="0.1"></div>
                     <div class="style-row"><strong>X轴名偏移</strong> 
                         <button onclick="adjustAxisOffset('${key}','xNameGap',-5)" style="padding:2px 4px">◀</button>
-                        <input type="number" id="xNameGap_${key}" value="${(chartStyles[key]||{}).xNameGap||25}" onchange="setChartStyle('${key}','xNameGap',+this.value)" style="width:40px" min="0" max="80">px
+                        <input type="number" id="xNameGap_${key}" value="${(chartStyles[key]||{}).xNameGap||25}" onchange="setChartStyle('${key}','xNameGap',+this.value)" style="width:40px" min="-50" max="80">px
                         <button onclick="adjustAxisOffset('${key}','xNameGap',5)" style="padding:2px 4px">▶</button>
                         <strong style="margin-left:10px">Y轴名偏移</strong>
                         <button onclick="adjustAxisOffset('${key}','yNameGap',-5)" style="padding:2px 4px">◀</button>
-                        <input type="number" id="yNameGap_${key}" value="${(chartStyles[key]||{}).yNameGap||35}" onchange="setChartStyle('${key}','yNameGap',+this.value)" style="width:40px" min="0" max="80">px
+                        <input type="number" id="yNameGap_${key}" value="${(chartStyles[key]||{}).yNameGap||35}" onchange="setChartStyle('${key}','yNameGap',+this.value)" style="width:40px" min="-50" max="80">px
                         <button onclick="adjustAxisOffset('${key}','yNameGap',5)" style="padding:2px 4px">▶</button>
                     </div>
                     <div class="style-row"><strong>图例</strong> 字体:<select onchange="setChartStyle('${key}','legendFont',this.value)" style="width:70px">
@@ -3751,11 +3752,11 @@ def _generate_enhanced_cm_html(matrices_data, class_names, title_bg_base64='titl
                     颜色:<input type="color" value="${cs.axisTickColor||'#000000'}" onchange="setChartStyle('${key}','axisTickColor',this.value)" style="width:30px;height:22px"></div>
                     <div class="style-row"><strong>X轴名偏移</strong> 
                         <button onclick="adjustAxisOffset('${key}','xNameGap',-5)" style="padding:2px 4px">◀</button>
-                        <input type="number" id="xNameGap_${key}" value="${cs.xNameGap||30}" onchange="setChartStyle('${key}','xNameGap',+this.value)" style="width:40px" min="0" max="80">px
+                        <input type="number" id="xNameGap_${key}" value="${cs.xNameGap||30}" onchange="setChartStyle('${key}','xNameGap',+this.value)" style="width:40px" min="-50" max="80">px
                         <button onclick="adjustAxisOffset('${key}','xNameGap',5)" style="padding:2px 4px">▶</button>
                         <strong style="margin-left:10px">Y轴名偏移</strong>
                         <button onclick="adjustAxisOffset('${key}','yNameGap',-5)" style="padding:2px 4px">◀</button>
-                        <input type="number" id="yNameGap_${key}" value="${cs.yNameGap||40}" onchange="setChartStyle('${key}','yNameGap',+this.value)" style="width:40px" min="0" max="80">px
+                        <input type="number" id="yNameGap_${key}" value="${cs.yNameGap||40}" onchange="setChartStyle('${key}','yNameGap',+this.value)" style="width:40px" min="-50" max="80">px
                         <button onclick="adjustAxisOffset('${key}','yNameGap',5)" style="padding:2px 4px">▶</button>
                     </div>
                     <hr style="margin:8px 0;border:none;border-top:1px solid #eee;">
@@ -3986,11 +3987,11 @@ def _generate_enhanced_cm_html(matrices_data, class_names, title_bg_base64='titl
                     颜色:<input type="color" value="${cs.axisTickColor||'#000000'}" onchange="setChartStyle('${key}','axisTickColor',this.value);renderChart('${key}')" style="width:30px;height:22px"></div>
                     <div class="style-row"><strong>X轴名偏移</strong> 
                         <button onclick="adjustAxisOffset('${key}','xNameGap',-5)" style="padding:2px 4px">◀</button>
-                        <input type="number" id="xNameGap_${key}" value="${cs.xNameGap||30}" onchange="setChartStyle('${key}','xNameGap',+this.value)" style="width:40px" min="0" max="80">px
+                        <input type="number" id="xNameGap_${key}" value="${cs.xNameGap||30}" onchange="setChartStyle('${key}','xNameGap',+this.value)" style="width:40px" min="-50" max="80">px
                         <button onclick="adjustAxisOffset('${key}','xNameGap',5)" style="padding:2px 4px">▶</button>
                         <strong style="margin-left:10px">Y轴名偏移</strong>
                         <button onclick="adjustAxisOffset('${key}','yNameGap',-5)" style="padding:2px 4px">◀</button>
-                        <input type="number" id="yNameGap_${key}" value="${cs.yNameGap||40}" onchange="setChartStyle('${key}','yNameGap',+this.value)" style="width:40px" min="0" max="80">px
+                        <input type="number" id="yNameGap_${key}" value="${cs.yNameGap||40}" onchange="setChartStyle('${key}','yNameGap',+this.value)" style="width:40px" min="-50" max="80">px
                         <button onclick="adjustAxisOffset('${key}','yNameGap',5)" style="padding:2px 4px">▶</button>
                     </div>
                     <hr style="margin:8px 0;border:none;border-top:1px solid #eee;">
@@ -4457,11 +4458,11 @@ def _generate_enhanced_cm_html(matrices_data, class_names, title_bg_base64='titl
                     颜色:<input type="color" value="${cs.axisTickColor||'#000000'}" onchange="setChartStyle('${key}','axisTickColor',this.value);renderChart('${key}')" style="width:30px;height:22px"></div>
                     <div class="style-row"><strong>X轴名偏移</strong> 
                         <button onclick="adjustAxisOffset('${key}','xNameGap',-5)" style="padding:2px 4px">◀</button>
-                        <input type="number" id="xNameGap_${key}" value="${cs.xNameGap||25}" onchange="setChartStyle('${key}','xNameGap',+this.value)" style="width:40px" min="0" max="80">px
+                        <input type="number" id="xNameGap_${key}" value="${cs.xNameGap||25}" onchange="setChartStyle('${key}','xNameGap',+this.value)" style="width:40px" min="-50" max="80">px
                         <button onclick="adjustAxisOffset('${key}','xNameGap',5)" style="padding:2px 4px">▶</button>
                         <strong style="margin-left:10px">Y轴名偏移</strong>
                         <button onclick="adjustAxisOffset('${key}','yNameGap',-5)" style="padding:2px 4px">◀</button>
-                        <input type="number" id="yNameGap_${key}" value="${cs.yNameGap||35}" onchange="setChartStyle('${key}','yNameGap',+this.value)" style="width:40px" min="0" max="80">px
+                        <input type="number" id="yNameGap_${key}" value="${cs.yNameGap||35}" onchange="setChartStyle('${key}','yNameGap',+this.value)" style="width:40px" min="-50" max="80">px
                         <button onclick="adjustAxisOffset('${key}','yNameGap',5)" style="padding:2px 4px">▶</button>
                     </div>
                     <hr style="margin:8px 0;border:none;border-top:1px solid #eee;">
