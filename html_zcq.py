@@ -1463,7 +1463,8 @@ def _generate_enhanced_cm_html(matrices_data, class_names, title_bg_base64='titl
                         <option value="SimSun" ${(chartStyles[key]||{}).axisTickFont==='SimSun'?'selected':''}>宋体</option>
                     </select> 字号:<input type="number" value="${(chartStyles[key]||{}).axisTickSize||10}" onchange="setChartStyle('${key}','axisTickSize',+this.value)" style="width:40px" min="8" max="18">
                     颜色:<input type="color" id="bar_axisTickColor_${key}" value="${(chartStyles[key]||{}).axisTickColor||'#000000'}" onchange="setChartStyle('${key}','axisTickColor',this.value)" style="width:30px;height:22px;border:none;cursor:pointer"><button type="button" onclick="pickColor(c=>{document.getElementById('bar_axisTickColor_${key}').value=c;setChartStyle('${key}','axisTickColor',c)})" style="padding:2px 4px;font-size:10px;cursor:pointer;margin-left:2px" title="取色笔">🎯</button></div>
-                    <div class="style-row"><strong>Y轴数值间隔</strong>:<input type="number" value="${(chartStyles[key]||{}).yTickInterval||20}" onchange="setChartStyle('${key}','yTickInterval',+this.value)" style="width:50px" min="5" max="50" step="5">(如20表示0,20,40,60...)</div>
+                    <div class="style-row"><strong>刻度像素间距</strong> X轴:<input type="number" value="${(chartStyles[key]||{}).xTickGapPx||80}" onchange="setChartStyle('${key}','xTickGapPx',+this.value)" style="width:50px" min="30" max="200" step="10">px
+                        Y轴:<input type="number" value="${(chartStyles[key]||{}).yTickGapPx||50}" onchange="setChartStyle('${key}','yTickGapPx',+this.value)" style="width:50px" min="20" max="150" step="10">px</div>
                     <div class="style-row"><strong>X轴名偏移</strong> 
                         <button onclick="adjustAxisOffset('${key}','xNameGap',-5)" style="padding:2px 4px">◀</button>
                         <input type="number" id="xNameGap_${key}" value="${(chartStyles[key]||{}).xNameGap||25}" onchange="setChartStyle('${key}','xNameGap',+this.value)" style="width:40px" min="-50" max="80">px
@@ -1560,19 +1561,23 @@ def _generate_enhanced_cm_html(matrices_data, class_names, title_bg_base64='titl
                 if (chartInstances[key]) chartInstances[key].dispose();
                 const chartDiv = document.getElementById('chart_' + key);
                 
-                // ★★★ 重新获取最新的样式配置，动态计算容器宽度 ★★★
+                // ★★★ 重新获取最新的样式配置，根据刻度像素间距计算容器尺寸 ★★★
                 const latestCs = chartStyles[key] || {};
                 const barWidth = latestCs.barWidth || 40;
                 const xLabels = latestCs.xTickLabels || data.labels || customLabels.slice(0, currentClassCount);
+                const yLabels = latestCs.yTickLabels || ['0','20','40','60','80','100'];
+                const xTickGapPx = latestCs.xTickGapPx || 80;
+                const yTickGapPx = latestCs.yTickGapPx || 50;
                 const gridMargin = 2 * barWidth + 90;
-                const chartAreaWidth = xLabels.length * 2 * barWidth; // 单柱：每刻度 = 1柱子 + 1间隙
-                const chartWidth = Math.max(chartAreaWidth + gridMargin, 400);
+                // 根据刻度数量和像素间距计算图表尺寸
+                const chartWidth = Math.max(xLabels.length * xTickGapPx + gridMargin, 400);
+                const chartHeight = Math.max(yLabels.length * yTickGapPx + 100, 300);
                 chartDiv.style.width = chartWidth + 'px';
+                chartDiv.style.height = chartHeight + 'px';
                 
                 chartInstances[key] = echarts.init(chartDiv);
                 const barColors = latestCs.barColors || ['#3498db'];
                 const values = data.values || [];
-                const yLabels = latestCs.yTickLabels || ['0','20','40','60','80','100'];
                 chartInstances[key].setOption({
                     tooltip: { trigger: 'axis' },
                     legend: { 
