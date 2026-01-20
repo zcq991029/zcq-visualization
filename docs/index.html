@@ -6,11 +6,11 @@
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="0">
-    <title>可视化仓库 v1768925411</title>
-    <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js?v=1768925411"></script>
-    <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js?v=1768925411"></script>
-    <script src="https://cdn.plot.ly/plotly-2.27.0.min.js?v=1768925411"></script>
-    <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js?v=1768925411"></script>
+    <title>可视化仓库 v1768923741</title>
+    <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js?v=1768923741"></script>
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js?v=1768923741"></script>
+    <script src="https://cdn.plot.ly/plotly-2.27.0.min.js?v=1768923741"></script>
+    <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js?v=1768923741"></script>
     <style>
         :root { --bg: #f5f5f7; --card: #fff; --text: #1d1d1f; --sub: #86868b; --accent: #0071e3; }
         * { box-sizing: border-box; }
@@ -389,7 +389,7 @@
         function showReadme() { document.getElementById('readmeModal').classList.add('show'); }
         function closeReadme() { document.getElementById('readmeModal').classList.remove('show'); }
         // 原始数据（程序生成的初始值）
-        const PROGRAM_DATA = JSON.parse(JSON.stringify({"fig1": {"name": "图1", "subtitle": "混淆矩阵", "type": "confusion", "data": [[245, 11, 10, 6, 8], [7, 245, 10, 6, 12], [7, 7, 254, 3, 9], [5, 12, 7, 242, 14], [6, 7, 6, 2, 259]]}, "fig2": {"name": "图2", "subtitle": "分类准确率", "type": "bar", "data": {"labels": ["A", "B", "C", "D", "E"], "values": [86.6, 95.4, 98.0, 93.1, 98.8]}}, "fig3": {"name": "图3", "subtitle": "对比图", "type": "multibar", "data": {"labels": ["A", "B", "C", "D", "E"], "values": [[72.0, 83.5, 87.2, 92.4, 96.0], [72.5, 82.1, 85.0, 90.2, 97.2], [78.9, 80.3, 89.5, 92.6, 96.1], [79.0, 81.6, 89.4, 90.1, 98.0], [73.9, 83.9, 89.2, 93.7, 97.6]]}}, "fig4": {"name": "图4", "subtitle": "ROC曲线", "type": "roc", "data": {"labels": ["A", "B", "C", "D", "E"], "curves": [{"fpr": [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0], "tpr": [0, 0.67, 0.68, 0.69, 0.72, 0.73, 0.79, 0.8, 0.86, 0.86, 1.0], "auc": 0.905}, {"fpr": [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0], "tpr": [0, 0.69, 0.78, 0.78, 0.79, 0.86, 0.87, 0.9, 0.92, 0.96, 1.0], "auc": 0.902}, {"fpr": [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0], "tpr": [0, 0.61, 0.64, 0.73, 0.75, 0.87, 0.89, 0.98, 0.99, 1.0, 1.0], "auc": 0.931}, {"fpr": [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0], "tpr": [0, 0.68, 0.7, 0.71, 0.74, 0.79, 0.79, 0.9, 0.9, 0.93, 1.0], "auc": 0.976}, {"fpr": [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0], "tpr": [0, 0.61, 0.62, 0.69, 0.7, 0.71, 0.76, 0.81, 0.81, 0.94, 1.0], "auc": 0.983}]}}, "fig5": {"name": "图5", "subtitle": "误差准确率图", "type": "boxplot", "data": {"labels": ["A", "B", "C", "D", "E"], "series": [{"name": "Ours", "avg": [85.5, 88.3, 91.1, 93.8, 95.2], "min": [80.2, 83.1, 86.5, 88.3, 90.1], "max": [90.8, 93.5, 96.7, 98.1, 99.3], "color": "#27ae60"}, {"name": "Method A", "avg": [82.2, 85.5, 88.2, 90.0, 92.5], "min": [77.1, 80.3, 83.5, 85.7, 87.2], "max": [87.3, 90.7, 92.9, 94.3, 97.8], "color": "#3498db"}]}}, "fig6": {"name": "图6", "subtitle": "折线图", "type": "line", "data": {"xAxis": ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"], "series": [{"name": "Series A", "data": [150, 230, 224, 218, 135, 147, 260], "color": "#5470c6"}, {"name": "Series B", "data": [80, 122, 201, 154, 190, 130, 110], "color": "#91cc75"}]}}, "fig7": {"name": "图7", "subtitle": "箱线图", "type": "realboxplot", "data": {"categories": ["Group A", "Group B", "Group C", "Group D"], "data": [[32.7263781339133, 40.26010411758085, 42.460106615723895, 73.53015858453446, 42.90702035744815, 54.9932248635521, 50.75458353402012, 43.91694993248962, 51.006185256722766, 54.452453968345694, 57.04593100067674, 36.34097970887898, 47.38734741958579, 57.55989528187851, 48.01799690624216, 49.95658887445348, 66.10998581829611, 58.09110802518781, 58.18778584575075, 57.4841581518067, 50.11842253738596, 39.53527883261409, 55.53848459733751, 34.36409198943398, 44.200360461007726, 55.515612321694874, 60.99855527345186, 71.57182762481864, 34.168650675199785, 42.941185665825785], [47.020005858471364, 44.06619358405947, 46.38754648638875, 37.589926129219364, 44.36429826269214, 38.39729130407365, 45.48125647818807, 54.16613240122272, 49.99404807839513, 69.11316939197631, 58.87864740569363, 59.5714992238558, 42.17050025844157, 66.4379394621343, 55.522822361598166, 36.15107266334123, 38.45550795413003, 49.97250537567411, 63.083733322822354, 39.98995569819978, 53.5528693543909, 48.47450597640765, 52.570834276972214, 45.506170255433844, 58.22553665559131, 54.60751125349593, 46.6650928003383, 47.12878293331839, 39.15396848854579, 63.42702694570707], [45.90499230055019, 54.90109250007268, 28.244883184196773, 50.01433877451719, 38.4491197437152, 45.66707774276074, 42.04543307767488, 56.187313170235946, 40.801977884117306, 59.470476099776796, 35.98135158555927, 51.30548994946929, 54.75989782595198, 43.19362688887502, 57.236360817312146, 58.696143410572475, 61.98907035059058, 44.428109128443694, 31.48090816937571, 50.33684895064945, 47.011407381761536, 51.53394038305135, 54.078358083335196, 60.495390769614055, 59.57525326557407, 52.47152015647679, 56.80827256164053, 52.455658061692574, 37.48455064944045, 47.674562096675714], [44.11645615849536, 63.12327290808643, 60.38796719116121, 38.76278772519239, 45.929622527193246, 70.68624922679976, 50.6570034923726, 64.15184575113622, 65.11341454866835, 58.33467546596125, 51.100999437613055, 60.57558754532373, 35.754741287137506, 35.746522504512484, 48.20381665134784, 41.57923100058633, 50.76796815012208, 45.51525658796773, 54.200740649178194, 47.16756936980831, 38.789525313113415, 48.88118730357758, 49.384902954279895, 46.3075280333491, 43.87012115912784, 51.30826433310695, 43.899588566468076, 50.08297438130592, 60.99841913806635, 44.722306513053056]]}}, "fig8": {"name": "图8", "subtitle": "蜘蛛图", "type": "radar", "data": {"indicator": [{"name": "Sales", "max": 100}, {"name": "Admin", "max": 100}, {"name": "IT", "max": 100}, {"name": "Support", "max": 100}, {"name": "Dev", "max": 100}, {"name": "Marketing", "max": 100}], "series": [{"name": "Budget", "data": [80, 90, 70, 85, 95, 75], "color": "#5470c6"}, {"name": "Actual", "data": [70, 85, 65, 90, 80, 85], "color": "#91cc75"}]}}, "fig9": {"name": "图9", "subtitle": "双轴图", "type": "dualaxis", "data": {"xAxis": ["Jan", "Feb", "Mar", "Apr", "May", "Jun"], "series": [{"name": "Revenue", "data": [2.0, 4.9, 7.0, 23.2, 25.6, 76.7], "type": "bar", "yAxisIndex": 0, "color": "#5470c6"}, {"name": "Growth Rate", "data": [2.6, 5.9, 9.0, 26.4, 28.7, 70.7], "type": "line", "yAxisIndex": 1, "color": "#ee6666"}], "yAxis": [{"name": "Revenue ($M)", "position": "left"}, {"name": "Growth (%)", "position": "right"}]}}, "fig10": {"name": "图10", "subtitle": "饼图", "type": "pie", "data": {"series": [{"name": "Category A", "value": 335}, {"name": "Category B", "value": 310}, {"name": "Category C", "value": 234}, {"name": "Category D", "value": 135}, {"name": "Category E", "value": 148}]}}}));
+        const PROGRAM_DATA = JSON.parse(JSON.stringify({"fig1": {"name": "图1", "subtitle": "混淆矩阵", "type": "confusion", "data": [[255, 6, 6, 5, 8], [4, 245, 11, 8, 12], [7, 3, 255, 10, 5], [6, 7, 6, 255, 6], [10, 2, 4, 5, 259]]}, "fig2": {"name": "图2", "subtitle": "分类准确率", "type": "bar", "data": {"labels": ["A", "B", "C", "D", "E"], "values": [97.2, 88.2, 88.1, 97.8, 91.8]}}, "fig3": {"name": "图3", "subtitle": "对比图", "type": "multibar", "data": {"labels": ["A", "B", "C", "D", "E"], "values": [[71.1, 83.0, 89.0, 92.0, 99.0], [70.3, 81.7, 90.0, 93.9, 98.6], [76.2, 84.1, 87.0, 94.5, 97.5], [70.9, 83.8, 85.8, 94.5, 98.4], [73.1, 83.4, 86.6, 90.5, 99.6]]}}, "fig4": {"name": "图4", "subtitle": "ROC曲线", "type": "roc", "data": {"labels": ["A", "B", "C", "D", "E"], "curves": [{"fpr": [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0], "tpr": [0, 0.62, 0.64, 0.78, 0.78, 0.9, 0.92, 0.98, 0.98, 0.99, 1.0], "auc": 0.981}, {"fpr": [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0], "tpr": [0, 0.63, 0.69, 0.75, 0.86, 0.87, 0.87, 0.93, 0.98, 1.0, 1.0], "auc": 0.957}, {"fpr": [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0], "tpr": [0, 0.66, 0.67, 0.68, 0.7, 0.75, 0.82, 0.91, 0.96, 0.98, 1.0], "auc": 0.975}, {"fpr": [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0], "tpr": [0, 0.67, 0.67, 0.71, 0.8, 0.82, 0.89, 0.9, 0.98, 1.0, 1.0], "auc": 0.948}, {"fpr": [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0], "tpr": [0, 0.6, 0.62, 0.73, 0.81, 0.87, 0.87, 0.93, 0.97, 0.98, 1.0], "auc": 0.977}]}}, "fig5": {"name": "图5", "subtitle": "误差准确率图", "type": "boxplot", "data": {"labels": ["A", "B", "C", "D", "E"], "series": [{"name": "Ours", "avg": [85.5, 88.3, 91.1, 93.8, 95.2], "min": [80.2, 83.1, 86.5, 88.3, 90.1], "max": [90.8, 93.5, 96.7, 98.1, 99.3], "color": "#27ae60"}, {"name": "Method A", "avg": [82.2, 85.5, 88.2, 90.0, 92.5], "min": [77.1, 80.3, 83.5, 85.7, 87.2], "max": [87.3, 90.7, 92.9, 94.3, 97.8], "color": "#3498db"}]}}, "fig6": {"name": "图6", "subtitle": "折线图", "type": "line", "data": {"xAxis": ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"], "series": [{"name": "Series A", "data": [150, 230, 224, 218, 135, 147, 260], "color": "#5470c6"}, {"name": "Series B", "data": [80, 122, 201, 154, 190, 130, 110], "color": "#91cc75"}]}}, "fig7": {"name": "图7", "subtitle": "箱线图", "type": "realboxplot", "data": {"categories": ["Group A", "Group B", "Group C", "Group D"], "data": [[56.62340977817085, 57.81823646229504, 39.352989365099354, 67.2783265113133, 45.033494344953915, 67.76003071725071, 37.835651306306, 41.70200729592979, 53.4619531482438, 57.1677717885217, 46.40564563218205, 57.90971987387282, 51.33972888167214, 35.204581793505874, 49.327927603687804, 42.30010799450941, 58.181941851862234, 36.74472376040339, 64.82178121395835, 36.82813957633371, 37.707701870360964, 46.28483988523036, 41.93874375533977, 53.49520988470467, 35.437889481360166, 46.60772060396513, 40.089419029448656, 53.83686204449534, 37.159014712690805, 28.775500934706855], [64.74400189671341, 76.01795988356619, 55.83624954298175, 45.01279883709606, 46.71136144665809, 50.409843892420106, 42.949622901917344, 48.435037970187096, 60.285725585806894, 39.369476939344835, 52.179376552484484, 38.04879454172315, 62.51030952641584, 51.42780510781772, 49.62208750715371, 60.80330060859364, 51.67990239752049, 56.37300443145279, 49.624130644888155, 58.91574702499121, 43.96747369944142, 40.68295271964823, 52.65984197689781, 60.03161902790703, 64.59729607574505, 57.11396507330866, 45.88399059786599, 45.573354487308414, 64.21732583830237, 43.97456833157701], [55.10013924246142, 50.832586452221236, 24.375034596916528, 35.47206034744456, 49.02838380777213, 58.51543607624293, 30.468971360727515, 54.929024106116685, 35.59939839678535, 72.67548869904235, 59.053116464972554, 54.381346347569156, 35.36922706421575, 61.58175145524544, 81.05309426247689, 55.187494961097435, 58.31658293062593, 52.39880571914879, 49.57153311387162, 60.32135280927832, 39.98112330564981, 65.0267491539183, 39.5476404732155, 55.363046895814094, 54.42096678414152, 55.8454416350794, 62.81283719834379, 51.76880701462309, 49.45664054810832, 46.84307628983951], [56.139184208555896, 45.20904735675161, 57.371851097303114, 45.54546077911688, 44.4572664548591, 25.115196174127455, 41.22669459448289, 36.18933506156045, 52.298618638325195, 63.985665237888895, 65.58097525777822, 52.41937251043877, 50.29126752474734, 44.89861404638113, 47.197159864613425, 64.45170586324163, 46.12426328561536, 44.77201488703094, 70.01083905587033, 49.81567395180588, 45.779192278208626, 40.2863897866936, 64.19013034201355, 54.83367712309578, 56.71980203498167, 47.195192462961195, 50.50280602313681, 42.54046922103066, 46.043520629883, 38.52159896532619]]}}, "fig8": {"name": "图8", "subtitle": "蜘蛛图", "type": "radar", "data": {"indicator": [{"name": "Sales", "max": 100}, {"name": "Admin", "max": 100}, {"name": "IT", "max": 100}, {"name": "Support", "max": 100}, {"name": "Dev", "max": 100}, {"name": "Marketing", "max": 100}], "series": [{"name": "Budget", "data": [80, 90, 70, 85, 95, 75], "color": "#5470c6"}, {"name": "Actual", "data": [70, 85, 65, 90, 80, 85], "color": "#91cc75"}]}}, "fig9": {"name": "图9", "subtitle": "双轴图", "type": "dualaxis", "data": {"xAxis": ["Jan", "Feb", "Mar", "Apr", "May", "Jun"], "series": [{"name": "Revenue", "data": [2.0, 4.9, 7.0, 23.2, 25.6, 76.7], "type": "bar", "yAxisIndex": 0, "color": "#5470c6"}, {"name": "Growth Rate", "data": [2.6, 5.9, 9.0, 26.4, 28.7, 70.7], "type": "line", "yAxisIndex": 1, "color": "#ee6666"}], "yAxis": [{"name": "Revenue ($M)", "position": "left"}, {"name": "Growth (%)", "position": "right"}]}}, "fig10": {"name": "图10", "subtitle": "饼图", "type": "pie", "data": {"series": [{"name": "Category A", "value": 335}, {"name": "Category B", "value": 310}, {"name": "Category C", "value": 234}, {"name": "Category D", "value": 135}, {"name": "Category E", "value": 148}]}}}));
         const STORAGE_KEY = 'confusion_matrix_data';
         const SETTINGS_KEY = 'confusion_matrix_settings';
         const CHECKPOINT_KEY = 'confusion_matrix_checkpoint';
@@ -1939,19 +1939,14 @@
                 if (chartInstances[key]) chartInstances[key].dispose();
                 const chartDiv = document.getElementById('chart_' + key);
                 
-                // ★★★ 重新获取最新的样式配置，根据刻度像素间距计算容器尺寸 ★★★
+                // ★★★ 重新获取最新的样式配置，动态计算容器宽度 ★★★
                 const latestCs = chartStyles[key] || {};
                 const barWidth = latestCs.barWidth || 25;
                 const xLabels = latestCs.xTickLabels || data.labels || ['B=15', 'B=20', 'B=25', 'B=30'];
-                const yLabels = latestCs.yTickLabels || ['0','20','40','60','80','100'];
-                const xTickGapPx = latestCs.xTickGapPx || 150;
-                const yTickGapPx = latestCs.yTickGapPx || 60;
                 const gridMargin = 2 * barWidth * seriesConfig.count + 90;
-                // 根据刻度数量和像素间距计算图表尺寸
-                const chartWidth = Math.max(xLabels.length * xTickGapPx + gridMargin, 400);
-                const chartHeight = Math.max(yLabels.length * yTickGapPx + 120, 300);
+                const chartAreaWidth = xLabels.length * (seriesConfig.count + 1) * barWidth;
+                const chartWidth = Math.max(chartAreaWidth + gridMargin, 400);
                 chartDiv.style.width = chartWidth + 'px';
-                chartDiv.style.height = chartHeight + 'px';
                 
                 chartInstances[key] = echarts.init(chartDiv);
                 
@@ -2526,21 +2521,19 @@
                 if (chartInstances[key]) chartInstances[key].dispose();
                 const chartDiv = document.getElementById('chart_' + key);
                 
-                // ★★★ 重新获取最新的样式配置，根据刻度像素间距计算容器尺寸 ★★★
+                // ★★★ 重新获取最新的样式配置 ★★★
                 const latestCs = chartStyles[key] || {};
                 const seriesCount = (data.series || []).length;
                 const barWidth = latestCs.barWidth || 30;
                 const xLabels = latestCs.xTickLabels || data.labels || ['A','B','C','D','E'];
-                const yLabels = latestCs.yTickLabels || ['0','20','40','60','80','100'];
-                const xTickGapPx = latestCs.xTickGapPx || 80;
-                const yTickGapPx = latestCs.yTickGapPx || 50;
                 
-                // 根据刻度数量和像素间距计算图表尺寸
+                // ★★★ 关键公式：容器宽度 = 图表区域 + grid边距 ★★★
+                // 图表区域 = 刻度数 × (系列数+1) × barWidth（每刻度：系列柱子组 + 1个间隙）
+                // grid边距 = left(barWidth+60) + right(barWidth+30) = 2*barWidth + 90
                 const gridMargin = 2 * barWidth + 90;
-                const chartWidth = Math.max(xLabels.length * xTickGapPx + gridMargin, 400);
-                const chartHeight = Math.max(yLabels.length * yTickGapPx + 120, 300);
+                const chartAreaWidth = xLabels.length * (seriesCount + 1) * barWidth;
+                const chartWidth = Math.max(chartAreaWidth + gridMargin, 400);
                 chartDiv.style.width = chartWidth + 'px';
-                chartDiv.style.height = chartHeight + 'px';
                 
                 chartInstances[key] = echarts.init(chartDiv);
                 const seriesData = [];
@@ -3632,19 +3625,9 @@
             
             const chartDiv = document.getElementById('chart_' + key);
             if (chartInstances[key]) chartInstances[key].dispose();
-            
-            // ★★★ 根据刻度像素间距计算容器尺寸 ★★★
-            const latestCs = chartStyles[key] || {};
-            const xLabels = data.xAxis || [];
-            const xTickGapPx = latestCs.xTickGapPx || 80;
-            const yTickGapPx = latestCs.yTickGapPx || 50;
-            const yTickCount = 6; // 默认Y轴刻度数
-            const chartWidth = Math.max(xLabels.length * xTickGapPx + 150, 400);
-            const chartHeight = Math.max(yTickCount * yTickGapPx + 120, 300);
-            chartDiv.style.width = chartWidth + 'px';
-            chartDiv.style.height = chartHeight + 'px';
-            
             chartInstances[key] = echarts.init(chartDiv);
+            
+            const latestCs = chartStyles[key] || {};
             chartInstances[key].setOption({
                 tooltip: { trigger: 'axis' },
                 legend: { data: data.series.map(s => s.name), triggerEvent: true },
@@ -3888,19 +3871,8 @@
             
             const chartDiv = document.getElementById('chart_' + key);
             if (chartInstances[key]) chartInstances[key].dispose();
-            
-            // ★★★ 根据刻度像素间距计算容器尺寸 ★★★
-            const latestCs = chartStyles[key] || {};
-            const xLabels = data.xAxis || [];
-            const xTickGapPx = latestCs.xTickGapPx || 80;
-            const yTickGapPx = latestCs.yTickGapPx || 50;
-            const yTickCount = 6;
-            const chartWidth = Math.max(xLabels.length * xTickGapPx + 180, 400);
-            const chartHeight = Math.max(yTickCount * yTickGapPx + 120, 300);
-            chartDiv.style.width = chartWidth + 'px';
-            chartDiv.style.height = chartHeight + 'px';
-            
             chartInstances[key] = echarts.init(chartDiv);
+            const latestCs = chartStyles[key] || {};
             chartInstances[key].setOption({
                 tooltip: { trigger: 'axis' },
                 legend: { data: data.series.map(s => s.name) },
@@ -4381,17 +4353,6 @@
             
             const chartDiv = document.getElementById('chart_' + key);
             if (chartInstances[key]) chartInstances[key].dispose();
-            
-            // ★★★ 根据刻度像素间距计算容器尺寸 ★★★
-            const xLabels = data.categories || [];
-            const xTickGapPx = cs.xTickGapPx || 80;
-            const yTickGapPx = cs.yTickGapPx || 50;
-            const yTickCount = 6;
-            const chartWidth = Math.max(xLabels.length * xTickGapPx + 150, 400);
-            const chartHeight = Math.max(yTickCount * yTickGapPx + 120, 300);
-            chartDiv.style.width = chartWidth + 'px';
-            chartDiv.style.height = chartHeight + 'px';
-            
             chartInstances[key] = echarts.init(chartDiv);
             
             // 计算箱线图数据: [min, Q1, median, Q3, max] + 异常值
