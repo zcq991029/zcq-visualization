@@ -3483,9 +3483,13 @@ def _generate_enhanced_cm_html(matrices_data, class_names, title_bg_base64='titl
                 chartStyles[key][prop] = value;
             }
             // 实时预览，但不保存到localStorage
-            // 只有改变尺寸时才resize
-            const needResize = (prop === 'chartWidth' || prop === 'chartHeight');
-            updateChartOnly(key, needResize);
+            // 刻度像素间距变化需要完全重新渲染
+            if (prop === 'xTickGapPx' || prop === 'yTickGapPx') {
+                renderChart(key);
+            } else {
+                const needResize = (prop === 'chartWidth' || prop === 'chartHeight');
+                updateChartOnly(key, needResize);
+            }
         }
         
         // 只更新ECharts图表，保持样式面板状态
