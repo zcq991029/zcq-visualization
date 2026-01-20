@@ -3272,11 +3272,13 @@ def _generate_enhanced_cm_html(matrices_data, class_names, title_bg_base64='titl
         // 轴标签名偏移微调
         function adjustAxisOffset(key, prop, delta) {
             if (!chartStyles[key]) chartStyles[key] = {};
-            const currentVal = chartStyles[key][prop] || (prop === 'xNameGap' ? 25 : 35);
+            // 优先使用输入框中的实际值
+            const input = document.getElementById(prop + '_' + key);
+            const currentVal = input ? parseInt(input.value) : (chartStyles[key][prop] || (prop === 'xNameGap' ? 25 : 35));
             const newVal = Math.max(0, Math.min(80, currentVal + delta));
             chartStyles[key][prop] = newVal;
-            const input = document.getElementById(prop + '_' + key);
             if (input) input.value = newVal;
+            saveAllToStorage();
             updateChartOnly(key);
         }
         
@@ -3747,6 +3749,15 @@ def _generate_enhanced_cm_html(matrices_data, class_names, title_bg_base64='titl
                         <option value="Arial" ${cs.axisTickFont==='Arial'?'selected':''}>Arial</option>
                     </select> 字号:<input type="number" value="${cs.axisTickSize||10}" onchange="setChartStyle('${key}','axisTickSize',+this.value)" style="width:40px" min="8" max="18">
                     颜色:<input type="color" value="${cs.axisTickColor||'#000000'}" onchange="setChartStyle('${key}','axisTickColor',this.value)" style="width:30px;height:22px"></div>
+                    <div class="style-row"><strong>X轴名偏移</strong> 
+                        <button onclick="adjustAxisOffset('${key}','xNameGap',-5)" style="padding:2px 4px">◀</button>
+                        <input type="number" id="xNameGap_${key}" value="${cs.xNameGap||30}" onchange="setChartStyle('${key}','xNameGap',+this.value)" style="width:40px" min="0" max="80">px
+                        <button onclick="adjustAxisOffset('${key}','xNameGap',5)" style="padding:2px 4px">▶</button>
+                        <strong style="margin-left:10px">Y轴名偏移</strong>
+                        <button onclick="adjustAxisOffset('${key}','yNameGap',-5)" style="padding:2px 4px">◀</button>
+                        <input type="number" id="yNameGap_${key}" value="${cs.yNameGap||40}" onchange="setChartStyle('${key}','yNameGap',+this.value)" style="width:40px" min="0" max="80">px
+                        <button onclick="adjustAxisOffset('${key}','yNameGap',5)" style="padding:2px 4px">▶</button>
+                    </div>
                     <hr style="margin:8px 0;border:none;border-top:1px solid #eee;">
                     <div class="style-row"><strong>图表尺寸</strong> 宽×高(px):
                         <input type="number" value="${cs.chartWidth||600}" onchange="setChartStyle('${key}','chartWidth',+this.value);renderChart('${key}')" style="width:60px" min="300" max="1200">×
@@ -3973,6 +3984,15 @@ def _generate_enhanced_cm_html(matrices_data, class_names, title_bg_base64='titl
                     颜色:<input type="color" value="${cs.axisLabelColor||'#000000'}" onchange="setChartStyle('${key}','axisLabelColor',this.value);renderChart('${key}')" style="width:30px;height:22px"></div>
                     <div class="style-row"><strong>刻度</strong> 字号:<input type="number" value="${cs.axisTickSize||10}" onchange="setChartStyle('${key}','axisTickSize',+this.value);renderChart('${key}')" style="width:40px" min="8" max="18">
                     颜色:<input type="color" value="${cs.axisTickColor||'#000000'}" onchange="setChartStyle('${key}','axisTickColor',this.value);renderChart('${key}')" style="width:30px;height:22px"></div>
+                    <div class="style-row"><strong>X轴名偏移</strong> 
+                        <button onclick="adjustAxisOffset('${key}','xNameGap',-5)" style="padding:2px 4px">◀</button>
+                        <input type="number" id="xNameGap_${key}" value="${cs.xNameGap||30}" onchange="setChartStyle('${key}','xNameGap',+this.value)" style="width:40px" min="0" max="80">px
+                        <button onclick="adjustAxisOffset('${key}','xNameGap',5)" style="padding:2px 4px">▶</button>
+                        <strong style="margin-left:10px">Y轴名偏移</strong>
+                        <button onclick="adjustAxisOffset('${key}','yNameGap',-5)" style="padding:2px 4px">◀</button>
+                        <input type="number" id="yNameGap_${key}" value="${cs.yNameGap||40}" onchange="setChartStyle('${key}','yNameGap',+this.value)" style="width:40px" min="0" max="80">px
+                        <button onclick="adjustAxisOffset('${key}','yNameGap',5)" style="padding:2px 4px">▶</button>
+                    </div>
                     <hr style="margin:8px 0;border:none;border-top:1px solid #eee;">
                     <div class="style-row"><strong>图表尺寸</strong> 宽×高(px):
                         <input type="number" value="${cs.chartWidth||600}" onchange="setChartStyle('${key}','chartWidth',+this.value);renderChart('${key}')" style="width:60px" min="300" max="1200">×
@@ -4429,6 +4449,15 @@ def _generate_enhanced_cm_html(matrices_data, class_names, title_bg_base64='titl
                     颜色:<input type="color" value="${cs.axisLabelColor||'#000000'}" onchange="setChartStyle('${key}','axisLabelColor',this.value);renderChart('${key}')" style="width:30px;height:22px"></div>
                     <div class="style-row"><strong>刻度</strong> 字号:<input type="number" value="${cs.axisTickSize||10}" onchange="setChartStyle('${key}','axisTickSize',+this.value);renderChart('${key}')" style="width:40px" min="8" max="18">
                     颜色:<input type="color" value="${cs.axisTickColor||'#000000'}" onchange="setChartStyle('${key}','axisTickColor',this.value);renderChart('${key}')" style="width:30px;height:22px"></div>
+                    <div class="style-row"><strong>X轴名偏移</strong> 
+                        <button onclick="adjustAxisOffset('${key}','xNameGap',-5)" style="padding:2px 4px">◀</button>
+                        <input type="number" id="xNameGap_${key}" value="${cs.xNameGap||25}" onchange="setChartStyle('${key}','xNameGap',+this.value)" style="width:40px" min="0" max="80">px
+                        <button onclick="adjustAxisOffset('${key}','xNameGap',5)" style="padding:2px 4px">▶</button>
+                        <strong style="margin-left:10px">Y轴名偏移</strong>
+                        <button onclick="adjustAxisOffset('${key}','yNameGap',-5)" style="padding:2px 4px">◀</button>
+                        <input type="number" id="yNameGap_${key}" value="${cs.yNameGap||35}" onchange="setChartStyle('${key}','yNameGap',+this.value)" style="width:40px" min="0" max="80">px
+                        <button onclick="adjustAxisOffset('${key}','yNameGap',5)" style="padding:2px 4px">▶</button>
+                    </div>
                     <hr style="margin:8px 0;border:none;border-top:1px solid #eee;">
                     <div class="style-row"><strong>图表尺寸</strong> 宽×高(px):
                         <input type="number" value="${cs.chartWidth||600}" onchange="setChartStyle('${key}','chartWidth',+this.value);renderChart('${key}')" style="width:60px" min="300" max="1200">×
