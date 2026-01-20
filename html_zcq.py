@@ -1227,13 +1227,13 @@ def _generate_enhanced_cm_html(matrices_data, class_names, title_bg_base64='titl
                     <div class="style-row">
                         Y轴标签右偏移:
                         <button onclick="adjustCMLabel('yLabelPadding',-1)" style="padding:2px 4px">◀</button>
-                        <input type="number" id="yLabelPadding_${key}" value="${globalStyles.yLabelPadding!==undefined?globalStyles.yLabelPadding:8}" onchange="setGlobalStyle('yLabelPadding',+this.value)" style="width:40px" min="-30" max="30">px
+                        <input type="number" id="yLabelPadding_${key}" value="${globalStyles.yLabelPadding!==undefined?globalStyles.yLabelPadding:2}" onchange="setGlobalStyle('yLabelPadding',+this.value)" style="width:40px" min="-30" max="30">px
                         <button onclick="adjustCMLabel('yLabelPadding',1)" style="padding:2px 4px">▶</button>
                     </div>
                     <div class="style-row">
                         X轴标签上偏移:
                         <button onclick="adjustCMLabel('xLabelPadding',-1)" style="padding:2px 4px">▲</button>
-                        <input type="number" id="xLabelPadding_${key}" value="${globalStyles.xLabelPadding!==undefined?globalStyles.xLabelPadding:8}" onchange="setGlobalStyle('xLabelPadding',+this.value)" style="width:40px" min="-30" max="30">px
+                        <input type="number" id="xLabelPadding_${key}" value="${globalStyles.xLabelPadding!==undefined?globalStyles.xLabelPadding:-8}" onchange="setGlobalStyle('xLabelPadding',+this.value)" style="width:40px" min="-30" max="30">px
                         <button onclick="adjustCMLabel('xLabelPadding',1)" style="padding:2px 4px">▼</button>
                     </div>
                     <hr style="margin:8px 0;border:none;border-top:1px solid #eee;">
@@ -1265,7 +1265,7 @@ def _generate_enhanced_cm_html(matrices_data, class_names, title_bg_base64='titl
             `;
             
             for (let i = 0; i < currentClassCount; i++) {
-                const yPad = globalStyles.yLabelPadding!==undefined?globalStyles.yLabelPadding:8;
+                const yPad = globalStyles.yLabelPadding!==undefined?globalStyles.yLabelPadding:2;
                 html += `<tr><th style="background:transparent;font-family:${globalStyles.labelFontFamily};font-size:${globalStyles.labelFontSize}px;font-weight:${globalStyles.labelFontWeight};padding-right:${Math.max(0,yPad)}px;${yPad<0?'transform:translateX('+(-yPad)+'px);':''}cursor:pointer" onclick="editCMLabel(${i})">${customLabels[i]}</th>`;
                 const rowSum = rowSums[i];
                 for (let j = 0; j < currentClassCount; j++) {
@@ -1281,7 +1281,7 @@ def _generate_enhanced_cm_html(matrices_data, class_names, title_bg_base64='titl
             }
             
             // X轴标签放在底部
-            const xPad = globalStyles.xLabelPadding!==undefined?globalStyles.xLabelPadding:8;
+            const xPad = globalStyles.xLabelPadding!==undefined?globalStyles.xLabelPadding:-8;
             html += `<tr><th></th>${customLabels.map((n, idx) => `<th style="background:transparent;font-family:${globalStyles.labelFontFamily};font-size:${globalStyles.labelFontSize}px;font-weight:${globalStyles.labelFontWeight};padding-top:${Math.max(0,xPad)}px;${xPad<0?'transform:translateY('+(xPad)+'px);':''}cursor:pointer" onclick="editCMLabel(${idx})">${n}</th>`).join('')}</tr>`;
             html += `</table></div>`;
             
@@ -3163,7 +3163,8 @@ def _generate_enhanced_cm_html(matrices_data, class_names, title_bg_base64='titl
         function adjustCMLabel(prop, delta) {
             // 优先使用输入框中的实际值
             const input = document.querySelector('[id^="' + prop + '_"]');
-            const currentVal = input ? parseInt(input.value) : (globalStyles[prop] !== undefined ? globalStyles[prop] : 8);
+            const defaultVal = prop === 'yLabelPadding' ? 2 : -8;
+            const currentVal = input ? parseInt(input.value) : (globalStyles[prop] !== undefined ? globalStyles[prop] : defaultVal);
             // 允许负值(-30到30)，步进为1
             const newVal = Math.max(-30, Math.min(30, currentVal + delta));
             globalStyles[prop] = newVal;
