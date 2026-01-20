@@ -1045,8 +1045,30 @@ def _generate_enhanced_cm_html(matrices_data, class_names, title_bg_base64='titl
             renderChart(key);
         }
         
-        // 下载图表为图片
-        function downloadMatrix(key, format) {
+        // 动态加载UTIF库（用于TIF格式）
+        let utifLoaded = false;
+        async function loadUTIF() {
+            if (utifLoaded || typeof UTIF !== 'undefined') return;
+            return new Promise((resolve, reject) => {
+                const script = document.createElement('script');
+                script.src = 'https://cdn.jsdelivr.net/npm/utif@3.1.0/UTIF.js';
+                script.onload = () => { utifLoaded = true; resolve(); };
+                script.onerror = reject;
+                document.head.appendChild(script);
+            });
+        }
+        
+        // 保存文件（通用）
+        async function saveFile(blob, filename, mimeType, ext) {
+            const link = document.createElement('a');
+            link.href = URL.createObjectURL(blob);
+            link.download = filename;
+            link.click();
+            URL.revokeObjectURL(link.href);
+        }
+        
+        // 下载图表为图片（4倍分辨率最高清）
+        async function downloadMatrix(key, format) {
             const card = document.getElementById('card_' + key);
             if (!card) return;
             
@@ -1054,34 +1076,36 @@ def _generate_enhanced_cm_html(matrices_data, class_names, title_bg_base64='titl
             const btns = card.querySelectorAll('.download-btns, .card-controls, .style-panel');
             btns.forEach(el => el.style.display = 'none');
             
-            html2canvas(card, { 
-                backgroundColor: '#fff',
-                scale: 2,
-                useCORS: true
-            }).then(canvas => {
+            try {
+                const canvas = await html2canvas(card, { 
+                    backgroundColor: '#fff',
+                    scale: 4, // 4倍分辨率，最高清
+                    useCORS: true
+                });
+                
                 // 恢复按钮显示
                 btns.forEach(el => el.style.display = '');
                 
-                const link = document.createElement('a');
                 const info = matricesData[key];
-                const filename = (info?.name || key) + '.' + format;
+                const filename = (info?.name || key);
                 
                 if (format === 'png') {
-                    link.href = canvas.toDataURL('image/png');
+                    canvas.toBlob(blob => saveFile(blob, filename + '.png', 'image/png', '.png'), 'image/png');
                 } else if (format === 'jpg') {
-                    link.href = canvas.toDataURL('image/jpeg', 0.95);
+                    canvas.toBlob(blob => saveFile(blob, filename + '.jpg', 'image/jpeg', '.jpg'), 'image/jpeg', 1.0);
                 } else if (format === 'tif') {
-                    // TIF不支持直接导出，用PNG代替
-                    link.href = canvas.toDataURL('image/png');
-                    alert('TIF格式暂不支持，已导出为PNG');
+                    await loadUTIF();
+                    const ctx = canvas.getContext('2d');
+                    const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+                    const tiffData = UTIF.encodeImage(imageData.data, canvas.width, canvas.height);
+                    const tifBlob = new Blob([tiffData], { type: 'image/tiff' });
+                    await saveFile(tifBlob, filename + '.tif', 'image/tiff', '.tif');
                 }
-                link.download = filename;
-                link.click();
-            }).catch(err => {
+            } catch(err) {
                 btns.forEach(el => el.style.display = '');
                 console.error('下载失败:', err);
                 alert('下载失败，请重试');
-            });
+            }
         }
         
         function getColor(value, maxVal, theme) {
