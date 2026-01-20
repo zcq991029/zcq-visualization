@@ -1072,9 +1072,9 @@ def _generate_enhanced_cm_html(matrices_data, class_names, title_bg_base64='titl
             const card = document.getElementById('card_' + key);
             if (!card) return;
             
-            // 隐藏按钮和面板
-            const btns = card.querySelectorAll('.download-btns, .card-controls, .style-panel');
-            btns.forEach(el => el.style.display = 'none');
+            // 隐藏按钮、面板、标题、副标题、统计信息
+            const hideElements = card.querySelectorAll('.download-btns, .card-controls, .style-panel, .card-header, .stats');
+            hideElements.forEach(el => el.style.display = 'none');
             
             try {
                 const canvas = await html2canvas(card, { 
@@ -1083,8 +1083,8 @@ def _generate_enhanced_cm_html(matrices_data, class_names, title_bg_base64='titl
                     useCORS: true
                 });
                 
-                // 恢复按钮显示
-                btns.forEach(el => el.style.display = '');
+                // 恢复显示
+                hideElements.forEach(el => el.style.display = '');
                 
                 const info = matricesData[key];
                 const filename = (info?.name || key);
@@ -1102,7 +1102,7 @@ def _generate_enhanced_cm_html(matrices_data, class_names, title_bg_base64='titl
                     await saveFile(tifBlob, filename + '.tif', 'image/tiff', '.tif');
                 }
             } catch(err) {
-                btns.forEach(el => el.style.display = '');
+                hideElements.forEach(el => el.style.display = '');
                 console.error('下载失败:', err);
                 alert('下载失败，请重试');
             }
