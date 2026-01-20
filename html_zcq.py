@@ -657,37 +657,39 @@ def _generate_enhanced_cm_html(matrices_data, class_names, title_bg_base64='titl
     <div class="readme-modal" id="readmeModal" onclick="if(event.target===this)closeReadme()">
         <div class="readme-content">
             <span class="readme-close" onclick="closeReadme()">&times;</span>
-            <h2>📖 可视化仓库 使用说明</h2>
+            <h2>📖 SCI可视化仓库 使用说明</h2>
             
             <h3>🚀 快速入门</h3>
             <ul>
-                <li><strong>点击单元格</strong>：直接编辑混淆矩阵数值</li>
-                <li><strong>点击柱子</strong>：直接编辑柱状图数值（图2/3/5）</li>
-                <li><strong>点击轴标签</strong>：直接编辑X/Y轴标签（所有图表）</li>
-                <li><strong>点击误差线</strong>：编辑上下限（图5）</li>
-                <li><strong>切换主题</strong>：图1🎨面板中选择颜色主题（蓝/橙/绿/红/紫）</li>
-                <li><strong>预设配色</strong>：图2/3/5🎨面板中一键应用配色</li>
-                <li><strong>节点管理</strong>：顶部按钮保存/恢复/重置当前状态</li>
-                <li><strong>AI导入</strong>：每个图🎨面板中有📥按钮，支持粘贴数据或截图</li>
+                <li><strong>点击数据</strong>：直接编辑图表数值（所有图表支持）</li>
+                <li><strong>点击轴标签</strong>：直接编辑X/Y轴刻度标签</li>
+                <li><strong>点击轴名称</strong>：直接编辑X/Y轴名称</li>
+                <li><strong>🎨样式面板</strong>：调整字体、颜色、尺寸等样式</li>
+                <li><strong>📝编辑数据</strong>：表格形式批量编辑数据</li>
+                <li><strong>📥AI导入</strong>：粘贴数据或截图智能导入</li>
+                <li><strong>💾节点管理</strong>：保存/恢复当前状态</li>
             </ul>
             
-            <h3>📊 图表类型</h3>
+            <h3>📊 图表类型（共10种）</h3>
             <ul>
-                <li><strong>图1 混淆矩阵</strong>：点击单元格/标签编辑，样本数/准确率切换</li>
+                <li><strong>图1 混淆矩阵</strong>：点击单元格/标签编辑，支持5种颜色主题</li>
                 <li><strong>图2 柱状图</strong>：点击柱子/轴标签编辑，柱宽/颜色可调</li>
-                <li><strong>图3 对比图</strong>：点击柱子/轴标签编辑，系列数/名称/颜色可调</li>
-                <li><strong>图4 ROC曲线</strong>：点击轴名编辑，曲线数/名称/颜色可调</li>
-                <li><strong>图5 误差条图</strong>：点击柱子编辑准确率，点击误差线编辑上下限</li>
+                <li><strong>图3 对比图</strong>：多组数据对比，系列数/颜色可调</li>
+                <li><strong>图4 ROC曲线</strong>：点击轴名编辑，支持多条曲线</li>
+                <li><strong>图5 误差条图</strong>：点击柱子/误差线编辑</li>
+                <li><strong>图6 折线图</strong>：点击刻度/数据点编辑，矩形框边框</li>
+                <li><strong>图7 箱线图</strong>：点击箱体编辑数据，支持Y轴范围设置</li>
+                <li><strong>图8 蜘蛛图</strong>：点击数据点编辑，雷达图形式</li>
+                <li><strong>图9 双轴图</strong>：点击柱/线/轴编辑，左右双Y轴</li>
+                <li><strong>图10 饼图</strong>：点击扇区编辑数值，点击图例编辑名称</li>
             </ul>
             
             <h3>🎨 样式配置（点击🎨）</h3>
             <ul>
-                <li><strong>图表尺寸</strong>：宽×高(英寸)，默认8×6</li>
-                <li><strong>坐标轴</strong>：名称/刻度标签可编辑，黑色封闭矩形框</li>
-                <li><strong>刻度间距</strong>：X/Y轴刻度间距可调</li>
-                <li><strong>图例</strong>：位置/方向/图标尺寸可调</li>
-                <li><strong>字体</strong>：Times/Arial/宋体，纯黑色</li>
-                <li><strong>保存/取消</strong>：实时预览，保存确认或取消恢复</li>
+                <li><strong>图表尺寸</strong>：宽×高可调</li>
+                <li><strong>坐标轴</strong>：名称/刻度标签/颜色可编辑</li>
+                <li><strong>矩形框</strong>：黑色封闭边框（SCI标准）</li>
+                <li><strong>字体</strong>：Times/Arial可选，黑色刻度</li>
             </ul>
             
             <h3>💾 节点管理</h3>
@@ -702,17 +704,14 @@ def _generate_enhanced_cm_html(matrices_data, class_names, title_bg_base64='titl
                 <li><strong>PNG/JPG/TIF</strong>：4倍分辨率高清导出</li>
             </ul>
             
-            <h3>🔄 版本更新与刷新</h3>
+            <h3>🔄 刷新说明</h3>
             <ul>
-                <li><strong>⚠️ 重要提醒</strong>：每次运行 html.py 生成新版本后，需要刷新浏览器才能看到最新效果！</li>
-                <li><strong>Chrome/Edge</strong>：按 Ctrl+Shift+R (Windows) 或 Cmd+Shift+R (Mac)</li>
-                <li><strong>Safari</strong>：菜单 → 开发 → 清空缓存，然后刷新</li>
-                <li><strong>通用方法</strong>：点击右上角红色"🔄 强制刷新"按钮</li>
-                <li><strong>仍有问题</strong>：关闭标签页，清除浏览器缓存后重新打开</li>
+                <li><strong>强制刷新</strong>：Cmd+Shift+R (Mac) / Ctrl+Shift+R (Win)</li>
+                <li><strong>清除缓存</strong>：点击右上角"🔄 刷新"按钮</li>
             </ul>
             
             <p style="margin-top:20px;color:#666;font-size:12px;text-align:center">
-                东莞理工学院 · zcq · 可视化仓库无限扩展版
+                东莞理工学院 · zcq · SCI可视化仓库 v2.0
             </p>
         </div>
     </div>
@@ -1877,6 +1876,131 @@ def _generate_enhanced_cm_html(matrices_data, class_names, title_bg_base64='titl
             renderChart(key);
         }
         
+        // 图6折线图数据编辑弹窗
+        let lineEditorDiv = null;
+        function openLineEditor(key) {
+            const info = matricesData[key];
+            const data = info.data;
+            const xLabels = data.xAxis || [];
+            const series = data.series || [];
+            
+            if (lineEditorDiv) lineEditorDiv.remove();
+            lineEditorDiv = document.createElement('div');
+            lineEditorDiv.style.cssText = 'position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:#fff;padding:20px;border-radius:12px;box-shadow:0 10px 40px rgba(0,0,0,0.3);z-index:2000;max-height:80vh;overflow:auto;min-width:400px';
+            
+            let html = '<div style="font-size:16px;font-weight:bold;margin-bottom:15px">📊 编辑折线图数据</div>';
+            html += '<table style="border-collapse:collapse;width:100%"><tr><th style="border:1px solid #ddd;padding:6px;background:#f5f5f5">X轴</th>';
+            series.forEach((s, i) => { html += '<th style="border:1px solid #ddd;padding:6px;background:#f5f5f5">' + s.name + '</th>'; });
+            html += '</tr>';
+            
+            xLabels.forEach((label, idx) => {
+                html += '<tr><td style="border:1px solid #ddd;padding:4px"><input type="text" value="' + label + '" data-type="xlabel" data-idx="' + idx + '" style="width:60px;padding:3px;border:1px solid #ddd;border-radius:3px"></td>';
+                series.forEach((s, si) => {
+                    html += '<td style="border:1px solid #ddd;padding:4px"><input type="number" value="' + (s.data[idx]||0) + '" data-type="value" data-series="' + si + '" data-idx="' + idx + '" style="width:60px;padding:3px;border:1px solid #ddd;border-radius:3px"></td>';
+                });
+                html += '</tr>';
+            });
+            html += '</table>';
+            html += '<div style="margin-top:15px;text-align:right"><button onclick="closeLineEditor()" style="padding:8px 16px;margin-right:10px;border:1px solid #ddd;border-radius:4px;background:#fff;cursor:pointer">取消</button>';
+            html += '<button onclick="saveLineEditor(\\'' + key + '\\')" style="padding:8px 16px;border:none;border-radius:4px;background:#667eea;color:#fff;cursor:pointer">保存</button></div>';
+            
+            lineEditorDiv.innerHTML = html;
+            document.body.appendChild(lineEditorDiv);
+        }
+        function closeLineEditor() { if (lineEditorDiv) { lineEditorDiv.remove(); lineEditorDiv = null; } }
+        function saveLineEditor(key) {
+            const info = matricesData[key];
+            lineEditorDiv.querySelectorAll('input[data-type="xlabel"]').forEach(input => {
+                const idx = parseInt(input.dataset.idx);
+                info.data.xAxis[idx] = input.value;
+            });
+            lineEditorDiv.querySelectorAll('input[data-type="value"]').forEach(input => {
+                const si = parseInt(input.dataset.series);
+                const idx = parseInt(input.dataset.idx);
+                info.data.series[si].data[idx] = parseFloat(input.value) || 0;
+            });
+            saveAllToStorage();
+            closeLineEditor();
+            renderChart(key);
+        }
+        
+        // 图7箱线图数据编辑(简化版：提示用户使用AI导入)
+        function openRealBoxplotEditor(key) {
+            alert('箱线图数据较复杂，建议使用「📥 AI导入」功能导入数据。\\n\\n格式示例：\\n组1: [1,2,3,4,5,6,7,8,9,10]\\n组2: [2,3,4,5,6,7,8,9,10,11]');
+        }
+        
+        // 图8蜘蛛图数据编辑
+        let radarEditorDiv = null;
+        function openRadarEditor(key) {
+            const info = matricesData[key];
+            const data = info.data;
+            if (radarEditorDiv) radarEditorDiv.remove();
+            radarEditorDiv = document.createElement('div');
+            radarEditorDiv.style.cssText = 'position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:#fff;padding:20px;border-radius:12px;box-shadow:0 10px 40px rgba(0,0,0,0.3);z-index:2000;max-height:80vh;overflow:auto;min-width:400px';
+            let html = '<div style="font-size:16px;font-weight:bold;margin-bottom:15px">📊 编辑蜘蛛图数据</div>';
+            html += '<table style="border-collapse:collapse;width:100%"><tr><th style="border:1px solid #ddd;padding:6px;background:#f5f5f5">指标</th>';
+            data.series.forEach(s => { html += '<th style="border:1px solid #ddd;padding:6px;background:#f5f5f5">' + s.name + '</th>'; });
+            html += '</tr>';
+            data.indicator.forEach((ind, idx) => {
+                html += '<tr><td style="border:1px solid #ddd;padding:4px"><input type="text" value="' + ind.name + '" data-type="ind" data-idx="' + idx + '" style="width:60px"></td>';
+                data.series.forEach((s, si) => {
+                    html += '<td style="border:1px solid #ddd;padding:4px"><input type="number" value="' + (s.data[idx]||0) + '" data-type="val" data-si="' + si + '" data-idx="' + idx + '" style="width:50px"></td>';
+                });
+                html += '</tr>';
+            });
+            html += '</table><div style="margin-top:15px;text-align:right"><button onclick="closeRadarEditor()" style="padding:8px 16px;margin-right:10px;border:1px solid #ddd;border-radius:4px;background:#fff;cursor:pointer">取消</button>';
+            html += '<button onclick="saveRadarEditor(\\'' + key + '\\')" style="padding:8px 16px;border:none;border-radius:4px;background:#667eea;color:#fff;cursor:pointer">保存</button></div>';
+            radarEditorDiv.innerHTML = html;
+            document.body.appendChild(radarEditorDiv);
+        }
+        function closeRadarEditor() { if (radarEditorDiv) { radarEditorDiv.remove(); radarEditorDiv = null; } }
+        function saveRadarEditor(key) {
+            const info = matricesData[key];
+            radarEditorDiv.querySelectorAll('input[data-type="ind"]').forEach(input => {
+                info.data.indicator[parseInt(input.dataset.idx)].name = input.value;
+            });
+            radarEditorDiv.querySelectorAll('input[data-type="val"]').forEach(input => {
+                info.data.series[parseInt(input.dataset.si)].data[parseInt(input.dataset.idx)] = parseFloat(input.value) || 0;
+            });
+            saveAllToStorage(); closeRadarEditor(); renderChart(key);
+        }
+        
+        // 图9双轴图数据编辑(简化版)
+        function openDualAxisEditor(key) {
+            alert('双轴图数据较复杂，建议使用「📥 AI导入」功能导入数据。');
+        }
+        
+        // 图10饼图数据编辑
+        let pieEditorDiv = null;
+        function openPieEditor(key) {
+            const info = matricesData[key];
+            const data = info.data;
+            if (pieEditorDiv) pieEditorDiv.remove();
+            pieEditorDiv = document.createElement('div');
+            pieEditorDiv.style.cssText = 'position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:#fff;padding:20px;border-radius:12px;box-shadow:0 10px 40px rgba(0,0,0,0.3);z-index:2000;max-height:80vh;overflow:auto;min-width:300px';
+            let html = '<div style="font-size:16px;font-weight:bold;margin-bottom:15px">🥧 编辑饼图数据</div>';
+            html += '<table style="border-collapse:collapse;width:100%"><tr><th style="border:1px solid #ddd;padding:6px;background:#f5f5f5">名称</th><th style="border:1px solid #ddd;padding:6px;background:#f5f5f5">数值</th></tr>';
+            data.series.forEach((item, idx) => {
+                html += '<tr><td style="border:1px solid #ddd;padding:4px"><input type="text" value="' + item.name + '" data-type="name" data-idx="' + idx + '" style="width:80px"></td>';
+                html += '<td style="border:1px solid #ddd;padding:4px"><input type="number" value="' + item.value + '" data-type="value" data-idx="' + idx + '" style="width:60px"></td></tr>';
+            });
+            html += '</table><div style="margin-top:15px;text-align:right"><button onclick="closePieEditor()" style="padding:8px 16px;margin-right:10px;border:1px solid #ddd;border-radius:4px;background:#fff;cursor:pointer">取消</button>';
+            html += '<button onclick="savePieEditor(\\'' + key + '\\')" style="padding:8px 16px;border:none;border-radius:4px;background:#667eea;color:#fff;cursor:pointer">保存</button></div>';
+            pieEditorDiv.innerHTML = html;
+            document.body.appendChild(pieEditorDiv);
+        }
+        function closePieEditor() { if (pieEditorDiv) { pieEditorDiv.remove(); pieEditorDiv = null; } }
+        function savePieEditor(key) {
+            const info = matricesData[key];
+            pieEditorDiv.querySelectorAll('input[data-type="name"]').forEach(input => {
+                info.data.series[parseInt(input.dataset.idx)].name = input.value;
+            });
+            pieEditorDiv.querySelectorAll('input[data-type="value"]').forEach(input => {
+                info.data.series[parseInt(input.dataset.idx)].value = parseFloat(input.value) || 0;
+            });
+            saveAllToStorage(); closePieEditor(); renderChart(key);
+        }
+        
         // 多组对比图系列配置
         let boxplotSeries = {
             'fig3': {
@@ -2361,50 +2485,45 @@ def _generate_enhanced_cm_html(matrices_data, class_names, title_bg_base64='titl
             
             if (rocEditorDiv) rocEditorDiv.remove();
             rocEditorDiv = document.createElement('div');
-            rocEditorDiv.style.cssText = 'position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:#fff;padding:20px;border-radius:12px;box-shadow:0 10px 40px rgba(0,0,0,0.3);z-index:1000;max-height:80vh;overflow:auto;min-width:500px';
+            rocEditorDiv.style.cssText = 'position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:#fff;padding:20px;border-radius:12px;box-shadow:0 10px 40px rgba(0,0,0,0.3);z-index:2000;max-height:80vh;overflow:auto;min-width:500px';
             
             let html = '<h3 style="margin-top:0">编辑ROC曲线数据</h3>';
             data.curves.forEach((curve, ci) => {
-                html += '<div style="margin-bottom:15px"><strong>' + labels[ci] + '</strong>';
+                const fprArr = curve.fpr || [];
+                const tprArr = curve.tpr || [];
+                html += '<div style="margin-bottom:15px"><strong>' + labels[ci] + ' (AUC=' + (curve.auc||'N/A') + ')</strong>';
                 html += '<table style="border-collapse:collapse;font-size:12px;margin-top:5px;width:100%"><tr><th style="border:1px solid #ddd;padding:4px;background:#f5f5f5">点序号</th><th style="border:1px solid #ddd;padding:4px;background:#f5f5f5">FPR</th><th style="border:1px solid #ddd;padding:4px;background:#f5f5f5">TPR</th></tr>';
-                curve.forEach((p, pi) => {
+                for (let pi = 0; pi < fprArr.length; pi++) {
                     html += '<tr><td style="border:1px solid #ddd;padding:4px;text-align:center">' + (pi+1) + '</td>';
-                    html += '<td style="border:1px solid #ddd;padding:2px"><input type="number" id="roc_' + key + '_' + ci + '_fpr_' + pi + '" value="' + p[0].toFixed(3) + '" style="width:80px;padding:3px" step="0.01" min="0" max="1"></td>';
-                    html += '<td style="border:1px solid #ddd;padding:2px"><input type="number" id="roc_' + key + '_' + ci + '_tpr_' + pi + '" value="' + p[1].toFixed(3) + '" style="width:80px;padding:3px" step="0.01" min="0" max="1"></td></tr>';
-                });
+                    html += '<td style="border:1px solid #ddd;padding:2px"><input type="number" data-curve="' + ci + '" data-type="fpr" data-idx="' + pi + '" value="' + (fprArr[pi]||0).toFixed(3) + '" style="width:80px;padding:3px" step="0.01" min="0" max="1"></td>';
+                    html += '<td style="border:1px solid #ddd;padding:2px"><input type="number" data-curve="' + ci + '" data-type="tpr" data-idx="' + pi + '" value="' + (tprArr[pi]||0).toFixed(3) + '" style="width:80px;padding:3px" step="0.01" min="0" max="1"></td></tr>';
+                }
                 html += '</table></div>';
             });
-            html += '<div style="margin-top:15px;text-align:right"><button onclick="closeROCEditor()" style="padding:8px 16px;margin-right:10px;cursor:pointer">取消</button>';
+            html += '<div style="margin-top:15px;text-align:right"><button onclick="closeROCEditor()" style="padding:8px 16px;margin-right:10px;cursor:pointer;border:1px solid #ddd;border-radius:4px;background:#fff">取消</button>';
             html += '<button onclick="saveROCData(\\''+key+'\\')" style="padding:8px 16px;background:#667eea;color:#fff;border:none;border-radius:6px;cursor:pointer">保存</button></div>';
             
             rocEditorDiv.innerHTML = html;
             document.body.appendChild(rocEditorDiv);
-            
-            const overlay = document.createElement('div');
-            overlay.id = 'rocEditorOverlay';
-            overlay.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.5);z-index:999';
-            overlay.onclick = closeROCEditor;
-            document.body.appendChild(overlay);
         }
         
         function closeROCEditor() {
             if (rocEditorDiv) { rocEditorDiv.remove(); rocEditorDiv = null; }
-            const overlay = document.getElementById('rocEditorOverlay');
-            if (overlay) overlay.remove();
         }
         
         function saveROCData(key) {
             const info = matricesData[key];
             const data = info.data;
             
-            data.curves.forEach((curve, ci) => {
-                for (let pi = 0; pi < curve.length; pi++) {
-                    const fprInput = document.getElementById('roc_' + key + '_' + ci + '_fpr_' + pi);
-                    const tprInput = document.getElementById('roc_' + key + '_' + ci + '_tpr_' + pi);
-                    if (fprInput && tprInput) {
-                        curve[pi] = [+fprInput.value, +tprInput.value];
-                    }
-                }
+            rocEditorDiv.querySelectorAll('input[data-type="fpr"]').forEach(input => {
+                const ci = parseInt(input.dataset.curve);
+                const pi = parseInt(input.dataset.idx);
+                data.curves[ci].fpr[pi] = parseFloat(input.value) || 0;
+            });
+            rocEditorDiv.querySelectorAll('input[data-type="tpr"]').forEach(input => {
+                const ci = parseInt(input.dataset.curve);
+                const pi = parseInt(input.dataset.idx);
+                data.curves[ci].tpr[pi] = parseFloat(input.value) || 0;
             });
             saveAllToStorage();
             closeROCEditor();
@@ -3441,7 +3560,7 @@ def _generate_enhanced_cm_html(matrices_data, class_names, title_bg_base64='titl
                 }));
                 series.push({ type: 'line', name: 'Random', data: [[0,0],[1,1]], lineStyle: { type: 'dashed', color: 'gray', width: 1 }, symbol: 'none' });
                 chartInstances[key].setOption({
-                    title: { text: cs.chartTitle || 'ROC Curve Example', left: 'center', textStyle: { fontSize: 14, fontFamily: 'Times New Roman' } },
+                    title: { text: cs.chartTitle || 'ROC Curve Example', left: 'center', textStyle: { fontSize: 14, fontFamily: 'Times New Roman' }, triggerEvent: true },
                     tooltip: { trigger: 'axis' }, 
                     legend: { 
                         show: true,
@@ -3503,9 +3622,18 @@ def _generate_enhanced_cm_html(matrices_data, class_names, title_bg_base64='titl
                     series: series
                 });
                 
-                // 点击轴编辑
+                // 点击编辑
                 chartInstances[key].on('click', function(params) {
-                    if (params.componentType === 'xAxis') {
+                    // 点击标题编辑
+                    if (params.componentType === 'title') {
+                        showTextEditor(chartStyles[key]?.chartTitle || 'ROC Curve Example', function(newTitle) {
+                            if (!chartStyles[key]) chartStyles[key] = {};
+                            chartStyles[key].chartTitle = newTitle;
+                            saveAllToStorage();
+                            renderROC(key);
+                        });
+                    }
+                    else if (params.componentType === 'xAxis') {
                         if (params.targetType === 'axisLabel') {
                             // 点击刻度标签 - 编辑该刻度值
                             const xLabels = chartStyles[key]?.xTickLabels || ['0', '0.2', '0.4', '0.6', '0.8', '1.0'];
@@ -3554,104 +3682,385 @@ def _generate_enhanced_cm_html(matrices_data, class_names, title_bg_base64='titl
                             });
                         }
                     }
+                    // 点击曲线数据点编辑
+                    else if (params.componentType === 'series' && params.seriesType === 'line' && params.seriesName !== 'Random') {
+                        const seriesIdx = params.seriesIndex;
+                        const dataIdx = params.dataIndex;
+                        const curve = matricesData[key].data.curves[seriesIdx];
+                        if (curve && curve.fpr && curve.tpr) {
+                            const fprVal = curve.fpr[dataIdx];
+                            const tprVal = curve.tpr[dataIdx];
+                            const newFpr = prompt('编辑FPR值 (0-1):', fprVal);
+                            if (newFpr !== null) {
+                                const newTpr = prompt('编辑TPR值 (0-1):', tprVal);
+                                if (newTpr !== null) {
+                                    curve.fpr[dataIdx] = parseFloat(newFpr) || 0;
+                                    curve.tpr[dataIdx] = parseFloat(newTpr) || 0;
+                                    saveAllToStorage();
+                                    renderROC(key);
+                                }
+                            }
+                        }
+                    }
                 });
             }, 100);
         }
         
         // ============ 新增18种图表渲染函数 ============
         
-        // 图6: 折线图
+        // 图6: 折线图(参考图2样式)
         function renderLineChart(key) {
             const info = matricesData[key];
             const data = info.data;
             const mainTitle = customTitles[key] || info.name;
             const subtitle = customSubtitles[key] || info.subtitle || '';
+            const cs = chartStyles[key] || {};
             
-            let html = `<div class="card-header"><div><span class="card-title">${mainTitle}</span><span style="font-size:12px;color:#666;margin-left:8px">${subtitle}</span></div>
-                <div class="card-controls"><button class="ctrl-btn" onclick="exportChart('${key}','png')">PNG</button><button class="ctrl-btn" onclick="toggleStylePanel('${key}')">🎨</button></div></div>
-                <div id="chart_${key}" style="width:600px;height:400px"></div>`;
+            let html = `
+                <div class="card-header">
+                    <div><span class="card-title">${mainTitle}</span><span style="font-size:12px;color:#666;margin-left:8px">${subtitle}</span></div>
+                    <div class="card-controls">
+                        <button class="ctrl-btn" onclick="exportChart('${key}','png')">PNG</button>
+                        <button class="ctrl-btn" onclick="exportChart('${key}','jpg')">JPG</button>
+                        <button class="ctrl-btn" onclick="exportChart('${key}','tif')">TIF</button>
+                        <button class="ctrl-btn" onclick="toggleStylePanel('${key}')">🎨</button>
+                    </div>
+                </div>
+                <div class="style-panel" id="panel_${key}">
+                    <div class="style-panel-header">
+                        <span>📊 ${mainTitle} 样式设置</span>
+                        <button class="style-panel-close" onclick="cancelStylePanel('${key}')">✕</button>
+                    </div>
+                    <div class="style-row"><label>主标题:</label><input type="text" value="${mainTitle}" onchange="setCustomTitle('${key}', this.value)" style="flex:1;padding:4px 8px;border:1px solid #ddd;border-radius:4px;font-size:12px"></div>
+                    <div class="style-row"><label>副标题:</label><input type="text" value="${subtitle}" onchange="setCustomSubtitle('${key}', this.value)" style="flex:1;padding:4px 8px;border:1px solid #ddd;border-radius:4px;font-size:12px"></div>
+                    <hr style="margin:8px 0;border:none;border-top:1px solid #eee;">
+                    <div class="style-row"><strong>坐标轴名称</strong></div>
+                    <div class="style-row"><label>X轴:</label><input type="text" value="${cs.xAxisName||'X轴'}" onchange="setChartStyle('${key}','xAxisName',this.value)" style="width:80px">
+                        <label style="margin-left:10px">Y轴:</label><input type="text" value="${cs.yAxisName||'Y轴'}" onchange="setChartStyle('${key}','yAxisName',this.value)" style="width:80px"></div>
+                    <div class="style-row"><strong>轴标签</strong> 字体:<select onchange="setChartStyle('${key}','axisLabelFont',this.value)" style="width:70px">
+                        <option value="Times New Roman" ${cs.axisLabelFont==='Times New Roman'?'selected':''}>Times</option>
+                        <option value="Arial" ${cs.axisLabelFont==='Arial'?'selected':''}>Arial</option>
+                    </select> 字号:<input type="number" value="${cs.axisLabelSize||12}" onchange="setChartStyle('${key}','axisLabelSize',+this.value)" style="width:40px" min="8" max="20">
+                    颜色:<input type="color" value="${cs.axisLabelColor||'#000000'}" onchange="setChartStyle('${key}','axisLabelColor',this.value)" style="width:30px;height:22px"></div>
+                    <div class="style-row"><strong>刻度</strong> 字体:<select onchange="setChartStyle('${key}','axisTickFont',this.value)" style="width:70px">
+                        <option value="Times New Roman" ${cs.axisTickFont==='Times New Roman'?'selected':''}>Times</option>
+                        <option value="Arial" ${cs.axisTickFont==='Arial'?'selected':''}>Arial</option>
+                    </select> 字号:<input type="number" value="${cs.axisTickSize||10}" onchange="setChartStyle('${key}','axisTickSize',+this.value)" style="width:40px" min="8" max="18">
+                    颜色:<input type="color" value="${cs.axisTickColor||'#000000'}" onchange="setChartStyle('${key}','axisTickColor',this.value)" style="width:30px;height:22px"></div>
+                    <hr style="margin:8px 0;border:none;border-top:1px solid #eee;">
+                    <div class="style-row"><strong>图表尺寸</strong> 宽×高(px):
+                        <input type="number" value="${cs.chartWidth||600}" onchange="setChartStyle('${key}','chartWidth',+this.value);renderChart('${key}')" style="width:60px" min="300" max="1200">×
+                        <input type="number" value="${cs.chartHeight||400}" onchange="setChartStyle('${key}','chartHeight',+this.value);renderChart('${key}')" style="width:60px" min="200" max="800">
+                    </div>
+                    <hr style="margin:8px 0;border:none;border-top:1px solid #eee;">
+                    <div class="style-row"><strong>数据编辑</strong>
+                        <button onclick="openLineEditor('${key}')" style="font-size:10px;padding:2px 6px;margin-left:10px;background:#3498db;color:#fff;border:none;border-radius:4px">📝 编辑数据</button>
+                        <button onclick="openChartImport('${key}','line')" style="font-size:10px;padding:2px 6px;margin-left:5px;background:#27ae60;color:#fff;border:none;border-radius:4px">📥 AI导入</button>
+                    </div>
+                    <hr style="margin:8px 0;border:none;border-top:1px solid #eee;">
+                    <div class="style-row"><strong>节点管理</strong>
+                        <button onclick="openChartSaveModal('${key}')" style="font-size:10px;padding:3px 8px;margin-left:10px;background:#27ae60;color:#fff;border:none;border-radius:4px">💾 保存</button>
+                        <button onclick="openChartRestoreModal('${key}')" style="font-size:10px;padding:3px 8px;margin-left:5px;background:#3498db;color:#fff;border:none;border-radius:4px">🔄 恢复</button>
+                    </div>
+                    <hr style="margin:10px 0;border:none;border-top:1px solid #ddd;">
+                    <div class="style-row" style="justify-content:flex-end;gap:10px">
+                        <button onclick="cancelStylePanel('${key}')" style="padding:6px 16px;cursor:pointer;border:1px solid #ddd;border-radius:4px;background:#fff">取消</button>
+                        <button onclick="saveStylePanel('${key}')" style="padding:6px 16px;cursor:pointer;border:none;border-radius:4px;background:#667eea;color:#fff">保存</button>
+                    </div>
+                </div>
+                <div id="chart_${key}" style="width:${cs.chartWidth||600}px;height:${cs.chartHeight||400}px"></div>`;
             document.getElementById('card_' + key).innerHTML = html;
             
             const chartDiv = document.getElementById('chart_' + key);
             if (chartInstances[key]) chartInstances[key].dispose();
             chartInstances[key] = echarts.init(chartDiv);
+            
+            const latestCs = chartStyles[key] || {};
             chartInstances[key].setOption({
                 tooltip: { trigger: 'axis' },
-                legend: { data: data.series.map(s => s.name) },
-                xAxis: { type: 'category', data: data.xAxis },
-                yAxis: { type: 'value' },
-                series: data.series.map(s => ({ name: s.name, type: 'line', data: s.data, itemStyle: { color: s.color } }))
+                legend: { data: data.series.map(s => s.name), triggerEvent: true },
+                grid: { left: 60, right: 30, top: 50, bottom: 50, borderColor: '#000', borderWidth: 1, show: true },
+                xAxis: { 
+                    type: 'category', 
+                    data: data.xAxis, 
+                    name: latestCs.xAxisName||'', 
+                    nameLocation: 'middle', 
+                    nameGap: 30, 
+                    triggerEvent: true,
+                    axisLine: { show: true, lineStyle: { color: '#000', width: 1 } },
+                    axisTick: { show: true, lineStyle: { color: '#000' } },
+                    nameTextStyle: { fontFamily: latestCs.axisLabelFont || 'Times New Roman', fontSize: latestCs.axisLabelSize || 12, color: latestCs.axisLabelColor || '#000' },
+                    axisLabel: { fontFamily: latestCs.axisTickFont || 'Times New Roman', fontSize: latestCs.axisTickSize || 10, color: latestCs.axisTickColor || '#000' }
+                },
+                yAxis: { 
+                    type: 'value', 
+                    name: latestCs.yAxisName||'', 
+                    nameLocation: 'middle', 
+                    nameGap: 40, 
+                    triggerEvent: true,
+                    axisLine: { show: true, lineStyle: { color: '#000', width: 1 } },
+                    axisTick: { show: true, lineStyle: { color: '#000' } },
+                    splitLine: { show: false },
+                    nameTextStyle: { fontFamily: latestCs.axisLabelFont || 'Times New Roman', fontSize: latestCs.axisLabelSize || 12, color: latestCs.axisLabelColor || '#000' },
+                    axisLabel: { fontFamily: latestCs.axisTickFont || 'Times New Roman', fontSize: latestCs.axisTickSize || 10, color: latestCs.axisTickColor || '#000' }
+                },
+                series: data.series.map((s, idx) => ({ name: s.name, type: 'line', data: s.data, itemStyle: { color: s.color } }))
+            });
+            // 点击编辑功能
+            chartInstances[key].on('click', function(params) {
+                const latestCs = chartStyles[key] || {};
+                // 点击X轴刻度标签 - 编辑该标签
+                if (params.componentType === 'xAxis' && params.targetType === 'axisLabel') {
+                    const labelIdx = matricesData[key].data.xAxis.indexOf(params.value);
+                    if (labelIdx >= 0) {
+                        showTextEditor(params.value, function(newLabel) {
+                            matricesData[key].data.xAxis[labelIdx] = newLabel;
+                            saveAllToStorage();
+                            renderChart(key);
+                        });
+                    }
+                }
+                // 点击X轴名称 - 编辑轴名称
+                else if (params.componentType === 'xAxis' && params.targetType === 'axisName') {
+                    showTextEditor(latestCs.xAxisName || 'X轴', function(newName) {
+                        if (!chartStyles[key]) chartStyles[key] = {};
+                        chartStyles[key].xAxisName = newName;
+                        saveAllToStorage();
+                        renderChart(key);
+                    });
+                }
+                // 点击Y轴刻度标签 - 编辑数值(通过弹窗)
+                else if (params.componentType === 'yAxis' && params.targetType === 'axisLabel') {
+                    showValueEditor('编辑Y轴刻度值', params.value, function(newVal) {
+                        // Y轴刻度是自动计算的，这里可以调整Y轴范围
+                        alert('Y轴刻度由数据自动计算，请在数据编辑中修改数值');
+                    });
+                }
+                // 点击Y轴名称 - 编辑轴名称
+                else if (params.componentType === 'yAxis' && params.targetType === 'axisName') {
+                    showTextEditor(latestCs.yAxisName || 'Y轴', function(newName) {
+                        if (!chartStyles[key]) chartStyles[key] = {};
+                        chartStyles[key].yAxisName = newName;
+                        saveAllToStorage();
+                        renderChart(key);
+                    });
+                }
+                // 点击数据点 - 编辑数值
+                else if (params.componentType === 'series') {
+                    const seriesIdx = params.seriesIndex;
+                    const dataIdx = params.dataIndex;
+                    const currentVal = matricesData[key].data.series[seriesIdx].data[dataIdx];
+                    showValueEditor('编辑 ' + matricesData[key].data.series[seriesIdx].name + ' [' + matricesData[key].data.xAxis[dataIdx] + ']', currentVal, function(newVal) {
+                        matricesData[key].data.series[seriesIdx].data[dataIdx] = newVal;
+                        saveAllToStorage();
+                        renderChart(key);
+                    });
+                }
             });
         }
         
-        // 图7: 散点图
-        function renderScatterChart(key) {
-            const info = matricesData[key];
-            const data = info.data;
-            const mainTitle = customTitles[key] || info.name;
-            const subtitle = customSubtitles[key] || info.subtitle || '';
-            
-            let html = `<div class="card-header"><div><span class="card-title">${mainTitle}</span><span style="font-size:12px;color:#666;margin-left:8px">${subtitle}</span></div>
-                <div class="card-controls"><button class="ctrl-btn" onclick="exportChart('${key}','png')">PNG</button><button class="ctrl-btn" onclick="toggleStylePanel('${key}')">🎨</button></div></div>
-                <div id="chart_${key}" style="width:600px;height:400px"></div>`;
-            document.getElementById('card_' + key).innerHTML = html;
-            
-            const chartDiv = document.getElementById('chart_' + key);
-            if (chartInstances[key]) chartInstances[key].dispose();
-            chartInstances[key] = echarts.init(chartDiv);
-            chartInstances[key].setOption({
-                tooltip: { trigger: 'item' },
-                legend: { data: data.series.map(s => s.name) },
-                xAxis: { type: 'value', scale: true },
-                yAxis: { type: 'value', scale: true },
-                series: data.series.map(s => ({ name: s.name, type: 'scatter', data: s.data, itemStyle: { color: s.color } }))
-            });
-        }
+        // 注：renderScatterChart已删除，图7现在是箱线图
         
-        // 图8: 蜘蛛图(雷达图)
+        // 图8: 蜘蛛图(雷达图)(参考图2样式)
         function renderRadarChart(key) {
             const info = matricesData[key];
             const data = info.data;
             const mainTitle = customTitles[key] || info.name;
             const subtitle = customSubtitles[key] || info.subtitle || '';
+            const cs = chartStyles[key] || {};
             
-            let html = `<div class="card-header"><div><span class="card-title">${mainTitle}</span><span style="font-size:12px;color:#666;margin-left:8px">${subtitle}</span></div>
-                <div class="card-controls"><button class="ctrl-btn" onclick="exportChart('${key}','png')">PNG</button><button class="ctrl-btn" onclick="toggleStylePanel('${key}')">🎨</button></div></div>
-                <div id="chart_${key}" style="width:600px;height:400px"></div>`;
+            let html = `
+                <div class="card-header">
+                    <div><span class="card-title">${mainTitle}</span><span style="font-size:12px;color:#666;margin-left:8px">${subtitle}</span></div>
+                    <div class="card-controls">
+                        <button class="ctrl-btn" onclick="exportChart('${key}','png')">PNG</button>
+                        <button class="ctrl-btn" onclick="exportChart('${key}','jpg')">JPG</button>
+                        <button class="ctrl-btn" onclick="exportChart('${key}','tif')">TIF</button>
+                        <button class="ctrl-btn" onclick="toggleStylePanel('${key}')">🎨</button>
+                    </div>
+                </div>
+                <div class="style-panel" id="panel_${key}">
+                    <div class="style-panel-header">
+                        <span>📊 ${mainTitle} 样式设置</span>
+                        <button class="style-panel-close" onclick="cancelStylePanel('${key}')">✕</button>
+                    </div>
+                    <div class="style-row"><label>主标题:</label><input type="text" value="${mainTitle}" onchange="setCustomTitle('${key}', this.value)" style="flex:1;padding:4px 8px;border:1px solid #ddd;border-radius:4px;font-size:12px"></div>
+                    <div class="style-row"><label>副标题:</label><input type="text" value="${subtitle}" onchange="setCustomSubtitle('${key}', this.value)" style="flex:1;padding:4px 8px;border:1px solid #ddd;border-radius:4px;font-size:12px"></div>
+                    <hr style="margin:8px 0;border:none;border-top:1px solid #eee;">
+                    <div class="style-row"><strong>标签字体</strong> 字号:<input type="number" value="${cs.axisLabelSize||12}" onchange="setChartStyle('${key}','axisLabelSize',+this.value);renderChart('${key}')" style="width:40px" min="8" max="20">
+                    颜色:<input type="color" value="${cs.axisLabelColor||'#000000'}" onchange="setChartStyle('${key}','axisLabelColor',this.value);renderChart('${key}')" style="width:30px;height:22px"></div>
+                    <hr style="margin:8px 0;border:none;border-top:1px solid #eee;">
+                    <div class="style-row"><strong>图表尺寸</strong> 宽×高(px):
+                        <input type="number" value="${cs.chartWidth||600}" onchange="setChartStyle('${key}','chartWidth',+this.value);renderChart('${key}')" style="width:60px" min="300" max="1200">×
+                        <input type="number" value="${cs.chartHeight||400}" onchange="setChartStyle('${key}','chartHeight',+this.value);renderChart('${key}')" style="width:60px" min="200" max="800">
+                    </div>
+                    <hr style="margin:8px 0;border:none;border-top:1px solid #eee;">
+                    <div class="style-row"><strong>数据编辑</strong>
+                        <button onclick="openRadarEditor('${key}')" style="font-size:10px;padding:2px 6px;margin-left:10px;background:#3498db;color:#fff;border:none;border-radius:4px">📝 编辑数据</button>
+                        <button onclick="openChartImport('${key}','radar')" style="font-size:10px;padding:2px 6px;margin-left:5px;background:#27ae60;color:#fff;border:none;border-radius:4px">📥 AI导入</button>
+                    </div>
+                    <hr style="margin:8px 0;border:none;border-top:1px solid #eee;">
+                    <div class="style-row"><strong>节点管理</strong>
+                        <button onclick="openChartSaveModal('${key}')" style="font-size:10px;padding:3px 8px;margin-left:10px;background:#27ae60;color:#fff;border:none;border-radius:4px">💾 保存</button>
+                        <button onclick="openChartRestoreModal('${key}')" style="font-size:10px;padding:3px 8px;margin-left:5px;background:#3498db;color:#fff;border:none;border-radius:4px">🔄 恢复</button>
+                    </div>
+                    <hr style="margin:10px 0;border:none;border-top:1px solid #ddd;">
+                    <div class="style-row" style="justify-content:flex-end;gap:10px">
+                        <button onclick="cancelStylePanel('${key}')" style="padding:6px 16px;cursor:pointer;border:1px solid #ddd;border-radius:4px;background:#fff">取消</button>
+                        <button onclick="saveStylePanel('${key}')" style="padding:6px 16px;cursor:pointer;border:none;border-radius:4px;background:#667eea;color:#fff">保存</button>
+                    </div>
+                </div>
+                <div id="chart_${key}" style="width:${cs.chartWidth||600}px;height:${cs.chartHeight||400}px"></div>`;
             document.getElementById('card_' + key).innerHTML = html;
             
             const chartDiv = document.getElementById('chart_' + key);
             if (chartInstances[key]) chartInstances[key].dispose();
             chartInstances[key] = echarts.init(chartDiv);
+            const latestCs = chartStyles[key] || {};
             chartInstances[key].setOption({
                 tooltip: {},
                 legend: { data: data.series.map(s => s.name) },
-                radar: { indicator: data.indicator },
+                radar: { 
+                    indicator: data.indicator,
+                    name: { textStyle: { fontSize: latestCs.axisLabelSize || 12, color: latestCs.axisLabelColor || '#000' } }
+                },
                 series: [{ type: 'radar', data: data.series.map(s => ({ name: s.name, value: s.data, itemStyle: { color: s.color } })) }]
+            });
+            // 点击编辑功能
+            chartInstances[key].on('click', function(params) {
+                if (params.componentType === 'series') {
+                    const seriesIdx = params.seriesIndex;
+                    const dataIdx = params.dataIndex;
+                    if (dataIdx !== undefined && dataIdx >= 0) {
+                        const currentVal = matricesData[key].data.series[0].data[dataIdx];
+                        showValueEditor('编辑 ' + matricesData[key].data.indicator[dataIdx].name, currentVal, function(newVal) {
+                            matricesData[key].data.series[0].data[dataIdx] = newVal;
+                            saveAllToStorage();
+                            renderChart(key);
+                        });
+                    }
+                }
             });
         }
         
-        // 图9: 双轴图
+        // 图9: 双轴图(参考图2样式)
         function renderDualAxisChart(key) {
             const info = matricesData[key];
             const data = info.data;
             const mainTitle = customTitles[key] || info.name;
             const subtitle = customSubtitles[key] || info.subtitle || '';
+            const cs = chartStyles[key] || {};
             
-            let html = `<div class="card-header"><div><span class="card-title">${mainTitle}</span><span style="font-size:12px;color:#666;margin-left:8px">${subtitle}</span></div>
-                <div class="card-controls"><button class="ctrl-btn" onclick="exportChart('${key}','png')">PNG</button><button class="ctrl-btn" onclick="toggleStylePanel('${key}')">🎨</button></div></div>
-                <div id="chart_${key}" style="width:600px;height:400px"></div>`;
+            let html = `
+                <div class="card-header">
+                    <div><span class="card-title">${mainTitle}</span><span style="font-size:12px;color:#666;margin-left:8px">${subtitle}</span></div>
+                    <div class="card-controls">
+                        <button class="ctrl-btn" onclick="exportChart('${key}','png')">PNG</button>
+                        <button class="ctrl-btn" onclick="exportChart('${key}','jpg')">JPG</button>
+                        <button class="ctrl-btn" onclick="exportChart('${key}','tif')">TIF</button>
+                        <button class="ctrl-btn" onclick="toggleStylePanel('${key}')">🎨</button>
+                    </div>
+                </div>
+                <div class="style-panel" id="panel_${key}">
+                    <div class="style-panel-header">
+                        <span>📊 ${mainTitle} 样式设置</span>
+                        <button class="style-panel-close" onclick="cancelStylePanel('${key}')">✕</button>
+                    </div>
+                    <div class="style-row"><label>主标题:</label><input type="text" value="${mainTitle}" onchange="setCustomTitle('${key}', this.value)" style="flex:1;padding:4px 8px;border:1px solid #ddd;border-radius:4px;font-size:12px"></div>
+                    <div class="style-row"><label>副标题:</label><input type="text" value="${subtitle}" onchange="setCustomSubtitle('${key}', this.value)" style="flex:1;padding:4px 8px;border:1px solid #ddd;border-radius:4px;font-size:12px"></div>
+                    <hr style="margin:8px 0;border:none;border-top:1px solid #eee;">
+                    <div class="style-row"><strong>轴标签</strong> 字号:<input type="number" value="${cs.axisLabelSize||12}" onchange="setChartStyle('${key}','axisLabelSize',+this.value);renderChart('${key}')" style="width:40px" min="8" max="20">
+                    颜色:<input type="color" value="${cs.axisLabelColor||'#000000'}" onchange="setChartStyle('${key}','axisLabelColor',this.value);renderChart('${key}')" style="width:30px;height:22px"></div>
+                    <div class="style-row"><strong>刻度</strong> 字号:<input type="number" value="${cs.axisTickSize||10}" onchange="setChartStyle('${key}','axisTickSize',+this.value);renderChart('${key}')" style="width:40px" min="8" max="18">
+                    颜色:<input type="color" value="${cs.axisTickColor||'#000000'}" onchange="setChartStyle('${key}','axisTickColor',this.value);renderChart('${key}')" style="width:30px;height:22px"></div>
+                    <hr style="margin:8px 0;border:none;border-top:1px solid #eee;">
+                    <div class="style-row"><strong>图表尺寸</strong> 宽×高(px):
+                        <input type="number" value="${cs.chartWidth||600}" onchange="setChartStyle('${key}','chartWidth',+this.value);renderChart('${key}')" style="width:60px" min="300" max="1200">×
+                        <input type="number" value="${cs.chartHeight||400}" onchange="setChartStyle('${key}','chartHeight',+this.value);renderChart('${key}')" style="width:60px" min="200" max="800">
+                    </div>
+                    <hr style="margin:8px 0;border:none;border-top:1px solid #eee;">
+                    <div class="style-row"><strong>数据编辑</strong>
+                        <button onclick="openDualAxisEditor('${key}')" style="font-size:10px;padding:2px 6px;margin-left:10px;background:#3498db;color:#fff;border:none;border-radius:4px">📝 编辑数据</button>
+                        <button onclick="openChartImport('${key}','dualaxis')" style="font-size:10px;padding:2px 6px;margin-left:5px;background:#27ae60;color:#fff;border:none;border-radius:4px">📥 AI导入</button>
+                    </div>
+                    <hr style="margin:8px 0;border:none;border-top:1px solid #eee;">
+                    <div class="style-row"><strong>节点管理</strong>
+                        <button onclick="openChartSaveModal('${key}')" style="font-size:10px;padding:3px 8px;margin-left:10px;background:#27ae60;color:#fff;border:none;border-radius:4px">💾 保存</button>
+                        <button onclick="openChartRestoreModal('${key}')" style="font-size:10px;padding:3px 8px;margin-left:5px;background:#3498db;color:#fff;border:none;border-radius:4px">🔄 恢复</button>
+                    </div>
+                    <hr style="margin:10px 0;border:none;border-top:1px solid #ddd;">
+                    <div class="style-row" style="justify-content:flex-end;gap:10px">
+                        <button onclick="cancelStylePanel('${key}')" style="padding:6px 16px;cursor:pointer;border:1px solid #ddd;border-radius:4px;background:#fff">取消</button>
+                        <button onclick="saveStylePanel('${key}')" style="padding:6px 16px;cursor:pointer;border:none;border-radius:4px;background:#667eea;color:#fff">保存</button>
+                    </div>
+                </div>
+                <div id="chart_${key}" style="width:${cs.chartWidth||600}px;height:${cs.chartHeight||400}px"></div>`;
             document.getElementById('card_' + key).innerHTML = html;
             
             const chartDiv = document.getElementById('chart_' + key);
             if (chartInstances[key]) chartInstances[key].dispose();
             chartInstances[key] = echarts.init(chartDiv);
+            const latestCs = chartStyles[key] || {};
             chartInstances[key].setOption({
                 tooltip: { trigger: 'axis' },
                 legend: { data: data.series.map(s => s.name) },
-                xAxis: { type: 'category', data: data.xAxis },
-                yAxis: data.yAxis.map((y, i) => ({ type: 'value', name: y.name, position: y.position })),
+                grid: { left: 60, right: 60, top: 50, bottom: 50, borderColor: '#000', borderWidth: 1, show: true },
+                xAxis: { 
+                    type: 'category', 
+                    data: data.xAxis, 
+                    triggerEvent: true,
+                    axisLine: { show: true, lineStyle: { color: '#000', width: 1 } },
+                    axisTick: { show: true, lineStyle: { color: '#000' } },
+                    axisLabel: { fontSize: latestCs.axisTickSize || 10, color: latestCs.axisTickColor || '#000' }
+                },
+                yAxis: data.yAxis.map((y, i) => ({ 
+                    type: 'value', 
+                    name: y.name, 
+                    position: y.position,
+                    triggerEvent: true,
+                    axisLine: { show: true, lineStyle: { color: '#000', width: 1 } },
+                    axisTick: { show: true, lineStyle: { color: '#000' } },
+                    splitLine: { show: false },
+                    nameTextStyle: { fontSize: latestCs.axisLabelSize || 12, color: latestCs.axisLabelColor || '#000' },
+                    axisLabel: { fontSize: latestCs.axisTickSize || 10, color: latestCs.axisTickColor || '#000' }
+                })),
                 series: data.series.map(s => ({ name: s.name, type: s.type, yAxisIndex: s.yAxisIndex, data: s.data, itemStyle: { color: s.color } }))
+            });
+            // 点击编辑功能
+            chartInstances[key].on('click', function(params) {
+                // 点击X轴刻度标签
+                if (params.componentType === 'xAxis' && params.targetType === 'axisLabel') {
+                    const labelIdx = matricesData[key].data.xAxis.indexOf(params.value);
+                    if (labelIdx >= 0) {
+                        showTextEditor(params.value, function(newLabel) {
+                            matricesData[key].data.xAxis[labelIdx] = newLabel;
+                            saveAllToStorage();
+                            renderChart(key);
+                        });
+                    }
+                }
+                // 点击Y轴名称
+                else if (params.componentType === 'yAxis' && params.targetType === 'axisName') {
+                    const yAxisIdx = params.yAxisIndex || 0;
+                    showTextEditor(matricesData[key].data.yAxis[yAxisIdx].name, function(newName) {
+                        matricesData[key].data.yAxis[yAxisIdx].name = newName;
+                        saveAllToStorage();
+                        renderChart(key);
+                    });
+                }
+                // 点击数据点(柱子或折线)
+                else if (params.componentType === 'series') {
+                    const seriesIdx = params.seriesIndex;
+                    const dataIdx = params.dataIndex;
+                    const currentVal = matricesData[key].data.series[seriesIdx].data[dataIdx];
+                    const seriesName = matricesData[key].data.series[seriesIdx].name;
+                    const xLabel = matricesData[key].data.xAxis[dataIdx];
+                    showValueEditor('编辑 ' + seriesName + ' [' + xLabel + ']', currentVal, function(newVal) {
+                        matricesData[key].data.series[seriesIdx].data[dataIdx] = newVal;
+                        saveAllToStorage();
+                        renderChart(key);
+                    });
+                }
             });
         }
         
@@ -3987,19 +4396,61 @@ def _generate_enhanced_cm_html(matrices_data, class_names, title_bg_base64='titl
             });
         }
         
-        // 真正的箱线图(按用户示例代码: vert=True, patch_artist=True, widths=0.5, sym='r+', whis=1.5)
+        // 图7: 真正的箱线图(参考图2样式)
         function renderRealBoxplot(key) {
             const info = matricesData[key];
             const data = info.data;
             const mainTitle = customTitles[key] || info.name;
             const subtitle = customSubtitles[key] || info.subtitle || '';
+            const cs = chartStyles[key] || {};
             
             // vlag调色板颜色(seaborn vlag)
             const vlagColors = ['#2166ac', '#67a9cf', '#d1e5f0', '#fddbc7', '#ef8a62', '#b2182b'];
             
-            let html = `<div class="card-header"><div><span class="card-title">${mainTitle}</span><span style="font-size:12px;color:#666;margin-left:8px">${subtitle}</span></div>
-                <div class="card-controls"><button class="ctrl-btn" onclick="exportChart('${key}','png')">PNG</button><button class="ctrl-btn" onclick="toggleStylePanel('${key}')">🎨</button></div></div>
-                <div id="chart_${key}" style="width:600px;height:400px"></div>`;
+            let html = `
+                <div class="card-header">
+                    <div><span class="card-title">${mainTitle}</span><span style="font-size:12px;color:#666;margin-left:8px">${subtitle}</span></div>
+                    <div class="card-controls">
+                        <button class="ctrl-btn" onclick="exportChart('${key}','png')">PNG</button>
+                        <button class="ctrl-btn" onclick="exportChart('${key}','jpg')">JPG</button>
+                        <button class="ctrl-btn" onclick="exportChart('${key}','tif')">TIF</button>
+                        <button class="ctrl-btn" onclick="toggleStylePanel('${key}')">🎨</button>
+                    </div>
+                </div>
+                <div class="style-panel" id="panel_${key}">
+                    <div class="style-panel-header">
+                        <span>📊 ${mainTitle} 样式设置</span>
+                        <button class="style-panel-close" onclick="cancelStylePanel('${key}')">✕</button>
+                    </div>
+                    <div class="style-row"><label>主标题:</label><input type="text" value="${mainTitle}" onchange="setCustomTitle('${key}', this.value)" style="flex:1;padding:4px 8px;border:1px solid #ddd;border-radius:4px;font-size:12px"></div>
+                    <div class="style-row"><label>副标题:</label><input type="text" value="${subtitle}" onchange="setCustomSubtitle('${key}', this.value)" style="flex:1;padding:4px 8px;border:1px solid #ddd;border-radius:4px;font-size:12px"></div>
+                    <hr style="margin:8px 0;border:none;border-top:1px solid #eee;">
+                    <div class="style-row"><strong>轴标签</strong> 字号:<input type="number" value="${cs.axisLabelSize||12}" onchange="setChartStyle('${key}','axisLabelSize',+this.value);renderChart('${key}')" style="width:40px" min="8" max="20">
+                    颜色:<input type="color" value="${cs.axisLabelColor||'#000000'}" onchange="setChartStyle('${key}','axisLabelColor',this.value);renderChart('${key}')" style="width:30px;height:22px"></div>
+                    <div class="style-row"><strong>刻度</strong> 字号:<input type="number" value="${cs.axisTickSize||10}" onchange="setChartStyle('${key}','axisTickSize',+this.value);renderChart('${key}')" style="width:40px" min="8" max="18">
+                    颜色:<input type="color" value="${cs.axisTickColor||'#000000'}" onchange="setChartStyle('${key}','axisTickColor',this.value);renderChart('${key}')" style="width:30px;height:22px"></div>
+                    <hr style="margin:8px 0;border:none;border-top:1px solid #eee;">
+                    <div class="style-row"><strong>图表尺寸</strong> 宽×高(px):
+                        <input type="number" value="${cs.chartWidth||600}" onchange="setChartStyle('${key}','chartWidth',+this.value);renderChart('${key}')" style="width:60px" min="300" max="1200">×
+                        <input type="number" value="${cs.chartHeight||400}" onchange="setChartStyle('${key}','chartHeight',+this.value);renderChart('${key}')" style="width:60px" min="200" max="800">
+                    </div>
+                    <hr style="margin:8px 0;border:none;border-top:1px solid #eee;">
+                    <div class="style-row"><strong>数据编辑</strong>
+                        <button onclick="openRealBoxplotEditor('${key}')" style="font-size:10px;padding:2px 6px;margin-left:10px;background:#3498db;color:#fff;border:none;border-radius:4px">📝 编辑数据</button>
+                        <button onclick="openChartImport('${key}','realboxplot')" style="font-size:10px;padding:2px 6px;margin-left:5px;background:#27ae60;color:#fff;border:none;border-radius:4px">📥 AI导入</button>
+                    </div>
+                    <hr style="margin:8px 0;border:none;border-top:1px solid #eee;">
+                    <div class="style-row"><strong>节点管理</strong>
+                        <button onclick="openChartSaveModal('${key}')" style="font-size:10px;padding:3px 8px;margin-left:10px;background:#27ae60;color:#fff;border:none;border-radius:4px">💾 保存</button>
+                        <button onclick="openChartRestoreModal('${key}')" style="font-size:10px;padding:3px 8px;margin-left:5px;background:#3498db;color:#fff;border:none;border-radius:4px">🔄 恢复</button>
+                    </div>
+                    <hr style="margin:10px 0;border:none;border-top:1px solid #ddd;">
+                    <div class="style-row" style="justify-content:flex-end;gap:10px">
+                        <button onclick="cancelStylePanel('${key}')" style="padding:6px 16px;cursor:pointer;border:1px solid #ddd;border-radius:4px;background:#fff">取消</button>
+                        <button onclick="saveStylePanel('${key}')" style="padding:6px 16px;cursor:pointer;border:none;border-radius:4px;background:#667eea;color:#fff">保存</button>
+                    </div>
+                </div>
+                <div id="chart_${key}" style="width:${cs.chartWidth||600}px;height:${cs.chartHeight||400}px">`;
             document.getElementById('card_' + key).innerHTML = html;
             
             const chartDiv = document.getElementById('chart_' + key);
@@ -4055,35 +4506,225 @@ def _generate_enhanced_cm_html(matrices_data, class_names, title_bg_base64='titl
                 });
             }
             
+            const latestCs = chartStyles[key] || {};
+            const xAxisName = latestCs.xAxisName || 'Groups';
+            const yAxisName = latestCs.yAxisName || 'Values';
             chartInstances[key].setOption({
-                title: { text: 'Boxplot Example', left: 'center', textStyle: { fontSize: 15 } },
+                title: { text: mainTitle, left: 'center', textStyle: { fontSize: 15 }, triggerEvent: true },
                 tooltip: { trigger: 'item', axisPointer: { type: 'shadow' } },
-                grid: { left: '10%', right: '10%', bottom: '15%' },
-                xAxis: { type: 'category', data: data.categories, name: 'Groups', nameLocation: 'middle', nameGap: 25, boundaryGap: true, splitArea: { show: false }, splitLine: { show: false } },
-                yAxis: { type: 'value', name: 'Values', splitArea: { show: false } },
+                grid: { left: 60, right: 30, top: 50, bottom: 50, borderColor: '#000', borderWidth: 1, show: true },
+                xAxis: { 
+                    type: 'category', 
+                    data: data.categories, 
+                    name: xAxisName, 
+                    nameLocation: 'middle', 
+                    nameGap: 25, 
+                    boundaryGap: true, 
+                    triggerEvent: true,
+                    axisLine: { show: true, lineStyle: { color: '#000', width: 1 } },
+                    axisTick: { show: true, lineStyle: { color: '#000' } },
+                    nameTextStyle: { fontSize: latestCs.axisLabelSize || 12, color: latestCs.axisLabelColor || '#000' },
+                    axisLabel: { fontSize: latestCs.axisTickSize || 10, color: latestCs.axisTickColor || '#000' }
+                },
+                yAxis: { 
+                    type: 'value', 
+                    name: yAxisName,
+                    min: latestCs.yAxisMin || null,
+                    max: latestCs.yAxisMax || null,
+                    triggerEvent: true,
+                    axisLine: { show: true, lineStyle: { color: '#000', width: 1 } },
+                    axisTick: { show: true, lineStyle: { color: '#000' } },
+                    splitLine: { show: false },
+                    nameTextStyle: { fontSize: latestCs.axisLabelSize || 12, color: latestCs.axisLabelColor || '#000' },
+                    axisLabel: { fontSize: latestCs.axisTickSize || 10, color: latestCs.axisTickColor || '#000' }
+                },
                 series: seriesList
+            });
+            // 点击编辑功能
+            chartInstances[key].on('click', function(params) {
+                // 点击标题编辑
+                if (params.componentType === 'title') {
+                    showTextEditor(customTitles[key] || matricesData[key].name, function(newTitle) {
+                        customTitles[key] = newTitle;
+                        saveAllToStorage();
+                        renderChart(key);
+                    });
+                }
+                // 点击X轴刻度标签
+                else if (params.componentType === 'xAxis' && params.targetType === 'axisLabel') {
+                    const labelIdx = matricesData[key].data.categories.indexOf(params.value);
+                    if (labelIdx >= 0) {
+                        showTextEditor(params.value, function(newLabel) {
+                            matricesData[key].data.categories[labelIdx] = newLabel;
+                            saveAllToStorage();
+                            renderChart(key);
+                        });
+                    }
+                }
+                // 点击X轴名称(Groups)
+                else if (params.componentType === 'xAxis' && params.targetType === 'axisName') {
+                    showTextEditor(chartStyles[key]?.xAxisName || 'Groups', function(newName) {
+                        if (!chartStyles[key]) chartStyles[key] = {};
+                        chartStyles[key].xAxisName = newName;
+                        saveAllToStorage();
+                        renderChart(key);
+                    });
+                }
+                // 点击Y轴名称(Values)
+                else if (params.componentType === 'yAxis' && params.targetType === 'axisName') {
+                    showTextEditor(chartStyles[key]?.yAxisName || 'Values', function(newName) {
+                        if (!chartStyles[key]) chartStyles[key] = {};
+                        chartStyles[key].yAxisName = newName;
+                        saveAllToStorage();
+                        renderChart(key);
+                    });
+                }
+                // 点击Y轴刻度标签 - 设置Y轴范围
+                else if (params.componentType === 'yAxis' && params.targetType === 'axisLabel') {
+                    const currentMin = chartStyles[key]?.yAxisMin || 'auto';
+                    const currentMax = chartStyles[key]?.yAxisMax || 'auto';
+                    const newRange = prompt('设置Y轴范围\\n\\n当前: [' + currentMin + ', ' + currentMax + ']\\n格式: 最小值,最大值 (留空为自动)', currentMin + ',' + currentMax);
+                    if (newRange !== null) {
+                        const parts = newRange.split(',');
+                        if (!chartStyles[key]) chartStyles[key] = {};
+                        chartStyles[key].yAxisMin = parts[0]?.trim() === 'auto' || parts[0]?.trim() === '' ? null : parseFloat(parts[0]);
+                        chartStyles[key].yAxisMax = parts[1]?.trim() === 'auto' || parts[1]?.trim() === '' ? null : parseFloat(parts[1]);
+                        saveAllToStorage();
+                        renderChart(key);
+                    }
+                }
+                // 点击箱体编辑数据
+                else if (params.componentType === 'series' && params.seriesType === 'boxplot') {
+                    const dataIdx = params.dataIndex;
+                    openBoxplotDataEditor(key, dataIdx);
+                }
             });
         }
         
-        // 图22: 饼图
+        // 图7箱线图单组数据编辑弹窗
+        let boxplotDataEditorDiv = null;
+        function openBoxplotDataEditor(key, groupIdx) {
+            const info = matricesData[key];
+            const data = info.data.data[groupIdx] || [];
+            const groupName = info.data.categories[groupIdx] || ('组' + (groupIdx+1));
+            
+            if (boxplotDataEditorDiv) boxplotDataEditorDiv.remove();
+            boxplotDataEditorDiv = document.createElement('div');
+            boxplotDataEditorDiv.style.cssText = 'position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:#fff;padding:20px;border-radius:12px;box-shadow:0 10px 40px rgba(0,0,0,0.3);z-index:2000;max-height:80vh;overflow:auto;min-width:300px';
+            
+            let html = '<div style="font-size:16px;font-weight:bold;margin-bottom:15px">📊 编辑箱线图数据 - ' + groupName + '</div>';
+            html += '<div style="margin-bottom:10px"><label>组名:</label><input type="text" id="boxplotGroupName" value="' + groupName + '" style="margin-left:5px;padding:4px;border:1px solid #ddd;border-radius:4px"></div>';
+            html += '<div style="margin-bottom:5px"><strong>数据点(每行一个数值):</strong></div>';
+            html += '<textarea id="boxplotDataValues" style="width:100%;height:150px;padding:8px;border:1px solid #ddd;border-radius:4px;font-family:monospace">' + data.join('\\n') + '</textarea>';
+            html += '<div style="margin-top:15px;text-align:right"><button onclick="closeBoxplotDataEditor()" style="padding:8px 16px;margin-right:10px;border:1px solid #ddd;border-radius:4px;background:#fff;cursor:pointer">取消</button>';
+            html += '<button onclick="saveBoxplotDataEditor(\\'' + key + '\\',' + groupIdx + ')" style="padding:8px 16px;border:none;border-radius:4px;background:#667eea;color:#fff;cursor:pointer">保存</button></div>';
+            
+            boxplotDataEditorDiv.innerHTML = html;
+            document.body.appendChild(boxplotDataEditorDiv);
+        }
+        function closeBoxplotDataEditor() { if (boxplotDataEditorDiv) { boxplotDataEditorDiv.remove(); boxplotDataEditorDiv = null; } }
+        function saveBoxplotDataEditor(key, groupIdx) {
+            const groupName = document.getElementById('boxplotGroupName').value;
+            const valuesText = document.getElementById('boxplotDataValues').value;
+            const values = valuesText.split('\\n').map(v => parseFloat(v.trim())).filter(v => !isNaN(v));
+            
+            matricesData[key].data.categories[groupIdx] = groupName;
+            matricesData[key].data.data[groupIdx] = values;
+            saveAllToStorage();
+            closeBoxplotDataEditor();
+            renderChart(key);
+        }
+        
+        // 图10: 饼图(参考图2样式)
         function renderPieChart(key) {
             const info = matricesData[key];
             const data = info.data;
             const mainTitle = customTitles[key] || info.name;
             const subtitle = customSubtitles[key] || info.subtitle || '';
+            const cs = chartStyles[key] || {};
             
-            let html = `<div class="card-header"><div><span class="card-title">${mainTitle}</span><span style="font-size:12px;color:#666;margin-left:8px">${subtitle}</span></div>
-                <div class="card-controls"><button class="ctrl-btn" onclick="exportChart('${key}','png')">PNG</button><button class="ctrl-btn" onclick="toggleStylePanel('${key}')">🎨</button></div></div>
-                <div id="chart_${key}" style="width:600px;height:400px"></div>`;
+            let html = `
+                <div class="card-header">
+                    <div><span class="card-title">${mainTitle}</span><span style="font-size:12px;color:#666;margin-left:8px">${subtitle}</span></div>
+                    <div class="card-controls">
+                        <button class="ctrl-btn" onclick="exportChart('${key}','png')">PNG</button>
+                        <button class="ctrl-btn" onclick="exportChart('${key}','jpg')">JPG</button>
+                        <button class="ctrl-btn" onclick="exportChart('${key}','tif')">TIF</button>
+                        <button class="ctrl-btn" onclick="toggleStylePanel('${key}')">🎨</button>
+                    </div>
+                </div>
+                <div class="style-panel" id="panel_${key}">
+                    <div class="style-panel-header">
+                        <span>📊 ${mainTitle} 样式设置</span>
+                        <button class="style-panel-close" onclick="cancelStylePanel('${key}')">✕</button>
+                    </div>
+                    <div class="style-row"><label>主标题:</label><input type="text" value="${mainTitle}" onchange="setCustomTitle('${key}', this.value)" style="flex:1;padding:4px 8px;border:1px solid #ddd;border-radius:4px;font-size:12px"></div>
+                    <div class="style-row"><label>副标题:</label><input type="text" value="${subtitle}" onchange="setCustomSubtitle('${key}', this.value)" style="flex:1;padding:4px 8px;border:1px solid #ddd;border-radius:4px;font-size:12px"></div>
+                    <hr style="margin:8px 0;border:none;border-top:1px solid #eee;">
+                    <div class="style-row"><strong>标签字体</strong> 字号:<input type="number" value="${cs.labelSize||12}" onchange="setChartStyle('${key}','labelSize',+this.value);renderChart('${key}')" style="width:40px" min="8" max="20">
+                    颜色:<input type="color" value="${cs.labelColor||'#000000'}" onchange="setChartStyle('${key}','labelColor',this.value);renderChart('${key}')" style="width:30px;height:22px"></div>
+                    <hr style="margin:8px 0;border:none;border-top:1px solid #eee;">
+                    <div class="style-row"><strong>图表尺寸</strong> 宽×高(px):
+                        <input type="number" value="${cs.chartWidth||600}" onchange="setChartStyle('${key}','chartWidth',+this.value);renderChart('${key}')" style="width:60px" min="300" max="1200">×
+                        <input type="number" value="${cs.chartHeight||400}" onchange="setChartStyle('${key}','chartHeight',+this.value);renderChart('${key}')" style="width:60px" min="200" max="800">
+                    </div>
+                    <hr style="margin:8px 0;border:none;border-top:1px solid #eee;">
+                    <div class="style-row"><strong>数据编辑</strong>
+                        <button onclick="openPieEditor('${key}')" style="font-size:10px;padding:2px 6px;margin-left:10px;background:#3498db;color:#fff;border:none;border-radius:4px">📝 编辑数据</button>
+                        <button onclick="openChartImport('${key}','pie')" style="font-size:10px;padding:2px 6px;margin-left:5px;background:#27ae60;color:#fff;border:none;border-radius:4px">📥 AI导入</button>
+                    </div>
+                    <hr style="margin:8px 0;border:none;border-top:1px solid #eee;">
+                    <div class="style-row"><strong>节点管理</strong>
+                        <button onclick="openChartSaveModal('${key}')" style="font-size:10px;padding:3px 8px;margin-left:10px;background:#27ae60;color:#fff;border:none;border-radius:4px">💾 保存</button>
+                        <button onclick="openChartRestoreModal('${key}')" style="font-size:10px;padding:3px 8px;margin-left:5px;background:#3498db;color:#fff;border:none;border-radius:4px">🔄 恢复</button>
+                    </div>
+                    <hr style="margin:10px 0;border:none;border-top:1px solid #ddd;">
+                    <div class="style-row" style="justify-content:flex-end;gap:10px">
+                        <button onclick="cancelStylePanel('${key}')" style="padding:6px 16px;cursor:pointer;border:1px solid #ddd;border-radius:4px;background:#fff">取消</button>
+                        <button onclick="saveStylePanel('${key}')" style="padding:6px 16px;cursor:pointer;border:none;border-radius:4px;background:#667eea;color:#fff">保存</button>
+                    </div>
+                </div>
+                <div id="chart_${key}" style="width:${cs.chartWidth||600}px;height:${cs.chartHeight||400}px;border:1px solid #000"></div>`;
             document.getElementById('card_' + key).innerHTML = html;
             
             const chartDiv = document.getElementById('chart_' + key);
             if (chartInstances[key]) chartInstances[key].dispose();
             chartInstances[key] = echarts.init(chartDiv);
+            const latestCs = chartStyles[key] || {};
             chartInstances[key].setOption({
                 tooltip: { trigger: 'item' },
-                legend: { orient: 'vertical', left: 'left' },
-                series: [{ type: 'pie', radius: '60%', data: data.series, emphasis: { itemStyle: { shadowBlur: 10, shadowOffsetX: 0, shadowColor: 'rgba(0,0,0,0.5)' } } }]
+                legend: { orient: 'vertical', left: 'left', textStyle: { fontSize: latestCs.labelSize || 12, color: latestCs.labelColor || '#000' } },
+                series: [{ 
+                    type: 'pie', 
+                    radius: '60%', 
+                    data: data.series, 
+                    label: { fontSize: latestCs.labelSize || 12, color: latestCs.labelColor || '#000' },
+                    emphasis: { itemStyle: { shadowBlur: 10, shadowOffsetX: 0, shadowColor: 'rgba(0,0,0,0.5)' } } 
+                }]
+            });
+            // 点击编辑功能
+            chartInstances[key].on('click', function(params) {
+                if (params.componentType === 'series') {
+                    const dataIdx = params.dataIndex;
+                    const item = matricesData[key].data.series[dataIdx];
+                    // 点击扇区 - 只编辑数值
+                    showValueEditor('编辑 ' + item.name + ' 数值', item.value, function(newVal) {
+                        matricesData[key].data.series[dataIdx].value = newVal;
+                        saveAllToStorage();
+                        renderChart(key);
+                    });
+                }
+                // 点击图例标签 - 编辑名称
+                else if (params.componentType === 'legend') {
+                    const dataIdx = matricesData[key].data.series.findIndex(s => s.name === params.name);
+                    if (dataIdx >= 0) {
+                        showTextEditor(params.name, function(newName) {
+                            matricesData[key].data.series[dataIdx].name = newName;
+                            saveAllToStorage();
+                            renderChart(key);
+                        });
+                    }
+                }
             });
         }
         
