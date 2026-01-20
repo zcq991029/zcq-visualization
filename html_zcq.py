@@ -352,7 +352,8 @@ def _generate_enhanced_cm_html(matrices_data, class_names, title_bg_base64='titl
     <title>可视化仓库 v''' + version + '''</title>
 ''' + (f'    <script>{xlsx_js}</script>\n    <script>{echarts_js}</script>\n    <script>{plotly_js}</script>' if xlsx_js else f'''    <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js?v={version}"></script>
     <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js?v={version}"></script>
-    <script src="https://cdn.plot.ly/plotly-2.27.0.min.js?v={version}"></script>''') + '''
+    <script src="https://cdn.plot.ly/plotly-2.27.0.min.js?v={version}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js?v={version}"></script>''') + '''
     <style>
         :root { --bg: #f5f5f7; --card: #fff; --text: #1d1d1f; --sub: #86868b; --accent: #0071e3; }
         * { box-sizing: border-box; }
@@ -1042,6 +1043,45 @@ def _generate_enhanced_cm_html(matrices_data, class_names, title_bg_base64='titl
             colorModes[key] = mode;
             saveAllToStorage();
             renderChart(key);
+        }
+        
+        // 下载图表为图片
+        function downloadMatrix(key, format) {
+            const card = document.getElementById('card_' + key);
+            if (!card) return;
+            
+            // 隐藏按钮和面板
+            const btns = card.querySelectorAll('.download-btns, .card-controls, .style-panel');
+            btns.forEach(el => el.style.display = 'none');
+            
+            html2canvas(card, { 
+                backgroundColor: '#fff',
+                scale: 2,
+                useCORS: true
+            }).then(canvas => {
+                // 恢复按钮显示
+                btns.forEach(el => el.style.display = '');
+                
+                const link = document.createElement('a');
+                const info = matricesData[key];
+                const filename = (info?.name || key) + '.' + format;
+                
+                if (format === 'png') {
+                    link.href = canvas.toDataURL('image/png');
+                } else if (format === 'jpg') {
+                    link.href = canvas.toDataURL('image/jpeg', 0.95);
+                } else if (format === 'tif') {
+                    // TIF不支持直接导出，用PNG代替
+                    link.href = canvas.toDataURL('image/png');
+                    alert('TIF格式暂不支持，已导出为PNG');
+                }
+                link.download = filename;
+                link.click();
+            }).catch(err => {
+                btns.forEach(el => el.style.display = '');
+                console.error('下载失败:', err);
+                alert('下载失败，请重试');
+            });
         }
         
         function getColor(value, maxVal, theme) {
