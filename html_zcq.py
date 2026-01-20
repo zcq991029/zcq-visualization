@@ -1067,7 +1067,7 @@ def _generate_enhanced_cm_html(matrices_data, class_names, title_bg_base64='titl
             URL.revokeObjectURL(link.href);
         }
         
-        // 下载图表为图片（4倍分辨率最高清）
+        // 下载图表为图片（支持自定义尺寸，英寸转像素按300DPI）
         async function downloadMatrix(key, format) {
             const card = document.getElementById('card_' + key);
             if (!card) return;
@@ -1076,12 +1076,30 @@ def _generate_enhanced_cm_html(matrices_data, class_names, title_bg_base64='titl
             const hideElements = card.querySelectorAll('.download-btns, .card-controls, .style-panel, .card-header, .stats');
             hideElements.forEach(el => el.style.display = 'none');
             
+            // 获取导出尺寸（英寸），转换为像素（300DPI）
+            const exportWidth = (globalStyles.exportWidth || 8) * 300;
+            const exportHeight = (globalStyles.exportHeight || 6) * 300;
+            
             try {
-                const canvas = await html2canvas(card, { 
+                // 先截图
+                const tempCanvas = await html2canvas(card, { 
                     backgroundColor: '#fff',
-                    scale: 4, // 4倍分辨率，最高清
+                    scale: 4,
                     useCORS: true
                 });
+                
+                // 缩放到目标尺寸
+                const canvas = document.createElement('canvas');
+                canvas.width = exportWidth;
+                canvas.height = exportHeight;
+                const ctx = canvas.getContext('2d');
+                ctx.fillStyle = '#fff';
+                ctx.fillRect(0, 0, exportWidth, exportHeight);
+                // 居中绘制，保持宽高比
+                const scale = Math.min(exportWidth / tempCanvas.width, exportHeight / tempCanvas.height);
+                const x = (exportWidth - tempCanvas.width * scale) / 2;
+                const y = (exportHeight - tempCanvas.height * scale) / 2;
+                ctx.drawImage(tempCanvas, x, y, tempCanvas.width * scale, tempCanvas.height * scale);
                 
                 // 恢复显示
                 hideElements.forEach(el => el.style.display = '');
@@ -1237,6 +1255,11 @@ def _generate_enhanced_cm_html(matrices_data, class_names, title_bg_base64='titl
                     <div class="style-row">
                         <label>副标题:</label>
                         <input type="text" value="${subtitle}" placeholder="如: 400rpm" onchange="setCustomSubtitle('${key}', this.value)" style="flex:1;padding:4px 8px;border:1px solid #ddd;border-radius:4px;font-size:12px">
+                    </div>
+                    <hr style="margin:8px 0;border:none;border-top:1px solid #eee;">
+                    <div class="style-row"><strong>导出尺寸</strong> 宽×高(英寸):
+                        <input type="number" id="exportWidth_${key}" value="${globalStyles.exportWidth||8}" onchange="setGlobalStyle('exportWidth',+this.value)" style="width:50px" step="0.5" min="3" max="15">×
+                        <input type="number" id="exportHeight_${key}" value="${globalStyles.exportHeight||6}" onchange="setGlobalStyle('exportHeight',+this.value)" style="width:50px" step="0.5" min="2" max="12">
                     </div>
                     <hr style="margin:8px 0;border:none;border-top:1px solid #eee;">
                     <div class="style-row"><strong>颜色主题</strong></div>
