@@ -898,6 +898,20 @@ def _generate_enhanced_cm_html(matrices_data, class_names, title_bg_base64='titl
         // ECharts实例存储
         const chartInstances = {};
         
+        // 渲染所有图表
+        function renderAll() {
+            const grid = document.getElementById('matricesGrid');
+            grid.innerHTML = '';
+            Object.keys(matricesData).forEach(key => {
+                const card = document.createElement('div');
+                card.className = 'matrix-card';
+                card.id = 'card_' + key;
+                card.innerHTML = '<div style="text-align:center;padding:40px;color:#999">加载中...</div>';
+                grid.appendChild(card);
+            });
+            Object.keys(matricesData).forEach(key => renderChart(key));
+        }
+        
         function renderChart(key) {
             const info = matricesData[key];
             const chartType = info.type || 'confusion';
@@ -913,6 +927,92 @@ def _generate_enhanced_cm_html(matrices_data, class_names, title_bg_base64='titl
             } else if (chartType === 'roc') {
                 renderROC(key);
             }
+        }
+        
+        function renderConfusionMatrix(key) {
+            const info = matricesData[key];
+            const data = info.data;
+            const theme = matrixThemes[key];
+            const mode = matrixModes[key];
+            const colorMode = colorModes[key];
+            
+            let globalMax = 0;
+            const rowSums = [];
+            if (Array.isArray(data) && Array.isArray(data[0])) {
+                data.forEach(row => {
+                    const sum = row.reduce((a, b) => a + b, 0);
+                    rowSums.push(sum);
+                    row.forEach(v => { if (v > globalMax) globalMax = v; });
+                });
+            }
+            
+            const mainTitle = customTitles[key] || info.name;
+            const subtitle = customSubtitles[key] || info.subtitle || '';
+            const modeText = mode === 'count' ? '样本数' : '准确率%';
+            const displaySubtitle = subtitle ? subtitle + '（' + modeText + '）' : modeText;
+            let html = `
+                <div class="card-header">
+                    <div>
+                        <span class="card-title">${mainTitle}</span>
+                        <span class="card-subtitle" style="font-size:12px;color:#666;margin-left:8px">${displaySubtitle}</span>
+                    </div>
+                    <div class="card-controls">
+                        <button class="ctrl-btn ${mode === 'count' ? 'active' : ''}" onclick="setMode('${key}', 'count')">样本</button>
+                        <button class="ctrl-btn ${mode === 'pct' ? 'active' : ''}" onclick="setMode('${key}', 'pct')">%</button>
+                        <button class="ctrl-btn" onclick="toggleStylePanel('${key}')">🎨</button>
+                    </div>
+                </div>
+                <div class="style-panel" id="panel_${key}">
+                    <div class="style-panel-header">
+                        <span>📊 ${mainTitle} 样式设置</span>
+                        <button class="style-panel-close" onclick="cancelStylePanel('${key}')">✕</button>
+                    </div>
+                    <div class="style-row"><label>主标题:</label><input type="text" value="${mainTitle}" onchange="setCustomTitle('${key}', this.value)" style="flex:1;padding:4px 8px;border:1px solid #ddd;border-radius:4px;font-size:12px"></div>
+                    <div class="style-row"><label>副标题:</label><input type="text" value="${subtitle}" placeholder="如: 400rpm" onchange="setCustomSubtitle('${key}', this.value)" style="flex:1;padding:4px 8px;border:1px solid #ddd;border-radius:4px;font-size:12px"></div>
+                    <hr style="margin:8px 0;border:none;border-top:1px solid #eee;">
+                    <div class="style-row"><strong>颜色主题</strong></div>
+                    <div class="style-row" style="gap:5px;flex-wrap:wrap">
+                        <button onclick="setTheme('${key}','blues')" style="padding:4px 10px;border:1px solid ${theme==='blues'?'#0071e3':'#ddd'};border-radius:12px;background:${theme==='blues'?'#eefbff':'#fff'};cursor:pointer;font-size:11px">蓝</button>
+                        <button onclick="setTheme('${key}','oranges')" style="padding:4px 10px;border:1px solid ${theme==='oranges'?'#0071e3':'#ddd'};border-radius:12px;background:${theme==='oranges'?'#eefbff':'#fff'};cursor:pointer;font-size:11px">橙</button>
+                        <button onclick="setTheme('${key}','greens')" style="padding:4px 10px;border:1px solid ${theme==='greens'?'#0071e3':'#ddd'};border-radius:12px;background:${theme==='greens'?'#eefbff':'#fff'};cursor:pointer;font-size:11px">绿</button>
+                        <button onclick="setTheme('${key}','reds')" style="padding:4px 10px;border:1px solid ${theme==='reds'?'#0071e3':'#ddd'};border-radius:12px;background:${theme==='reds'?'#eefbff':'#fff'};cursor:pointer;font-size:11px">红</button>
+                        <button onclick="setTheme('${key}','purples')" style="padding:4px 10px;border:1px solid ${theme==='purples'?'#0071e3':'#ddd'};border-radius:12px;background:${theme==='purples'?'#eefbff':'#fff'};cursor:pointer;font-size:11px">紫</button>
+                    </div>
+                    <hr style="margin:10px 0;border:none;border-top:1px solid #ddd;">
+                    <div class="style-row" style="justify-content:flex-end;gap:10px">
+                        <button onclick="cancelStylePanel('${key}')" style="padding:6px 16px;cursor:pointer;border:1px solid #ddd;border-radius:4px;background:#fff">取消</button>
+                        <button onclick="saveStylePanel('${key}')" style="padding:6px 16px;cursor:pointer;border:none;border-radius:4px;background:#667eea;color:#fff">保存</button>
+                    </div>
+                </div>
+                <div class="matrix-wrapper" style="margin-top:20px">
+                    <table class="matrix-table">
+                        <tr><th></th>${customLabels.map(n => '<th style="visibility:hidden;height:0;padding:0;font-size:0">' + n + '</th>').join('')}</tr>
+            `;
+            
+            for (let i = 0; i < currentClassCount; i++) {
+                html += '<tr><th style="font-family:' + globalStyles.labelFontFamily + ';font-size:' + globalStyles.labelFontSize + 'px;font-weight:' + globalStyles.labelFontWeight + ';padding-right:' + (globalStyles.yLabelPadding||8) + 'px;cursor:pointer" onclick="editCMLabel(' + i + ')">' + customLabels[i] + '</th>';
+                const rowSum = rowSums[i];
+                for (let j = 0; j < currentClassCount; j++) {
+                    const val = data[i][j];
+                    const displayVal = mode === 'pct' && rowSum > 0 ? (val / rowSum * 100).toFixed(1) + '%' : val;
+                    const colorBase = colorMode === 'row' ? rowSum : globalMax;
+                    const colorObj = getColor(val, colorBase, theme);
+                    const numStyle = 'font-family:' + globalStyles.numFontFamily + ';font-size:' + globalStyles.numFontSize + 'px;font-weight:' + globalStyles.numFontWeight + ';font-style:' + globalStyles.numFontStyle;
+                    html += '<td style="background:' + colorObj.c + ';' + numStyle + '" class="' + (colorObj.dark ? 'dark' : '') + '" onclick="openEdit(\\'' + key + '\\',' + i + ',' + j + ',' + val + ')">' + displayVal + '</td>';
+                }
+                html += '</tr>';
+            }
+            
+            html += '<tr><th></th>' + customLabels.map((n, idx) => '<th style="font-family:' + globalStyles.labelFontFamily + ';font-size:' + globalStyles.labelFontSize + 'px;font-weight:' + globalStyles.labelFontWeight + ';padding-top:' + (globalStyles.xLabelPadding||8) + 'px;cursor:pointer" onclick="editCMLabel(' + idx + ')">' + n + '</th>').join('') + '</tr>';
+            html += '</table></div>';
+            
+            let correct = 0, total = 0;
+            for (let i = 0; i < currentClassCount; i++) { correct += data[i][i]; total += data[i].reduce((a, b) => a + b, 0); }
+            html += '<div class="stats">准确率: ' + (correct / total * 100).toFixed(2) + '% (' + correct + '/' + total + ')</div>';
+            
+            html += '<div class="download-btns"><button class="dl-btn" onclick="downloadMatrix(\\'' + key + '\\', \\'png\\')">📷 PNG</button><button class="dl-btn" onclick="downloadMatrix(\\'' + key + '\\', \\'jpg\\')">🖼️ JPG</button><button class="dl-btn" onclick="downloadMatrix(\\'' + key + '\\', \\'tif\\')">🖼️ TIF</button></div>';
+            
+            document.getElementById('card_' + key).innerHTML = html;
         }
         
         function renderBarChart(key) {
