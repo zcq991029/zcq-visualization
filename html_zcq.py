@@ -1023,6 +1023,27 @@ def _generate_enhanced_cm_html(matrices_data, class_names, title_bg_base64='titl
             colorModes[key] = 'row';  // 默认按行总数
         });
         
+        // 设置显示模式（样本数/百分比）
+        function setMode(key, mode) {
+            matrixModes[key] = mode;
+            saveAllToStorage();
+            renderChart(key);
+        }
+        
+        // 设置颜色主题
+        function setTheme(key, theme) {
+            matrixThemes[key] = theme;
+            saveAllToStorage();
+            renderChart(key);
+        }
+        
+        // 设置颜色归一化模式
+        function setColorMode(key, mode) {
+            colorModes[key] = mode;
+            saveAllToStorage();
+            renderChart(key);
+        }
+        
         function getColor(value, maxVal, theme) {
             const stops = themes[theme];
             const ratio = maxVal > 0 ? value / maxVal : 0;
