@@ -3359,11 +3359,19 @@ def _generate_enhanced_cm_html(matrices_data, class_names, title_bg_base64='titl
                 const chart = chartInstances[key];
                 
                 if (chartType === 'bar') {
-                    // bar的容器宽度依赖barWidth，需要完全重新渲染
-                    renderBarChart(key);
+                    // 只更新ECharts选项，不重新渲染HTML
+                    chart.setOption({
+                        legend: { left: (cs.legendX || 50) + '%', top: (cs.legendY || 0) + '%', orient: cs.legendOrient || 'horizontal', itemWidth: cs.legendItemWidth || 25, itemHeight: cs.legendItemHeight || 14, textStyle: { fontFamily: cs.legendFont || 'Times New Roman', fontSize: cs.legendSize || 11, color: cs.legendColor || '#000' } },
+                        xAxis: { name: cs.xAxisName || '类别', nameGap: cs.xNameGap || 25, interval: cs.xTickInterval || null, nameTextStyle: { fontFamily: cs.axisLabelFont || 'Times New Roman', fontSize: cs.axisLabelSize || 12, color: cs.axisLabelColor || '#000' }, axisLabel: { fontFamily: cs.axisTickFont || 'Times New Roman', fontSize: cs.axisTickSize || 10, color: cs.axisTickColor || '#000' } },
+                        yAxis: { name: cs.yAxisName || '准确率(%)', nameGap: cs.yNameGap || 35, interval: cs.yTickInterval || null, nameTextStyle: { fontFamily: cs.axisLabelFont || 'Times New Roman', fontSize: cs.axisLabelSize || 12, color: cs.axisLabelColor || '#000' }, axisLabel: { fontFamily: cs.axisTickFont || 'Times New Roman', fontSize: cs.axisTickSize || 10, color: cs.axisTickColor || '#000' } }
+                    });
                 } else if (chartType === 'multibar') {
-                    // multibar的容器宽度依赖barWidth，需要完全重新渲染
-                    renderMultiBar(key);
+                    // 只更新ECharts选项，不重新渲染HTML
+                    chart.setOption({
+                        legend: { left: (cs.legendX || 50) + '%', top: (cs.legendY || 0) + '%', orient: cs.legendOrient || 'horizontal', itemWidth: cs.legendItemWidth || 25, itemHeight: cs.legendItemHeight || 14, textStyle: { fontFamily: cs.legendFont || 'Times New Roman', fontSize: cs.legendSize || 11, color: cs.legendColor || '#000' } },
+                        xAxis: { name: cs.xAxisName || 'Evaluation budget', nameGap: cs.xNameGap || 25, interval: cs.xTickInterval || null, nameTextStyle: { fontFamily: cs.axisLabelFont || 'Times New Roman', fontSize: cs.axisLabelSize || 12, color: cs.axisLabelColor || '#000' }, axisLabel: { fontFamily: cs.axisTickFont || 'Times New Roman', fontSize: cs.axisTickSize || 10, color: cs.axisTickColor || '#000' } },
+                        yAxis: { name: cs.yAxisName || 'Terminal HV', nameGap: cs.yNameGap || 35, interval: cs.yTickInterval || null, nameTextStyle: { fontFamily: cs.axisLabelFont || 'Times New Roman', fontSize: cs.axisLabelSize || 12, color: cs.axisLabelColor || '#000' }, axisLabel: { fontFamily: cs.axisTickFont || 'Times New Roman', fontSize: cs.axisTickSize || 10, color: cs.axisTickColor || '#000' } }
+                    });
                 } else if (chartType === 'roc') {
                     chart.setOption({
                         legend: { left: (cs.legendX || 50) + '%', top: (cs.legendY || 0) + '%', orient: cs.legendOrient || 'horizontal', itemWidth: cs.legendItemWidth || 25, itemHeight: cs.legendItemHeight || 14, textStyle: { fontFamily: cs.legendFont || 'Times New Roman', fontSize: cs.legendSize || 11, color: cs.legendColor || '#000' } },
@@ -3371,8 +3379,12 @@ def _generate_enhanced_cm_html(matrices_data, class_names, title_bg_base64='titl
                         yAxis: { name: cs.yAxisName || 'TPR', nameGap: cs.yNameGap || 35, interval: cs.yTickInterval || null, nameTextStyle: { fontFamily: cs.axisLabelFont || 'Times New Roman', fontSize: cs.axisLabelSize || 12, color: cs.axisLabelColor || '#000' }, axisLabel: { fontFamily: cs.axisTickFont || 'Times New Roman', fontSize: cs.axisTickSize || 10, color: cs.axisTickColor || '#000' } }
                     });
                 } else if (chartType === 'boxplot') {
-                    // boxplot的容器宽度依赖barWidth，需要完全重新渲染
-                    renderBoxplot(key);
+                    // 只更新ECharts选项，不重新渲染HTML
+                    chart.setOption({
+                        legend: { left: (cs.legendX || 50) + '%', top: (cs.legendY || 0) + '%', orient: cs.legendOrient || 'horizontal', itemWidth: cs.legendItemWidth || 25, itemHeight: cs.legendItemHeight || 14, textStyle: { fontFamily: cs.legendFont || 'Times New Roman', fontSize: cs.legendSize || 11, color: cs.legendColor || '#000' } },
+                        xAxis: { name: cs.xAxisName || 'Evaluation budget', nameGap: cs.xNameGap || 25, interval: cs.xTickInterval || null, nameTextStyle: { fontFamily: cs.axisLabelFont || 'Times New Roman', fontSize: cs.axisLabelSize || 12, color: cs.axisLabelColor || '#000' }, axisLabel: { fontFamily: cs.axisTickFont || 'Times New Roman', fontSize: cs.axisTickSize || 10, color: cs.axisTickColor || '#000' } },
+                        yAxis: { name: cs.yAxisName || '准确率(%)', nameGap: cs.yNameGap || 35, interval: cs.yTickInterval || null, nameTextStyle: { fontFamily: cs.axisLabelFont || 'Times New Roman', fontSize: cs.axisLabelSize || 12, color: cs.axisLabelColor || '#000' }, axisLabel: { fontFamily: cs.axisTickFont || 'Times New Roman', fontSize: cs.axisTickSize || 10, color: cs.axisTickColor || '#000' } }
+                    });
                 }
             }
         }
