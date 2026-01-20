@@ -711,8 +711,16 @@ def _generate_enhanced_cm_html(matrices_data, class_names, title_bg_base64='titl
                 <li><strong>清除缓存</strong>：点击右上角"🔄 刷新"按钮</li>
             </ul>
             
+            <h3>📋 更新日志</h3>
+            <ul>
+                <li><strong>2026-01-21</strong>：图3/5/6/7/9添加"刻度像素间距"控制</li>
+                <li><strong>2026-01-20</strong>：图2添加刻度像素间距，修复偏移拉宽问题</li>
+                <li><strong>2026-01-19</strong>：图1添加自定义导出尺寸，修复保存图片</li>
+                <li><strong>2026-01-18</strong>：图1标签偏移支持负数，设置默认值</li>
+            </ul>
+            
             <p style="margin-top:20px;color:#666;font-size:12px;text-align:center">
-                东莞理工学院 · zcq · SCI可视化仓库 v2.0
+                东莞理工学院 · zcq · SCI可视化仓库 v2.1
             </p>
         </div>
     </div>
