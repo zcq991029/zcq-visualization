@@ -1265,7 +1265,8 @@ def _generate_enhanced_cm_html(matrices_data, class_names, title_bg_base64='titl
             `;
             
             for (let i = 0; i < currentClassCount; i++) {
-                html += `<tr><th style="font-family:${globalStyles.labelFontFamily};font-size:${globalStyles.labelFontSize}px;font-weight:${globalStyles.labelFontWeight};padding-right:${Math.max(0, globalStyles.yLabelPadding!==undefined?globalStyles.yLabelPadding:8)}px;margin-right:${Math.min(0, globalStyles.yLabelPadding!==undefined?globalStyles.yLabelPadding:8)}px;cursor:pointer" onclick="editCMLabel(${i})">${customLabels[i]}</th>`;
+                const yPad = globalStyles.yLabelPadding!==undefined?globalStyles.yLabelPadding:8;
+                html += `<tr><th style="font-family:${globalStyles.labelFontFamily};font-size:${globalStyles.labelFontSize}px;font-weight:${globalStyles.labelFontWeight};padding-right:${Math.max(0,yPad)}px;${yPad<0?'transform:translateX('+(-yPad)+'px);':''}cursor:pointer" onclick="editCMLabel(${i})">${customLabels[i]}</th>`;
                 const rowSum = rowSums[i];
                 for (let j = 0; j < currentClassCount; j++) {
                     const val = data[i][j];
@@ -1280,7 +1281,8 @@ def _generate_enhanced_cm_html(matrices_data, class_names, title_bg_base64='titl
             }
             
             // X轴标签放在底部
-            html += `<tr><th></th>${customLabels.map((n, idx) => `<th style="font-family:${globalStyles.labelFontFamily};font-size:${globalStyles.labelFontSize}px;font-weight:${globalStyles.labelFontWeight};padding-top:${Math.max(0, globalStyles.xLabelPadding!==undefined?globalStyles.xLabelPadding:8)}px;margin-top:${Math.min(0, globalStyles.xLabelPadding!==undefined?globalStyles.xLabelPadding:8)}px;cursor:pointer" onclick="editCMLabel(${idx})">${n}</th>`).join('')}</tr>`;
+            const xPad = globalStyles.xLabelPadding!==undefined?globalStyles.xLabelPadding:8;
+            html += `<tr><th></th>${customLabels.map((n, idx) => `<th style="font-family:${globalStyles.labelFontFamily};font-size:${globalStyles.labelFontSize}px;font-weight:${globalStyles.labelFontWeight};padding-top:${Math.max(0,xPad)}px;${xPad<0?'transform:translateY('+(-xPad)+'px);':''}cursor:pointer" onclick="editCMLabel(${idx})">${n}</th>`).join('')}</tr>`;
             html += `</table></div>`;
             
             // 统计
