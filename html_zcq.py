@@ -1226,15 +1226,15 @@ def _generate_enhanced_cm_html(matrices_data, class_names, title_bg_base64='titl
                     <div class="style-row"><strong>标签位置</strong></div>
                     <div class="style-row">
                         Y轴标签右偏移:
-                        <button onclick="adjustCMLabel('yLabelPadding',-2)" style="padding:2px 4px">◀</button>
-                        <input type="number" id="yLabelPadding_${key}" value="${globalStyles.yLabelPadding||8}" onchange="setGlobalStyle('yLabelPadding',+this.value)" style="width:40px" min="0" max="50">px
-                        <button onclick="adjustCMLabel('yLabelPadding',2)" style="padding:2px 4px">▶</button>
+                        <button onclick="adjustCMLabel('yLabelPadding',-1)" style="padding:2px 4px">◀</button>
+                        <input type="number" id="yLabelPadding_${key}" value="${globalStyles.yLabelPadding||8}" onchange="setGlobalStyle('yLabelPadding',+this.value)" style="width:40px" min="-30" max="30">px
+                        <button onclick="adjustCMLabel('yLabelPadding',1)" style="padding:2px 4px">▶</button>
                     </div>
                     <div class="style-row">
                         X轴标签上偏移:
-                        <button onclick="adjustCMLabel('xLabelPadding',-2)" style="padding:2px 4px">▲</button>
-                        <input type="number" id="xLabelPadding_${key}" value="${globalStyles.xLabelPadding||8}" onchange="setGlobalStyle('xLabelPadding',+this.value)" style="width:40px" min="0" max="50">px
-                        <button onclick="adjustCMLabel('xLabelPadding',2)" style="padding:2px 4px">▼</button>
+                        <button onclick="adjustCMLabel('xLabelPadding',-1)" style="padding:2px 4px">▲</button>
+                        <input type="number" id="xLabelPadding_${key}" value="${globalStyles.xLabelPadding||8}" onchange="setGlobalStyle('xLabelPadding',+this.value)" style="width:40px" min="-30" max="30">px
+                        <button onclick="adjustCMLabel('xLabelPadding',1)" style="padding:2px 4px">▼</button>
                     </div>
                     <hr style="margin:8px 0;border:none;border-top:1px solid #eee;">
                     <div class="style-row"><strong>分类设置</strong></div>
@@ -3132,8 +3132,11 @@ def _generate_enhanced_cm_html(matrices_data, class_names, title_bg_base64='titl
         
         // 混淆矩阵标签偏移微调（只预览，不保存）
         function adjustCMLabel(prop, delta) {
-            const currentVal = globalStyles[prop] || 8;
-            const newVal = Math.max(0, Math.min(50, currentVal + delta));
+            // 优先使用输入框中的实际值
+            const input = document.querySelector('[id^="' + prop + '_"]');
+            const currentVal = input ? parseInt(input.value) : (globalStyles[prop] || 8);
+            // 允许负值(-30到30)，步进为1
+            const newVal = Math.max(-30, Math.min(30, currentVal + delta));
             globalStyles[prop] = newVal;
             // 更新输入框
             document.querySelectorAll('[id^="' + prop + '_"]').forEach(el => el.value = newVal);
