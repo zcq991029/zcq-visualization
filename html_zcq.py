@@ -2181,8 +2181,8 @@ def _generate_enhanced_cm_html(matrices_data, class_names, title_bg_base64='titl
                         <option value="SimSun" ${(chartStyles[key]||{}).axisTickFont==='SimSun'?'selected':''}>宋体</option>
                     </select> 字号:<input type="number" value="${(chartStyles[key]||{}).axisTickSize||10}" onchange="setChartStyle('${key}','axisTickSize',+this.value)" style="width:40px" min="8" max="18">
                     颜色:<input type="color" id="mb_axisTickColor_${key}" value="${(chartStyles[key]||{}).axisTickColor||'#000000'}" onchange="setChartStyle('${key}','axisTickColor',this.value)" style="width:30px;height:22px;border:none;cursor:pointer"><button type="button" onclick="pickColor(c=>{document.getElementById('mb_axisTickColor_${key}').value=c;setChartStyle('${key}','axisTickColor',c)})" style="padding:2px 4px;font-size:10px;cursor:pointer;margin-left:2px" title="取色笔">🎯</button></div>
-                    <div class="style-row"><strong>刻度间距</strong> X轴:<input type="number" value="${(chartStyles[key]||{}).xTickInterval||1}" onchange="setChartStyle('${key}','xTickInterval',+this.value)" style="width:50px" min="1" max="10" step="1">
-                        Y轴:<input type="number" value="${(chartStyles[key]||{}).yTickInterval||0.5}" onchange="setChartStyle('${key}','yTickInterval',+this.value)" style="width:50px" min="0.1" max="2" step="0.1"></div>
+                    <div class="style-row"><strong>刻度像素间距</strong> X轴:<input type="number" value="${(chartStyles[key]||{}).xTickGapPx||80}" onchange="setChartStyle('${key}','xTickGapPx',+this.value)" style="width:50px" min="30" max="200" step="10">px
+                        Y轴:<input type="number" value="${(chartStyles[key]||{}).yTickGapPx||50}" onchange="setChartStyle('${key}','yTickGapPx',+this.value)" style="width:50px" min="20" max="150" step="10">px</div>
                     <div class="style-row"><strong>图例</strong> 字体:<select onchange="setChartStyle('${key}','legendFont',this.value)" style="width:70px">
                         <option value="Times New Roman" ${(chartStyles[key]||{}).legendFont==='Times New Roman'?'selected':''}>Times</option>
                         <option value="Arial" ${(chartStyles[key]||{}).legendFont==='Arial'?'selected':''}>Arial</option>
@@ -2765,8 +2765,8 @@ def _generate_enhanced_cm_html(matrices_data, class_names, title_bg_base64='titl
                         <option value="Arial" ${cs.axisTickFont==='Arial'?'selected':''}>Arial</option>
                         <option value="SimSun" ${cs.axisTickFont==='SimSun'?'selected':''}>宋体</option>
                     </select> 颜色:<input type="color" id="bp_axisTickColor_${key}" value="${cs.axisTickColor||'#000000'}" onchange="setChartStyle('${key}','axisTickColor',this.value)" style="width:30px;height:22px;border:none;cursor:pointer"><button type="button" onclick="pickColor(c=>{document.getElementById('bp_axisTickColor_${key}').value=c;setChartStyle('${key}','axisTickColor',c)})" style="padding:2px 4px;font-size:10px;cursor:pointer;margin-left:2px" title="取色笔">🎯</button></div>
-                    <div class="style-row"><strong>刻度间距</strong> X轴:<input type="number" value="${cs.xTickInterval||1}" onchange="setChartStyle('${key}','xTickInterval',+this.value)" style="width:50px" min="1" max="10" step="1">
-                        Y轴:<input type="number" value="${cs.yTickInterval||5}" onchange="setChartStyle('${key}','yTickInterval',+this.value)" style="width:50px" min="1" max="20" step="1"></div>
+                    <div class="style-row"><strong>刻度像素间距</strong> X轴:<input type="number" value="${cs.xTickGapPx||80}" onchange="setChartStyle('${key}','xTickGapPx',+this.value)" style="width:50px" min="30" max="200" step="10">px
+                        Y轴:<input type="number" value="${cs.yTickGapPx||50}" onchange="setChartStyle('${key}','yTickGapPx',+this.value)" style="width:50px" min="20" max="150" step="10">px</div>
                     <div class="style-row"><strong>柱子宽度</strong>:<input type="number" value="${cs.barWidth||30}" onchange="setChartStyle('${key}','barWidth',+this.value)" style="width:50px" min="10" max="60">px
                         <strong style="margin-left:10px">误差线粗细</strong>:<input type="number" value="${cs.errorLineWidth||1}" onchange="setChartStyle('${key}','errorLineWidth',+this.value)" style="width:40px" min="0.5" max="5" step="0.5">px</div>
                     <div class="style-row"><strong>预设配色</strong>
@@ -3922,6 +3922,8 @@ def _generate_enhanced_cm_html(matrices_data, class_names, title_bg_base64='titl
                         <option value="Arial" ${cs.axisTickFont==='Arial'?'selected':''}>Arial</option>
                     </select> 字号:<input type="number" value="${cs.axisTickSize||10}" onchange="setChartStyle('${key}','axisTickSize',+this.value)" style="width:40px" min="8" max="18">
                     颜色:<input type="color" value="${cs.axisTickColor||'#000000'}" onchange="setChartStyle('${key}','axisTickColor',this.value)" style="width:30px;height:22px"></div>
+                    <div class="style-row"><strong>刻度像素间距</strong> X轴:<input type="number" value="${cs.xTickGapPx||80}" onchange="setChartStyle('${key}','xTickGapPx',+this.value)" style="width:50px" min="30" max="200" step="10">px
+                        Y轴:<input type="number" value="${cs.yTickGapPx||50}" onchange="setChartStyle('${key}','yTickGapPx',+this.value)" style="width:50px" min="20" max="150" step="10">px</div>
                     <div class="style-row"><strong>X轴名偏移</strong> 
                         <button onclick="adjustAxisOffset('${key}','xNameGap',-5)" style="padding:2px 4px">◀</button>
                         <input type="number" id="xNameGap_${key}" value="${cs.xNameGap||30}" onchange="setChartStyle('${key}','xNameGap',+this.value)" style="width:40px" min="-50" max="80">px
@@ -4166,6 +4168,8 @@ def _generate_enhanced_cm_html(matrices_data, class_names, title_bg_base64='titl
                     颜色:<input type="color" value="${cs.axisLabelColor||'#000000'}" onchange="setChartStyle('${key}','axisLabelColor',this.value);renderChart('${key}')" style="width:30px;height:22px"></div>
                     <div class="style-row"><strong>刻度</strong> 字号:<input type="number" value="${cs.axisTickSize||10}" onchange="setChartStyle('${key}','axisTickSize',+this.value);renderChart('${key}')" style="width:40px" min="8" max="18">
                     颜色:<input type="color" value="${cs.axisTickColor||'#000000'}" onchange="setChartStyle('${key}','axisTickColor',this.value);renderChart('${key}')" style="width:30px;height:22px"></div>
+                    <div class="style-row"><strong>刻度像素间距</strong> X轴:<input type="number" value="${cs.xTickGapPx||80}" onchange="setChartStyle('${key}','xTickGapPx',+this.value)" style="width:50px" min="30" max="200" step="10">px
+                        Y轴:<input type="number" value="${cs.yTickGapPx||50}" onchange="setChartStyle('${key}','yTickGapPx',+this.value)" style="width:50px" min="20" max="150" step="10">px</div>
                     <div class="style-row"><strong>X轴名偏移</strong> 
                         <button onclick="adjustAxisOffset('${key}','xNameGap',-5)" style="padding:2px 4px">◀</button>
                         <input type="number" id="xNameGap_${key}" value="${cs.xNameGap||30}" onchange="setChartStyle('${key}','xNameGap',+this.value)" style="width:40px" min="-50" max="80">px
@@ -4646,6 +4650,8 @@ def _generate_enhanced_cm_html(matrices_data, class_names, title_bg_base64='titl
                     颜色:<input type="color" value="${cs.axisLabelColor||'#000000'}" onchange="setChartStyle('${key}','axisLabelColor',this.value);renderChart('${key}')" style="width:30px;height:22px"></div>
                     <div class="style-row"><strong>刻度</strong> 字号:<input type="number" value="${cs.axisTickSize||10}" onchange="setChartStyle('${key}','axisTickSize',+this.value);renderChart('${key}')" style="width:40px" min="8" max="18">
                     颜色:<input type="color" value="${cs.axisTickColor||'#000000'}" onchange="setChartStyle('${key}','axisTickColor',this.value);renderChart('${key}')" style="width:30px;height:22px"></div>
+                    <div class="style-row"><strong>刻度像素间距</strong> X轴:<input type="number" value="${cs.xTickGapPx||80}" onchange="setChartStyle('${key}','xTickGapPx',+this.value)" style="width:50px" min="30" max="200" step="10">px
+                        Y轴:<input type="number" value="${cs.yTickGapPx||50}" onchange="setChartStyle('${key}','yTickGapPx',+this.value)" style="width:50px" min="20" max="150" step="10">px</div>
                     <div class="style-row"><strong>X轴名偏移</strong> 
                         <button onclick="adjustAxisOffset('${key}','xNameGap',-5)" style="padding:2px 4px">◀</button>
                         <input type="number" id="xNameGap_${key}" value="${cs.xNameGap||25}" onchange="setChartStyle('${key}','xNameGap',+this.value)" style="width:40px" min="-50" max="80">px
