@@ -1266,7 +1266,7 @@ def _generate_enhanced_cm_html(matrices_data, class_names, title_bg_base64='titl
             
             for (let i = 0; i < currentClassCount; i++) {
                 const yPad = globalStyles.yLabelPadding!==undefined?globalStyles.yLabelPadding:8;
-                html += `<tr><th style="font-family:${globalStyles.labelFontFamily};font-size:${globalStyles.labelFontSize}px;font-weight:${globalStyles.labelFontWeight};padding-right:${Math.max(0,yPad)}px;${yPad<0?'transform:translateX('+(-yPad)+'px);':''}cursor:pointer" onclick="editCMLabel(${i})">${customLabels[i]}</th>`;
+                html += `<tr><th style="background:transparent;font-family:${globalStyles.labelFontFamily};font-size:${globalStyles.labelFontSize}px;font-weight:${globalStyles.labelFontWeight};padding-right:${Math.max(0,yPad)}px;${yPad<0?'transform:translateX('+(-yPad)+'px);':''}cursor:pointer" onclick="editCMLabel(${i})">${customLabels[i]}</th>`;
                 const rowSum = rowSums[i];
                 for (let j = 0; j < currentClassCount; j++) {
                     const val = data[i][j];
@@ -1282,7 +1282,7 @@ def _generate_enhanced_cm_html(matrices_data, class_names, title_bg_base64='titl
             
             // X轴标签放在底部
             const xPad = globalStyles.xLabelPadding!==undefined?globalStyles.xLabelPadding:8;
-            html += `<tr><th></th>${customLabels.map((n, idx) => `<th style="font-family:${globalStyles.labelFontFamily};font-size:${globalStyles.labelFontSize}px;font-weight:${globalStyles.labelFontWeight};padding-top:${Math.max(0,xPad)}px;${xPad<0?'transform:translateY('+(xPad)+'px);':''}cursor:pointer" onclick="editCMLabel(${idx})">${n}</th>`).join('')}</tr>`;
+            html += `<tr><th></th>${customLabels.map((n, idx) => `<th style="background:transparent;font-family:${globalStyles.labelFontFamily};font-size:${globalStyles.labelFontSize}px;font-weight:${globalStyles.labelFontWeight};padding-top:${Math.max(0,xPad)}px;${xPad<0?'transform:translateY('+(xPad)+'px);':''}cursor:pointer" onclick="editCMLabel(${idx})">${n}</th>`).join('')}</tr>`;
             html += `</table></div>`;
             
             // 统计
